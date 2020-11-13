@@ -83,6 +83,8 @@
     firefox google-chrome
     steam
 
+    dracula-theme
+    gnome3.gnome-tweaks
     gnome3.gnome-shell-extensions
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.appindicator
