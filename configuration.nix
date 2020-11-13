@@ -46,8 +46,8 @@
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome3.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
     enable = true;
@@ -72,6 +72,7 @@
   users.users.sakulk = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.fish;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -82,6 +83,8 @@
     firefox google-chrome
     steam
   ];
+
+  programs.fish.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
