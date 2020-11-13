@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -17,7 +17,8 @@
   # boot.loader.grub.efiInstallAsRemovable = true;
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/nvme0n1"; # or "nodev" for efi only
+  boot.loader.grub.device = "/dev/nvme0n1";
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "saku-nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -45,10 +46,13 @@
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  
+  hardware.opengl = {
+    enable = true;
+    driSupport32Bit = true;
+  };
 
   # Configure keymap in X11
   services.xserver.layout = "us";
