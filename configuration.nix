@@ -82,6 +82,11 @@
     wget vim git
     firefox google-chrome
     steam
+
+    gnome3.gnome-shell-extensions
+    gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.appindicator
+    gnomeExtensions.system-monitor
   ];
 
   programs.fish.enable = true;
