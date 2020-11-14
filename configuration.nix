@@ -4,6 +4,14 @@
 
 { config, pkgs, ... }:
 
+let
+  extensions = (with pkgs.vscode-extensions; [
+    bbenoist.Nix
+  ]);
+  custom-vscode = pkgs.vscode-with-extensions.override {
+    vscodeExtensions = extensions;
+  };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -82,6 +90,7 @@
     wget vim git
     firefox google-chrome
     steam
+    custom-vscode
 
     dracula-theme
     gnome3.gnome-tweaks
