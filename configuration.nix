@@ -93,6 +93,14 @@
 
   programs.fish.enable = true;
 
+  environment.shellAliases = {
+    gst = "git status";
+    gd = "git diff";
+    gcam = "git commit -am";
+    gp = "git push";
+    gup = "git pull --rebase";
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
