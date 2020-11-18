@@ -90,6 +90,7 @@ in
     firefox google-chrome
     steam
     custom-vscode
+    spotify
 
     dracula-theme
     gnome3.gnome-tweaks
