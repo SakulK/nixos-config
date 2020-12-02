@@ -7,6 +7,8 @@
 let
   extensions = (with pkgs.vscode-extensions; [
     bbenoist.Nix
+    justusadam.language-haskell
+    haskell.haskell
   ]);
   custom-vscode = pkgs.vscode-with-extensions.override {
     vscodeExtensions = extensions;
@@ -99,6 +101,10 @@ in
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.appindicator
     gnomeExtensions.system-monitor
+
+    # haskell
+    cabal-install
+    stack
   ];
 
   virtualisation.virtualbox.host.enable = true;
