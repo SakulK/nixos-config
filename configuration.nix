@@ -105,10 +105,10 @@ in
     # haskell
     cabal-install
     stack
-  ];
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "sakulk" ];
+    # scala
+    coursier
+  ];
 
   programs.fish.enable = true;
 
