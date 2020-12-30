@@ -11,7 +11,12 @@ let
     haskell.haskell
     scalameta.metals
     scala-lang.scala
-  ]);
+  ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+      name = "theme-dracula";
+      publisher = "dracula-theme";
+      version = "2.22.3";
+      sha256 = "0wni9sriin54ci8rly2s68lkfx8rj1cys6mgcizvps9sam6377w6";
+  }];
   custom-vscode = pkgs.vscode-with-extensions.override {
     vscodeExtensions = extensions;
   };
