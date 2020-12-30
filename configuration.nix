@@ -9,6 +9,8 @@ let
     bbenoist.Nix
     justusadam.language-haskell
     haskell.haskell
+    scalameta.metals
+    scala-lang.scala
   ]);
   custom-vscode = pkgs.vscode-with-extensions.override {
     vscodeExtensions = extensions;
@@ -107,7 +109,8 @@ in
     stack
 
     # scala
-    coursier
+    sbt
+    jdk11
   ];
 
   programs.fish.enable = true;
