@@ -82,6 +82,16 @@ in
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  services.minidlna = {
+    enable = true;
+    mediaDirs = [
+      "/dlna"
+    ];
+    announceInterval = 60;
+  };
+  networking.firewall.allowedTCPPorts = [ 8200 ];
+
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -101,6 +111,8 @@ in
     steam
     custom-vscode
     spotify
+    qbittorrent
+    vlc
 
     dracula-theme
     gnome3.gnome-tweaks
