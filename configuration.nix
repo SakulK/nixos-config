@@ -89,7 +89,10 @@ in
     ];
     announceInterval = 60;
   };
-  networking.firewall.allowedTCPPorts = [ 8200 ];
+  networking.firewall.allowedTCPPorts = [
+    8200 # minidlna
+    1716 # gsconnect
+  ];
 
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -123,6 +126,7 @@ in
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.appindicator
     gnomeExtensions.system-monitor
+    gnomeExtensions.gsconnect
 
     # haskell
     cabal-install
