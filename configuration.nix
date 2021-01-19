@@ -89,14 +89,6 @@ in
     ];
     announceInterval = 60;
   };
-  networking.firewall.allowedTCPPorts = [
-    8200 # minidlna
-    1716 # gsconnect
-  ];
-
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sakulk = {
@@ -105,7 +97,7 @@ in
       "wheel" # Enable ‘sudo’ for the user.
       "docker"
     ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -119,6 +111,8 @@ in
     spotify
     qbittorrent
     vlc
+    any-nix-shell
+    terminator
 
     dracula-theme
     gnome3.gnome-tweaks
@@ -135,18 +129,27 @@ in
     # scala
     sbt
     jdk11
+
+    # kubernetes
+    kubectl
   ];
 
   virtualisation.docker.enable = true;
 
-  programs.fish.enable = true;
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    promptInit = ''
+      any-nix-shell zsh --info-right | source /dev/stdin
+    '';
 
-  environment.shellAliases = {
-    gst = "git status";
-    gd = "git diff";
-    gcam = "git commit -am";
-    gp = "git push";
-    gup = "git pull --rebase";
+    ohMyZsh = {
+      enable = true;
+      plugins = [ "git" "docker" "kubectl" ];
+      theme = "robbyrussell";
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -163,7 +166,10 @@ in
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    8200 # minidlna
+    1716 # gsconnect
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
