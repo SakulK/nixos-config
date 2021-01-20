@@ -11,6 +11,9 @@ let
     haskell.haskell
     scalameta.metals
     scala-lang.scala
+    redhat.vscode-yaml
+    ms-azuretools.vscode-docker
+    ms-kubernetes-tools.vscode-kubernetes-tools
   ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
       name = "theme-dracula";
       publisher = "dracula-theme";
@@ -131,9 +134,14 @@ in
     # scala
     sbt
     jdk11
+    jetbrains.idea-community
 
     # kubernetes
     kubectl
+    kubectx
+    kubernetes-helm
+
+    docker-compose
   ];
   fonts.fonts = with pkgs; [
     meslo-lgs-nf # powerlevel10k font
@@ -153,7 +161,12 @@ in
 
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" "docker" "kubectl" ];
+      plugins = [
+        "git"
+        "docker"
+        "docker-compose"
+        "kubectl"
+      ];
     };
   };
 
