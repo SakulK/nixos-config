@@ -114,6 +114,8 @@ in
     any-nix-shell
     terminator
 
+    zsh-powerlevel10k
+
     dracula-theme
     gnome3.gnome-tweaks
     gnome3.gnome-shell-extensions
@@ -133,6 +135,9 @@ in
     # kubernetes
     kubectl
   ];
+  fonts.fonts = with pkgs; [
+    meslo-lgs-nf # powerlevel10k font
+  ];
 
   virtualisation.docker.enable = true;
 
@@ -142,13 +147,13 @@ in
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     promptInit = ''
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       any-nix-shell zsh --info-right | source /dev/stdin
     '';
 
     ohMyZsh = {
       enable = true;
       plugins = [ "git" "docker" "kubectl" ];
-      theme = "robbyrussell";
     };
   };
 
