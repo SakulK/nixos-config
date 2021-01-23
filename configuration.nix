@@ -65,7 +65,6 @@ in
     keyMap = "us";
   };
 
-  # Enable the Plasma 5 Desktop Environment.
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
@@ -126,6 +125,11 @@ in
     gnomeExtensions.appindicator
     gnomeExtensions.system-monitor
     gnomeExtensions.gsconnect
+
+    # benchmarking
+    geekbench
+    s-tui
+    stress
 
     # haskell
     cabal-install
