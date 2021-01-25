@@ -115,6 +115,7 @@ in
     vlc
     any-nix-shell
     terminator
+    (import ./lcat.nix)
 
     zsh-powerlevel10k
 
