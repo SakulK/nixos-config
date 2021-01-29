@@ -108,7 +108,7 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim git
+    wget git
     firefox google-chrome
     steam
     custom-vscode
@@ -118,6 +118,11 @@ in
     any-nix-shell
     terminator
     (import ./lcat.nix)
+    fd
+    sd
+    dua
+    bat
+    exa
 
     zsh-powerlevel10k
 
@@ -156,6 +161,12 @@ in
 
   virtualisation.docker.enable = true;
 
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+    defaultEditor = true;
+  };
+
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
@@ -175,6 +186,10 @@ in
         "kubectl"
       ];
     };
+  };
+
+  environment.shellAliases = {
+    ls = "exa";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
