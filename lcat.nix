@@ -16,8 +16,9 @@ rustPlatform.buildRustPackage rec {
   cargoSha256 = "sha256:1lywzv8kzcqr7vny96jq08fbcjyw0l0infmgvgg09ark8xl5h395";
 
   meta = with stdenv.lib; {
-    description = "Command line utility to read log files in the logstash json format";
-    homepage = https://github.com/SakulK/lcat;
+    description =
+      "Command line utility to read log files in the logstash json format";
+    homepage = "https://github.com/SakulK/lcat";
     license = licenses.asl20;
     maintainers = [ ];
     platforms = platforms.all;

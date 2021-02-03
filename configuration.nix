@@ -15,21 +15,24 @@ let
     ms-azuretools.vscode-docker
     ms-kubernetes-tools.vscode-kubernetes-tools
   ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-      name = "theme-dracula";
-      publisher = "dracula-theme";
-      version = "2.22.3";
-      sha256 = "0wni9sriin54ci8rly2s68lkfx8rj1cys6mgcizvps9sam6377w6";
+    name = "theme-dracula";
+    publisher = "dracula-theme";
+    version = "2.22.3";
+    sha256 = "0wni9sriin54ci8rly2s68lkfx8rj1cys6mgcizvps9sam6377w6";
   }];
-  custom-vscode = pkgs.vscode-with-extensions.override {
-    vscodeExtensions = extensions;
-  };
-in
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-    ];
+  custom-vscode =
+    pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };
+in {
+  imports = [ # Include the results of the hardware scan.
+    /etc/nixos/hardware-configuration.nix
+  ];
 
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   powerManagement.cpuFreqGovernor = "ondemand";
   # Use the GRUB 2 boot loader.
@@ -41,7 +44,8 @@ in
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.extraModprobeConfig = "options hid_apple fnmode=2"; # enable F keys for Keychron K2
+  boot.extraModprobeConfig =
+    "options hid_apple fnmode=2"; # enable F keys for Keychron K2
 
   networking.hostName = "saku-nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -88,9 +92,7 @@ in
 
   services.minidlna = {
     enable = true;
-    mediaDirs = [
-      "/dlna"
-    ];
+    mediaDirs = [ "/dlna" ];
     announceInterval = 60;
   };
 
@@ -108,14 +110,17 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget git
-    firefox google-chrome
+    wget
+    git
+    firefox
+    google-chrome
     steam
     custom-vscode
     spotify
     qbittorrent
     vlc
     any-nix-shell
+    nixfmt
     terminator
     (import ./lcat.nix)
     fd
@@ -155,9 +160,10 @@ in
 
     docker-compose
   ];
-  fonts.fonts = with pkgs; [
-    meslo-lgs-nf # powerlevel10k font
-  ];
+  fonts.fonts = with pkgs;
+    [
+      meslo-lgs-nf # powerlevel10k font
+    ];
 
   virtualisation.docker.enable = true;
 
@@ -179,18 +185,11 @@ in
 
     ohMyZsh = {
       enable = true;
-      plugins = [
-        "git"
-        "docker"
-        "docker-compose"
-        "kubectl"
-      ];
+      plugins = [ "git" "docker" "docker-compose" "kubectl" ];
     };
   };
 
-  environment.shellAliases = {
-    ls = "exa";
-  };
+  environment.shellAliases = { ls = "exa"; };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
