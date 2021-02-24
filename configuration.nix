@@ -165,6 +165,9 @@ in {
     kubernetes-helm
 
     docker-compose
+
+    slack-dark
+    keepassxc
   ];
   fonts.fonts = with pkgs;
     [
@@ -195,7 +198,10 @@ in {
     };
   };
 
-  environment.shellAliases = { ls = "exa"; };
+  environment.shellAliases = {
+    ls = "exa";
+    la = "exa -la";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
