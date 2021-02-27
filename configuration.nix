@@ -156,7 +156,7 @@ in {
 
     # scala
     sbt
-    jdk11
+    graalvm11-ce
     jetbrains.idea-community
 
     # kubernetes
