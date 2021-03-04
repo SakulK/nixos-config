@@ -128,7 +128,7 @@ in {
     any-nix-shell
     nixfmt
     terminator
-    (import ./lcat.nix)
+    (callPackage ./lcat.nix {})
     fd
     sd
     dua

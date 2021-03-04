@@ -1,4 +1,4 @@
-with import <nixpkgs> { };
+{ rustPlatform, fetchFromGitHub, lib }:
 
 rustPlatform.buildRustPackage rec {
   name = "lcat-${version}";
