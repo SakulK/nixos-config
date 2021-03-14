@@ -127,7 +127,7 @@ in {
     any-nix-shell
     nixfmt
     terminator
-    (callPackage ./lcat.nix {})
+    (callPackage ./lcat.nix { })
     fd
     sd
     dua
@@ -154,8 +154,7 @@ in {
     stack
 
     # scala
-    sbt
-    graalvm11-ce
+    (sbt.override { jre = graalvm11-ce; })
     jetbrains.idea-community
 
     # kubernetes
@@ -172,6 +171,11 @@ in {
     [
       meslo-lgs-nf # powerlevel10k font
     ];
+
+  programs.java = {
+    enable = true;
+    package = pkgs.graalvm11-ce;
+  };
 
   programs.steam.enable = true;
 
