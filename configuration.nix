@@ -120,7 +120,6 @@ in {
     git
     firefox
     google-chrome
-    steam
     custom-vscode
     spotify
     qbittorrent
@@ -173,6 +172,8 @@ in {
     [
       meslo-lgs-nf # powerlevel10k font
     ];
+
+  programs.steam.enable = true;
 
   virtualisation.docker.enable = true;
 
