@@ -166,6 +166,7 @@ in {
 
     slack-dark
     keepassxc
+    kdenlive
   ];
   fonts.fonts = with pkgs;
     [
