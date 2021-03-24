@@ -22,9 +22,12 @@ let
   }];
   custom-vscode =
     pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };
+
+  printerIp = "192.168.0.53";
 in {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
     /etc/nixos/hardware-configuration.nix
+    <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix>
   ];
 
   nix = {
@@ -85,6 +88,24 @@ in {
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  hardware.printers.ensurePrinters = [{
+    name = "DCP-T710W";
+    model = "everywhere";
+    deviceUri = "ipp://${printerIp}/";
+  }];
+
+  hardware.sane = {
+    enable = true;
+    brscan4 = {
+      enable = true;
+      netDevices = {
+        home = {
+          model = "DCP-T710W";
+          ip = printerIp;
+        };
+      };
+    };
+  };
 
   # Enable sound.
   sound.enable = true;
