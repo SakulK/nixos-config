@@ -154,6 +154,7 @@ in {
     dua
     bat
     exa
+    hyperfine
 
     zsh-powerlevel10k
 
