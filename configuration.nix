@@ -23,7 +23,7 @@ let
   custom-vscode =
     pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };
 
-  printerIp = "192.168.0.53";
+  printerIp = "192.168.1.13";
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
