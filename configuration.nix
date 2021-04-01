@@ -194,6 +194,7 @@ in {
     keepassxc
     kdenlive
     droidcam
+    mongodb-4_0
   ];
   fonts.fonts = with pkgs;
     [
