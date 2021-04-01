@@ -50,6 +50,10 @@ in {
   boot.extraModprobeConfig =
     "options hid_apple fnmode=2"; # enable F keys for Keychron K2
 
+  # for droidcam
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+  boot.kernelModules = [ "v4l2loopback" "snd-aloop" ];
+
   networking.hostName = "saku-nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -189,6 +193,7 @@ in {
     slack-dark
     keepassxc
     kdenlive
+    droidcam
   ];
   fonts.fonts = with pkgs;
     [
