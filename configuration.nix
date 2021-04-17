@@ -133,6 +133,7 @@ in {
     extraGroups = [
       "wheel" # Enable ‘sudo’ for the user.
       "docker"
+      "vboxusers"
     ];
     shell = pkgs.zsh;
   };
@@ -209,6 +210,9 @@ in {
   programs.steam.enable = true;
 
   virtualisation.docker.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
 
   programs.neovim = {
     enable = true;
