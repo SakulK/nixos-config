@@ -14,6 +14,7 @@ let
     redhat.vscode-yaml
     ms-azuretools.vscode-docker
     ms-kubernetes-tools.vscode-kubernetes-tools
+    wholroyd.jinja
   ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
     name = "theme-dracula";
     publisher = "dracula-theme";
