@@ -3,4 +3,8 @@
 set -e
 dir=$(pwd)
 
-ln -fs "${dir}/configuration.nix" /etc/nixos/configuration.nix
+select file in $(ls ./hosts)
+do
+    ln -fs "${dir}/hosts/${file}" /etc/nixos/configuration.nix
+    break
+done
