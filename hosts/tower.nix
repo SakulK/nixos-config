@@ -45,7 +45,7 @@
   programs.steam.enable = true;
   programs.droidcam.enable = true;
 
-  environment.systemPackages = with pkgs; [ qbittorrent kdenlive ];
+  environment.systemPackages = with pkgs; [ qbittorrent kdenlive mongodb-4_0 ];
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;

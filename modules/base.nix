@@ -96,7 +96,6 @@ in {
 
     slack-dark
     keepassxc
-    mongodb-4_0
   ];
   fonts.fonts = with pkgs;
     [
