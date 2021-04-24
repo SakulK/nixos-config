@@ -13,7 +13,7 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [ ];
 
   checkPhase = "";
-  cargoSha256 = "sha256:1lywzv8kzcqr7vny96jq08fbcjyw0l0infmgvgg09ark8xl5h395";
+  cargoSha256 = "sha256-qaiTf0HLmTtVZ8krggzrXZSx8orcHZBOa2xQLYQUtyY=";
 
   meta = with lib; {
     description =
