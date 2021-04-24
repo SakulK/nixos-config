@@ -20,6 +20,7 @@ let
   custom-vscode =
     pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };
 in {
+  nixpkgs.config.allowUnfree = true;
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -52,7 +53,6 @@ in {
     shell = pkgs.zsh;
   };
 
-  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     wget
     git
@@ -60,7 +60,6 @@ in {
     google-chrome
     custom-vscode
     spotify
-    qbittorrent
     vlc
     any-nix-shell
     nixfmt
@@ -97,7 +96,6 @@ in {
 
     slack-dark
     keepassxc
-    kdenlive
     mongodb-4_0
   ];
   fonts.fonts = with pkgs;
@@ -105,19 +103,17 @@ in {
       meslo-lgs-nf # powerlevel10k font
     ];
 
+  virtualisation.docker.enable = true;
+
   programs.java = {
     enable = true;
     package = pkgs.graalvm11-ce;
   };
-
-  virtualisation.docker.enable = true;
-
   programs.neovim = {
     enable = true;
     vimAlias = true;
     defaultEditor = true;
   };
-
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
@@ -127,7 +123,6 @@ in {
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       any-nix-shell zsh --info-right | source /dev/stdin
     '';
-
     ohMyZsh = {
       enable = true;
       plugins = [ "git" "docker" "docker-compose" "kubectl" ];

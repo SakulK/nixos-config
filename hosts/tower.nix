@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -46,9 +42,10 @@
     mediaDirs = [ "/dlna" ];
     announceInterval = 60;
   };
-
   programs.steam.enable = true;
   programs.droidcam.enable = true;
+
+  environment.systemPackages = with pkgs; [ qbittorrent kdenlive ];
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
@@ -69,4 +66,3 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
 }
-
