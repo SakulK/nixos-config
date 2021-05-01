@@ -19,7 +19,14 @@ let
   }];
   custom-vscode =
     pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };
+  home-manager = builtins.fetchGit {
+    url = "https://github.com/nix-community/home-manager.git";
+    rev = "614a5b55bf46673c174dd3775e7fb1d6f9e14dfa";
+    ref = "master";
+  };
 in {
+  imports = [ (import "${home-manager}/nixos") ];
+
   nixpkgs.config.allowUnfree = true;
   nix = {
     package = pkgs.nixFlakes;
@@ -51,6 +58,12 @@ in {
       "vboxusers"
     ];
     shell = pkgs.zsh;
+  };
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.users.sakulk = {
+    programs.direnv.enable = true;
+    programs.direnv.enableNixDirenvIntegration = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -121,6 +134,7 @@ in {
     promptInit = ''
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       any-nix-shell zsh --info-right | source /dev/stdin
+      eval "$(direnv hook zsh)"
     '';
     ohMyZsh = {
       enable = true;
