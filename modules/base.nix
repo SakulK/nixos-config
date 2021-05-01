@@ -1,24 +1,6 @@
 { pkgs, ... }:
 
 let
-  extensions = (with pkgs.vscode-extensions; [
-    bbenoist.Nix
-    justusadam.language-haskell
-    haskell.haskell
-    scalameta.metals
-    scala-lang.scala
-    redhat.vscode-yaml
-    ms-azuretools.vscode-docker
-    ms-kubernetes-tools.vscode-kubernetes-tools
-    wholroyd.jinja
-  ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-    name = "theme-dracula";
-    publisher = "dracula-theme";
-    version = "2.22.3";
-    sha256 = "0wni9sriin54ci8rly2s68lkfx8rj1cys6mgcizvps9sam6377w6";
-  }];
-  custom-vscode =
-    pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };
   home-manager = builtins.fetchGit {
     url = "https://github.com/nix-community/home-manager.git";
     rev = "614a5b55bf46673c174dd3775e7fb1d6f9e14dfa";
@@ -62,8 +44,35 @@ in {
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
-    programs.direnv.enable = true;
-    programs.direnv.enableNixDirenvIntegration = true;
+    programs.direnv = {
+      enable = true;
+      enableNixDirenvIntegration = true;
+    };
+
+    programs.exa = {
+      enable = true;
+      enableAliases = true;
+    };
+
+    programs.vscode = {
+      enable = true;
+      extensions = (with pkgs.vscode-extensions; [
+        bbenoist.Nix
+        justusadam.language-haskell
+        haskell.haskell
+        scalameta.metals
+        scala-lang.scala
+        redhat.vscode-yaml
+        ms-azuretools.vscode-docker
+        ms-kubernetes-tools.vscode-kubernetes-tools
+        wholroyd.jinja
+      ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+        name = "theme-dracula";
+        publisher = "dracula-theme";
+        version = "2.22.3";
+        sha256 = "0wni9sriin54ci8rly2s68lkfx8rj1cys6mgcizvps9sam6377w6";
+      }];
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -71,7 +80,6 @@ in {
     git
     firefox
     google-chrome
-    custom-vscode
     spotify
     vlc
     any-nix-shell
@@ -82,7 +90,6 @@ in {
     sd
     dua
     bat
-    exa
     hyperfine
 
     zsh-powerlevel10k
@@ -140,11 +147,6 @@ in {
       enable = true;
       plugins = [ "git" "docker" "docker-compose" "kubectl" ];
     };
-  };
-
-  environment.shellAliases = {
-    ls = "exa";
-    la = "exa -la";
   };
 }
 
