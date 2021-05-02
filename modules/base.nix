@@ -107,8 +107,12 @@ in {
           truncate_to_repo = false;
           truncation_length = 5;
         };
+        character = {
+          success_symbol = "[λ](bold green)";
+          error_symbol = "[✗](bold red)";
+        };
         format =
-          "$directory$git_branch$git_commit$git_state$git_status$character";
+          "$directory$git_branch$git_commit$git_state$git_status$cmd_duration$character";
       };
     };
 
