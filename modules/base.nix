@@ -95,6 +95,38 @@ in {
         src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
       }];
     };
+
+    programs.kitty = {
+      enable = true;
+      extraConfig = ''
+        background_opacity    0.8
+        background            #161423
+        foreground            #9e9ea0
+        cursor                #a188f7
+        color0                #2d283e
+        color8                #58506a
+        color1                #ec2160
+        color9                #f0719a
+        color2                #1fa91b
+        color10               #52a95d
+        color3                #8ddc1f
+        color11               #b2dc87
+        color4                #487cf4
+        color12               #a9bbeb
+        color5                #8c35c8
+        color13               #ac81c1
+        color6                #3added
+        color14               #9ce3ea
+        color7                #9e9ea0
+        color15               #a188f7
+        selection_background  #483d70
+        selection_foreground  #161423
+      '';
+      font = {
+        package = pkgs.meslo-lgs-nf;
+        name = "MesloLGS NF";
+      };
+    };
   };
 
   programs.java = {
@@ -118,7 +150,6 @@ in {
     spotify
     vlc
     nixfmt
-    terminator
     (callPackage ../modules/lcat.nix { })
     fd
     sd
@@ -149,8 +180,4 @@ in {
     slack-dark
     keepassxc
   ];
-  fonts.fonts = with pkgs;
-    [
-      meslo-lgs-nf # powerlevel10k font
-    ];
 }
