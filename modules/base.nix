@@ -82,9 +82,7 @@ in {
       enableAutosuggestions = true;
       enableCompletion = true;
       initExtra = ''
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
-        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       '';
       oh-my-zsh = {
         enable = true;
@@ -94,12 +92,37 @@ in {
         name = "fast-syntax-highlighting";
         src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
       }];
+      shellAliases = {
+        icat = "kitty +kitten icat";
+      };
+    };
+
+    programs.starship = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        add_newline = false;
+        line_break.disabled = true;
+        directory = {
+          truncate_to_repo = false;
+          truncation_length = 5;
+        };
+        format =
+          "$directory$git_branch$git_commit$git_state$git_status$character";
+      };
     };
 
     programs.kitty = {
       enable = true;
+      keybindings = {
+        "kitty_mod+t" = "new_tab_with_cwd";
+        "kitty_mod+enter" = "new_window_with_cwd";
+      };
       extraConfig = ''
-        background_opacity    0.8
+        enabled_layouts       Vertical, Stack
+        window_padding_width  3
+        inactive_text_alpha   0.5
+        background_opacity    0.9
         background            #161423
         foreground            #9e9ea0
         cursor                #a188f7
