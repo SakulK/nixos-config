@@ -44,7 +44,8 @@ in {
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
-    home.file.".embedmongo/extracted/Linux-B64--4.0.2/extractmongod".source = "${pkgs.mongodb-4_0}/bin/mongod";
+    home.file.".embedmongo/extracted/Linux-B64--4.0.2/extractmongod".source =
+      "${pkgs.mongodb-4_0}/bin/mongod";
 
     programs.direnv = {
       enable = true;
@@ -75,7 +76,39 @@ in {
         sha256 = "0wni9sriin54ci8rly2s68lkfx8rj1cys6mgcizvps9sam6377w6";
       }];
     };
+
+    programs.zsh = {
+      enable = true;
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      initExtra = ''
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
+        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      '';
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" "kubectl" ];
+      };
+      plugins = [{
+        name = "fast-syntax-highlighting";
+        src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
+      }];
+    };
   };
+
+  programs.java = {
+    enable = true;
+    package = pkgs.graalvm11-ce;
+  };
+
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+    defaultEditor = true;
+  };
+
+  virtualisation.docker.enable = true;
 
   environment.systemPackages = with pkgs; [
     wget
@@ -84,7 +117,6 @@ in {
     google-chrome
     spotify
     vlc
-    any-nix-shell
     nixfmt
     terminator
     (callPackage ../modules/lcat.nix { })
@@ -93,8 +125,6 @@ in {
     dua
     bat
     hyperfine
-
-    zsh-powerlevel10k
 
     # benchmarking
     geekbench
@@ -123,32 +153,4 @@ in {
     [
       meslo-lgs-nf # powerlevel10k font
     ];
-
-  virtualisation.docker.enable = true;
-
-  programs.java = {
-    enable = true;
-    package = pkgs.graalvm11-ce;
-  };
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-    defaultEditor = true;
-  };
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    promptInit = ''
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      any-nix-shell zsh --info-right | source /dev/stdin
-      eval "$(direnv hook zsh)"
-    '';
-    ohMyZsh = {
-      enable = true;
-      plugins = [ "git" "docker" "docker-compose" "kubectl" ];
-    };
-  };
 }
-
