@@ -124,30 +124,30 @@ in {
       };
       extraConfig = ''
         enabled_layouts       Vertical, Stack
-        window_padding_width  3
+        window_margin_width   2
         inactive_text_alpha   0.5
         background_opacity    0.9
-        background            #161423
-        foreground            #9e9ea0
-        cursor                #a188f7
-        color0                #2d283e
-        color8                #58506a
-        color1                #ec2160
-        color9                #f0719a
-        color2                #1fa91b
-        color10               #52a95d
-        color3                #8ddc1f
-        color11               #b2dc87
-        color4                #487cf4
-        color12               #a9bbeb
-        color5                #8c35c8
-        color13               #ac81c1
-        color6                #3added
-        color14               #9ce3ea
-        color7                #9e9ea0
-        color15               #a188f7
-        selection_background  #483d70
-        selection_foreground  #161423
+        background            #1d1d1d
+        foreground            #f7f6ec
+        cursor                #eccf4f
+        color0                #343835
+        color8                #585a58
+        color1                #ce3e60
+        color9                #d18ea6
+        color2                #7bb75b
+        color10               #767e2b
+        color3                #e8b32a
+        color11               #77592e
+        color4                #4c99d3
+        color12               #135879
+        color5                #a57fc4
+        color13               #5f4190
+        color6                #389aac
+        color14               #76bbca
+        color7                #f9faf6
+        color15               #b1b5ae
+        selection_background  #165776
+        selection_foreground  #1d1d1d
       '';
       font = {
         package = pkgs.meslo-lgs-nf;
