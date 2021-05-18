@@ -25,11 +25,12 @@ in {
   };
 
   sound.enable = true;
-  hardware.pulseaudio = {
+  services.pipewire = {
     enable = true;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
-    package = pkgs.pulseaudioFull;
+    pulse.enable = true;
+    alsa.enable = true;
   };
+  hardware.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
 
   users.users.sakulk = {
