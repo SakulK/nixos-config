@@ -24,11 +24,13 @@ in {
     keyMap = "us";
   };
 
-  sound.enable = true;
-  hardware.pulseaudio = {
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
     enable = true;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
-    package = pkgs.pulseaudioFull;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
   };
   hardware.bluetooth.enable = true;
 
