@@ -43,7 +43,6 @@
     announceInterval = 60;
   };
   programs.steam.enable = true;
-  programs.droidcam.enable = true;
 
   environment.systemPackages = with pkgs; [ qbittorrent kdenlive ];
 
