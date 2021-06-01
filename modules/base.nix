@@ -63,18 +63,25 @@ in {
         bbenoist.Nix
         justusadam.language-haskell
         haskell.haskell
-        scalameta.metals
         scala-lang.scala
         redhat.vscode-yaml
         ms-azuretools.vscode-docker
         ms-kubernetes-tools.vscode-kubernetes-tools
         wholroyd.jinja
-      ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-        name = "theme-dracula";
-        publisher = "dracula-theme";
-        version = "2.22.3";
-        sha256 = "0wni9sriin54ci8rly2s68lkfx8rj1cys6mgcizvps9sam6377w6";
-      }];
+      ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "theme-dracula";
+          publisher = "dracula-theme";
+          version = "2.22.3";
+          sha256 = "0wni9sriin54ci8rly2s68lkfx8rj1cys6mgcizvps9sam6377w6";
+        }
+        {
+          name = "metals";
+          publisher = "scalameta";
+          version = "1.10.6";
+          sha256 = "sha256-IwoYnKJdruhq8DUArugV7VW/bZIcIJHDOM9Bkhp6MIY=";
+        }
+      ];
     };
 
     programs.zsh = {
@@ -92,9 +99,7 @@ in {
         name = "fast-syntax-highlighting";
         src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
       }];
-      shellAliases = {
-        icat = "kitty +kitten icat";
-      };
+      shellAliases = { icat = "kitty +kitten icat"; };
     };
 
     programs.starship = {
