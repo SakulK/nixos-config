@@ -51,6 +51,7 @@
 
   networking.firewall.allowedTCPPorts = [
     8200 # minidlna
+    8010 # vlc chromecast renderer
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.

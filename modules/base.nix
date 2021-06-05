@@ -211,5 +211,6 @@ in {
 
     slack-dark
     keepassxc
+    streamlink
   ];
 }
