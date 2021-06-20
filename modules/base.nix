@@ -116,6 +116,13 @@ in {
           success_symbol = "[λ](bold green)";
           error_symbol = "[✗](bold red)";
         };
+        git_status = {
+          ahead = "[⇡\$count](green)";
+          behind = "⇣\$count";
+          modified = "[!\$count](yellow)";
+          staged = "[+\$count](green)";
+          stashed = "📦";
+        };
         format =
           "$directory$git_branch$git_commit$git_state$git_status$cmd_duration$character";
       };
