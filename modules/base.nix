@@ -120,6 +120,7 @@ in {
           ahead = "[⇡\$count](green)";
           behind = "⇣\$count";
           modified = "[!\$count](yellow)";
+          untracked = "?\$count";
           staged = "[+\$count](green)";
           stashed = "📦";
         };
