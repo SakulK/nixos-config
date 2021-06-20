@@ -162,10 +162,7 @@ in {
         selection_background  #165776
         selection_foreground  #1d1d1d
       '';
-      font = {
-        package = pkgs.meslo-lgs-nf;
-        name = "MesloLGS NF";
-      };
+      font.name = "JetBrainsMono Nerd Font";
     };
   };
 
@@ -181,6 +178,8 @@ in {
   };
 
   virtualisation.docker.enable = true;
+
+  fonts.fonts = [ pkgs.nerdfonts ];
 
   environment.systemPackages = with pkgs; [
     wget
