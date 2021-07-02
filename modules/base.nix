@@ -82,6 +82,11 @@ in {
           sha256 = "sha256-IwoYnKJdruhq8DUArugV7VW/bZIcIJHDOM9Bkhp6MIY=";
         }
       ];
+      keybindings = [{
+        key = "ctrl+d";
+        command = "editor.action.copyLinesDownAction";
+        when = "editorTextFocus && !editorReadonly";
+      }];
     };
 
     programs.zsh = {
@@ -117,11 +122,11 @@ in {
           error_symbol = "[✗](bold red)";
         };
         git_status = {
-          ahead = "[⇡\$count](green)";
-          behind = "⇣\$count";
-          modified = "[!\$count](yellow)";
-          untracked = "?\$count";
-          staged = "[+\$count](green)";
+          ahead = "[🔺$count](green)";
+          behind = "🔻$count";
+          modified = "[🔶$count](yellow)";
+          untracked = "⛔$count";
+          staged = "[✅$count](green)";
           stashed = "📦";
         };
         format =
