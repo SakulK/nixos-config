@@ -118,7 +118,7 @@ in {
           truncation_length = 5;
         };
         character = {
-          success_symbol = "[](white)";
+          success_symbol = "[](blue)";
           error_symbol = "[](red)";
         };
         git_branch = {

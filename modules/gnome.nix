@@ -7,7 +7,8 @@
   services.xserver.layout = "pl";
 
   environment.systemPackages = with pkgs; [
-    dracula-theme
+    pop-gtk-theme
+    pop-icon-theme
     gnome.gnome-tweak-tool
     gnome.gnome-shell-extensions
     gnomeExtensions.sound-output-device-chooser
