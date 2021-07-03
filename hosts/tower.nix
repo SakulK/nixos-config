@@ -17,7 +17,7 @@
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/nvme0n1";
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_5_12;
   boot.extraModprobeConfig =
     "options hid_apple fnmode=2"; # enable F keys for Keychron K2
 
