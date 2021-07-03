@@ -118,12 +118,17 @@ in {
           truncation_length = 5;
         };
         character = {
-          success_symbol = "[λ](bold green)";
-          error_symbol = "[✗](bold red)";
+          success_symbol = "[](white)";
+          error_symbol = "[](red)";
+        };
+        git_branch = {
+          format = "[$symbol $branch ]($style)";
+          symbol = "";
+          style = "bold green";
         };
         git_status = {
-          ahead = "[🔺$count](green)";
-          behind = "🔻$count";
+          ahead = "[$count](green)";
+          behind = "$count";
           modified = "[🔶$count](yellow)";
           untracked = "⛔$count";
           staged = "[✅$count](green)";
