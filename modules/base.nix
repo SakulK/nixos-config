@@ -47,6 +47,8 @@ in {
     home.file.".embedmongo/extracted/Linux-B64--4.0.2/extractmongod".source =
       "${pkgs.mongodb-4_0}/bin/mongod";
 
+    dconf.settings = import ./dconf.nix;
+
     programs.direnv = {
       enable = true;
       enableNixDirenvIntegration = true;
