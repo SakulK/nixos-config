@@ -3,7 +3,7 @@
 {
   services.xserver.windowManager.leftwm.enable = true;
 
-  environment.systemPackages = with pkgs; [ feh polybar rofi picom ];
+  environment.systemPackages = with pkgs; [ feh polybarFull rofi picom blueberry ];
 
   home-manager.users.sakulk = {
     home.file.".config/leftwm/themes/current" = {
