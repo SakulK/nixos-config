@@ -1,22 +1,21 @@
-{% assign mine_open = '%{F#000000}%{B#FFFFFF}' %}
-{% assign mine_close = '%{B-}%{F-}' %}
-{% assign visible_open = '%{F#000000}%{B#999999}' %}
-{% assign visible_close = '%{B-}%{F-}' %}
-{% assign busy_open = '%{F#999999}%{B#333333}' %}
-{% assign busy_close = '%{B-}%{F-}' %}
-
 {% for tag in workspace.tags %}
 {% if tag.mine %}
-{{mine_open}}  {{ tag.name }}  {{mine_close}}
+%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
+%{F#000000}%{B#FFB52A}  {{tag.name}}  %{B-}%{F-}
+%{A}
 {% elsif tag.visible  %}
-{{visible_open}}  {{ tag.name }}  {{visible_close}}
-{% elsif tag.busy  %}
-{{busy_open}}  {{ tag.name }}  {{busy_close}}
+%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
+%{F#000000}%{B#E60053}  {{tag.name}}  %{B-}%{F-}
+%{A}
+{% elsif tag.busy %}
+%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
+%{F#FFB52A}   {{tag.name}}   %{F-}
+%{A}
 {% else tag.visible  %}
-  {{ tag.name }}  
+%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
+%{F#FFFFFF}  {{tag.name}}  %{F-}
+%{A}
 {% endif %}
 {% endfor %}
 %{c}
 {{ window_title }}
-%{r}
-{{ localtime }}   

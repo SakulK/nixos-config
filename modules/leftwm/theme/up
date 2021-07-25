@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+export SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 
 #down the last running theme
@@ -27,13 +27,9 @@ if [ -x "$(command -v feh)" ]; then
 fi
 
 
-#boot lemonbar and pipe the status of left into it
-sizes=( $(leftwm-state -q -n -t $SCRIPTPATH/sizes.liquid | sed -r '/^\s*$/d') )
-
 index=0
-for size in "${sizes[@]}"
-do
-   leftwm-state -w $index -t $SCRIPTPATH/template.liquid | lemonbar -g $size -F#FFFFFFFF -B#AA222222&
-   let index=index+1
+for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+  barname="mainbar$index"
+  monitor=$m polybar -c $SCRIPTPATH/polybar.config $barname &> /dev/null &
+  let index=index+1
 done
-
