@@ -3,7 +3,7 @@
 let
   home-manager = builtins.fetchGit {
     url = "https://github.com/nix-community/home-manager.git";
-    rev = "666eee4f72979b0ebbd2e065a3846d7a8a16895c";
+    rev = "0423a7b40cd29aec0bb02fa30f61ffe60f5dfc19";
     ref = "master";
   };
 in {
@@ -51,7 +51,7 @@ in {
 
     programs.direnv = {
       enable = true;
-      enableNixDirenvIntegration = true;
+      nix-direnv.enable = true;
     };
 
     programs.exa = {
