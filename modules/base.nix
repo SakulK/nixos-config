@@ -66,10 +66,7 @@ in {
         justusadam.language-haskell
         haskell.haskell
         scala-lang.scala
-        redhat.vscode-yaml
-        ms-azuretools.vscode-docker
-        ms-kubernetes-tools.vscode-kubernetes-tools
-        wholroyd.jinja
+        tamasfe.even-better-toml
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "theme-dracula";
@@ -175,6 +172,53 @@ in {
         selection_foreground  #1d1d1d
       '';
       font.name = "JetBrainsMono Nerd Font";
+    };
+
+    programs.alacritty = {
+      enable = true;
+      settings = {
+        background_opacity = 0.8;
+        colors = {
+          primary = {
+            background = "#111111";
+            foreground = "#f7f6ec";
+          };
+          normal = {
+            black = "#343835";
+            red = "#ce3e60";
+            green = "#7bb75b";
+            yellow = "#e8b32a";
+            blue = "#4c99d3";
+            magenta = "#a57fc4";
+            cyan = "#389aac";
+            white = "#f9faf6";
+          };
+          bright = {
+            black = "#585a58";
+            red = "#d18ea6";
+            green = "#767e2b";
+            yellow = "#77592e";
+            blue = "#135879";
+            magenta = "#5f4190";
+            cyan = "#76bbca";
+            white = "#b1b5ae";
+          };
+        };
+        font = {
+          normal = {
+            family = "JetBrainsMono Nerd Font";
+            style = "Medium";
+          };
+          size = 10;
+        };
+        selection.save_to_clipboard = true;
+        window = {
+          padding = {
+            x = 5;
+            y = 5;
+          };
+        };
+      };
     };
   };
 
