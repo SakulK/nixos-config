@@ -1,9 +1,4 @@
 {
-  "org/gnome/desktop/interface" = {
-    gtk-theme = "Pop-dark";
-    icon-theme = "Pop";
-  };
-
   "org/gnome/shell" = {
     disable-user-extensions = false;
     favorite-apps = [

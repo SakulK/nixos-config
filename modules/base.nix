@@ -49,6 +49,18 @@ in {
 
     dconf.settings = import ./dconf.nix;
 
+    gtk = {
+      enable = true;
+      iconTheme = {
+        package = pkgs.pop-icon-theme;
+        name = "Pop";
+      };
+      theme = {
+        package = pkgs.pop-gtk-theme;
+        name = "Pop-dark";
+      };
+    };
+
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
