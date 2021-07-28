@@ -232,6 +232,13 @@ in {
         };
       };
     };
+
+    services.gammastep = {
+      enable = true;
+      tray = true;
+      dawnTime = "6:00-7:45";
+      duskTime = "20:00-21:00";
+    };
   };
 
   programs.java = {
