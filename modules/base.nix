@@ -42,6 +42,25 @@ in {
     shell = pkgs.zsh;
   };
 
+  services.xserver.displayManager.lightdm = {
+    enable = true;
+    greeters.gtk = {
+      theme = {
+        package = pkgs.pop-gtk-theme;
+        name = "Pop-dark";
+      };
+      iconTheme = {
+        package = pkgs.pop-icon-theme;
+        name = "Pop";
+      };
+    };
+  };
+
+  services.xserver.libinput.mouse = {
+    accelProfile = "flat";
+    accelSpeed = "0";
+  };
+
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
     home.file.".embedmongo/extracted/Linux-B64--4.0.2/extractmongod".source =
@@ -239,6 +258,12 @@ in {
       dawnTime = "6:00-7:45";
       duskTime = "20:00-21:00";
     };
+
+    services.screen-locker = {
+      enable = true;
+      lockCmd = "i3lock-fancy-rapid 5 3";
+      inactiveInterval = 15;
+    };
   };
 
   programs.java = {
@@ -256,6 +281,7 @@ in {
 
   fonts.fonts = [ pkgs.nerdfonts ];
 
+  environment.shells = with pkgs; [ bashInteractive zsh ];
   environment.systemPackages = with pkgs; [
     wget
     git
@@ -270,6 +296,7 @@ in {
     dua
     bat
     hyperfine
+    i3lock-fancy-rapid
 
     # benchmarking
     geekbench
