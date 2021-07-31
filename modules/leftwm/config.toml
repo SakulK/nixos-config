@@ -49,15 +49,15 @@ command = "SoftReload"
 modifier = ["modkey", "Shift"]
 key = "r"
 
-[[keybind]]
-command = "Execute"
-value = "loginctl kill-session $XDG_SESSION_ID"
-modifier = ["modkey", "Shift"]
-key = "x"
+# [[keybind]]
+# command = "Execute"
+# value = "loginctl kill-session $XDG_SESSION_ID"
+# modifier = ["modkey", "Shift"]
+# key = "x"
 
 [[keybind]]
 command = "Execute"
-value = "i3lock-fancy-rapid 5 3"
+value = "i3lock-fancy-rapid 20 3"
 modifier = ["modkey", "Control"]
 key = "l"
 

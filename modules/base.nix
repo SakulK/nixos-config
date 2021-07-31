@@ -98,6 +98,7 @@ in {
         haskell.haskell
         scala-lang.scala
         tamasfe.even-better-toml
+        naumovs.color-highlight
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "theme-dracula";
@@ -262,7 +263,7 @@ in {
 
     services.screen-locker = {
       enable = true;
-      lockCmd = "i3lock-fancy-rapid 5 3";
+      lockCmd = "i3lock-fancy-rapid 20 3";
       inactiveInterval = 15;
     };
 
