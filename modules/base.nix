@@ -46,12 +46,12 @@ in {
     enable = true;
     greeters.gtk = {
       theme = {
-        package = pkgs.pop-gtk-theme;
-        name = "Pop-dark";
+        package = pkgs.gruvbox-dark-gtk;
+        name = "gruvbox-dark";
       };
       iconTheme = {
-        package = pkgs.pop-icon-theme;
-        name = "Pop";
+        package = pkgs.gruvbox-dark-icons-gtk;
+        name = "gruvbox-dark";
       };
     };
   };
@@ -71,12 +71,12 @@ in {
     gtk = {
       enable = true;
       iconTheme = {
-        package = pkgs.pop-icon-theme;
-        name = "Pop";
+        package = pkgs.gruvbox-dark-gtk;
+        name = "gruvbox-dark";
       };
       theme = {
-        package = pkgs.pop-gtk-theme;
-        name = "Pop-dark";
+        package = pkgs.gruvbox-dark-icons-gtk;
+        name = "gruvbox-dark";
       };
     };
 
@@ -93,7 +93,7 @@ in {
     programs.vscode = {
       enable = true;
       extensions = (with pkgs.vscode-extensions; [
-        bbenoist.Nix
+        bbenoist.nix
         justusadam.language-haskell
         haskell.haskell
         scala-lang.scala
@@ -101,16 +101,16 @@ in {
         naumovs.color-highlight
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
-          name = "theme-dracula";
-          publisher = "dracula-theme";
-          version = "2.22.4";
-          sha256 = "sha256-SCtTkyXUCHgGrpTyTkTbO+iBJjd+LK19BcWHVNpmGDQ=";
+          name = "gruvbox";
+          publisher = "jdinhlife";
+          version = "1.5.0";
+          sha256 = "sha256-b0BeAYtbZa0n3l55g0e6+74eoj8KWNxZVrteylcKtZE=";
         }
         {
           name = "metals";
           publisher = "scalameta";
-          version = "1.10.7";
-          sha256 = "sha256-3KPfi8LW+hbQmF8yjI1ULhcC/WkZGxpPpc075UixISw=";
+          version = "1.10.8";
+          sha256 = "sha256-tr/942FRrJMA/0UAIpfMXERUeQ91l8Fjsqaua1VECVc=";
         }
       ];
       keybindings = [{
