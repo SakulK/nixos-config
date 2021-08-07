@@ -1,15 +1,10 @@
 {
-  "org/gnome/desktop/interface" = {
-    gtk-theme = "Pop-dark";
-    icon-theme = "Pop";
-  };
-
   "org/gnome/shell" = {
     disable-user-extensions = false;
     favorite-apps = [
       "firefox.desktop"
       "idea-community.desktop"
-      "kitty.desktop"
+      "alacritty.desktop"
       "code.desktop"
     ];
     enabled-extensions = [
