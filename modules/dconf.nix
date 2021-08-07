@@ -4,7 +4,7 @@
     favorite-apps = [
       "firefox.desktop"
       "idea-community.desktop"
-      "kitty.desktop"
+      "alacritty.desktop"
       "code.desktop"
     ];
     enabled-extensions = [

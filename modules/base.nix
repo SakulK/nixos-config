@@ -42,6 +42,8 @@ in {
     shell = pkgs.zsh;
   };
 
+  services.xserver.enable = true;
+  services.xserver.layout = "pl";
   services.xserver.displayManager.lightdm = {
     enable = true;
     background = ./wallpaper.jpg;
@@ -276,7 +278,7 @@ in {
 
     services.screen-locker = {
       enable = true;
-      lockCmd = "i3lock-fancy-rapid 20 3";
+      lockCmd = "i3lock-fancy-rapid 10 3";
       inactiveInterval = 15;
     };
 
@@ -358,7 +360,6 @@ in {
     bat
     hyperfine
     i3lock-fancy-rapid
-    feh
     blueberry
     rofi-power-menu
     htop
@@ -378,8 +379,6 @@ in {
 
     # kubernetes
     kubectl
-    kubectx
-    kubernetes-helm
 
     docker-compose
 

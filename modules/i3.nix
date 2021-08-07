@@ -18,15 +18,21 @@ in {
         keybindings = lib.mkOptionDefault {
           "${modifier}+p" =
             "exec rofi -show power-menu -modi power-menu:rofi-power-menu";
+          "${modifier}+r" = "exec rofi -show run";
+          "${modifier}+l" = "exec i3lock-fancy-rapid 10 3";
         };
         startup = [
+          {
+            command = "autorandr -c";
+            notification = false;
+          }
           {
             command = "${pkgs.i3-auto-layout}/bin/i3-auto-layout";
             notification = false;
             always = true;
           }
           {
-            command = "feh --bg-scale ~/.wallpaper";
+            command = "${pkgs.feh}/bin/feh --bg-scale ~/.wallpaper";
             notification = false;
             always = true;
           }
