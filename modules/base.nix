@@ -44,6 +44,7 @@ in {
 
   services.xserver.displayManager.lightdm = {
     enable = true;
+    background = ./wallpaper.jpg;
     greeters.gtk = {
       theme = {
         package = pkgs.gruvbox-dark-gtk;
@@ -135,7 +136,6 @@ in {
         name = "fast-syntax-highlighting";
         src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
       }];
-      shellAliases = { icat = "kitty +kitten icat"; };
     };
 
     programs.starship = {
@@ -170,70 +170,47 @@ in {
       };
     };
 
-    programs.kitty = {
-      enable = true;
-      keybindings = {
-        "kitty_mod+t" = "new_tab_with_cwd";
-        "kitty_mod+enter" = "new_window_with_cwd";
-      };
-      extraConfig = ''
-        enabled_layouts       Vertical, Stack
-        window_margin_width   2
-        inactive_text_alpha   0.5
-        background_opacity    0.9
-        background            #1d1d1d
-        foreground            #f7f6ec
-        cursor                #eccf4f
-        color0                #343835
-        color8                #585a58
-        color1                #ce3e60
-        color9                #d18ea6
-        color2                #7bb75b
-        color10               #767e2b
-        color3                #e8b32a
-        color11               #77592e
-        color4                #4c99d3
-        color12               #135879
-        color5                #a57fc4
-        color13               #5f4190
-        color6                #389aac
-        color14               #76bbca
-        color7                #f9faf6
-        color15               #b1b5ae
-        selection_background  #165776
-        selection_foreground  #1d1d1d
-      '';
-      font.name = "JetBrainsMono Nerd Font";
-    };
-
     programs.alacritty = {
       enable = true;
       settings = {
         background_opacity = 0.8;
         colors = {
           primary = {
-            background = "#111111";
-            foreground = "#f7f6ec";
-          };
-          normal = {
-            black = "#343835";
-            red = "#ce3e60";
-            green = "#7bb75b";
-            yellow = "#e8b32a";
-            blue = "#4c99d3";
-            magenta = "#a57fc4";
-            cyan = "#389aac";
-            white = "#f9faf6";
+            background = "#282828";
+            foreground = "#ebdbb2";
+            bright_foreground = "#fbf1c7";
+            dim_foreground = "#a89984";
           };
           bright = {
-            black = "#585a58";
-            red = "#d18ea6";
-            green = "#767e2b";
-            yellow = "#77592e";
-            blue = "#135879";
-            magenta = "#5f4190";
-            cyan = "#76bbca";
-            white = "#b1b5ae";
+            black = "#928374";
+            red = "#fb4934";
+            green = "#b8bb26";
+            yellow = "#fabd2f";
+            blue = "#83a598";
+            magenta = "#d3869b";
+            cyan = "#8ec07c";
+            white = "#ebdbb2";
+
+          };
+          normal = {
+            black = "#282828";
+            red = "#cc241d";
+            green = "#98971a";
+            yellow = "#d79921";
+            blue = "#458588";
+            magenta = "#b16286";
+            cyan = "#689d6a";
+            white = "#a89984";
+          };
+          dim = {
+            black = "#32302f";
+            red = "#9d0006";
+            green = "#79740e";
+            yellow = "#b57614";
+            blue = "#076678";
+            magenta = "#8f3f71";
+            cyan = "#427b58";
+            white = "#928374";
           };
         };
         font = {
@@ -293,7 +270,8 @@ in {
       tray = true;
       dawnTime = "6:00-7:45";
       duskTime = "20:00-21:00";
-      temperature.day = 4000;
+      temperature.day = 6500;
+      temperature.night = 4500;
     };
 
     services.screen-locker = {
@@ -302,13 +280,29 @@ in {
       inactiveInterval = 15;
     };
 
+    services.picom = {
+      enable = true;
+      blur = true;
+      fade = true;
+      fadeDelta = 3;
+      inactiveDim = "0.1";
+    };
+
+    programs.rofi = {
+      enable = true;
+      theme = "gruvbox-dark-hard";
+      plugins = [ pkgs.rofi-power-menu ];
+    };
+
     programs.autorandr = {
       enable = true;
       profiles = {
         "desktop" = {
           fingerprint = {
-            DP-0 = "00ffffffffffff000469ec272d1a0000091d0104a53c227806ee91a3544c99260f505421080001010101010101010101010101010101565e00a0a0a029503020350056502100001a000000ff002341534f6e796b793363454864000000fd001e9022de3b010a202020202020000000fc00524f47205047323739510a202001d2020312412309070183010000654b040001015a8700a0a0a03b503020350056502100001a5aa000a0a0a046503020350056502100001a6fc200a0a0a055503020350056502100001a22e50050a0a0675008203a0056502100001e1c2500a0a0a011503020350056502100001a0000000000000000000000000000000000000019";
-            HDMI-0 = "00ffffffffffff0015c35624010101012c17010380351e78ea219da35a52a026144b54a54b003168317c4568457c6168617c8180d1c0023a801871382d40582c45000a262100001e000000ff0032373230353130330a20202020000000fd00177a0f640f000a202020202020000000fc004647323432310a202020202020019c020326f14f901f05140413031202110716061520230907078301000066030c00100080e2007b011d8018711c1620582c25000a262100009e011d80d0721c1620102c25800a262100009e8c0ad08a20e02d10103e96000a26210000188c0ad090204031200c4055000a26210000180000000000000000000000000000000000d8";
+            DP-0 =
+              "00ffffffffffff000469ec272d1a0000091d0104a53c227806ee91a3544c99260f505421080001010101010101010101010101010101565e00a0a0a029503020350056502100001a000000ff002341534f6e796b793363454864000000fd001e9022de3b010a202020202020000000fc00524f47205047323739510a202001d2020312412309070183010000654b040001015a8700a0a0a03b503020350056502100001a5aa000a0a0a046503020350056502100001a6fc200a0a0a055503020350056502100001a22e50050a0a0675008203a0056502100001e1c2500a0a0a011503020350056502100001a0000000000000000000000000000000000000019";
+            HDMI-0 =
+              "00ffffffffffff0015c35624010101012c17010380351e78ea219da35a52a026144b54a54b003168317c4568457c6168617c8180d1c0023a801871382d40582c45000a262100001e000000ff0032373230353130330a20202020000000fd00177a0f640f000a202020202020000000fc004647323432310a202020202020019c020326f14f901f05140413031202110716061520230907078301000066030c00100080e2007b011d8018711c1620582c25000a262100009e011d80d0721c1620102c25800a262100009e8c0ad08a20e02d10103e96000a26210000188c0ad090204031200c4055000a26210000180000000000000000000000000000000000d8";
           };
           config = {
             DP-0 = {
@@ -364,6 +358,10 @@ in {
     bat
     hyperfine
     i3lock-fancy-rapid
+    feh
+    blueberry
+    rofi-power-menu
+    htop
 
     # benchmarking
     geekbench

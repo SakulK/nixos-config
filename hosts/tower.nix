@@ -6,7 +6,7 @@
     ../modules/base.nix
     ../modules/gnome.nix
     ../modules/printer.nix
-    ../modules/leftwm
+    ../modules/i3.nix
   ];
 
   powerManagement.cpuFreqGovernor = "ondemand";
