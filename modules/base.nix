@@ -284,7 +284,6 @@ in {
 
     services.picom = {
       enable = true;
-      blur = true;
       fade = true;
       fadeDelta = 3;
       inactiveDim = "0.1";
@@ -363,6 +362,7 @@ in {
     blueberry
     rofi-power-menu
     htop
+    maim
 
     # benchmarking
     geekbench
