@@ -21,8 +21,21 @@ in {
           "${modifier}+r" = "exec rofi -show run";
           "${modifier}+a" = "exec rofi-audio-sink";
           "${modifier}+l" = "exec i3lock-fancy-rapid 10 3";
-          "Print" = "exec --no-startup-id maim \"/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%T').png\"";
-          "Shift+Print" = "exec --no-startup-id maim --select \"/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%T').png\"";
+          "Print" = ''
+            exec --no-startup-id maim "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%T').png"'';
+          "Shift+Print" = ''
+            exec --no-startup-id maim --select "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%T').png"'';
+          "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+          "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+          "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+          "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+          # "XF86MonBrightnessUp" = "exec xbacklight -inc 20";
+          # "XF86MonBrightnessDown" = "exec xbacklight -dec 20";
+          "XF86AudioRaiseVolume" =
+            "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+          "XF86AudioLowerVolume" =
+            "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+          "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
         };
         startup = [
           {
@@ -127,11 +140,17 @@ in {
         default = {
           icons = "material-nf";
           theme = "gruvbox-dark";
+          settings = {
+            icons = {
+              name = "material-nf";
+              overrides = { bat_not_available = ""; };
+            };
+          };
           blocks = [
             {
               block = "music";
               player = "spotify";
-              buttons = ["play" "next"];
+              buttons = [ "play" "next" ];
               on_collapsed_click = "spotify";
             }
             {
@@ -145,7 +164,21 @@ in {
               interval = 1;
               format = "{barchart} {utilization}";
             }
+            {
+              block = "networkmanager";
+              on_click = "alacritty -e nmtui";
+              interface_name_exclude = [ "br\\-[0-9a-f]{12}" "docker\\d+" ];
+              interface_name_include = [ ];
+              ap_format = "{ssid^10}";
+              device_format = "{icon}{ap}";
+            }
             { block = "sound"; }
+            {
+              block = "battery";
+              allow_missing = true;
+              hide_missing = true;
+              interval = 60;
+            }
             {
               block = "time";
               interval = 60;
