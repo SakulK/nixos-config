@@ -100,6 +100,10 @@ in {
             size = 11.0;
           };
           trayOutput = "primary";
+          extraConfig = ''
+            tray_padding 5
+            workspace_min_width 40
+          '';
           colors = {
             background = "#1d2021";
             statusline = "#ffffff";
@@ -121,13 +125,13 @@ in {
             };
             urgentWorkspace = {
               border = "#2f343a";
-              background = "#900000";
-              text = "#ffffff";
+              background = "#9d0006";
+              text = "#ebdbb2";
             };
             bindingMode = {
               border = "#2f343a";
-              background = "#900000";
-              text = "#ffffff";
+              background = "#9d0006";
+              text = "#ebdbb2";
             };
           };
         }];

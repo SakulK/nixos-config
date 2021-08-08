@@ -296,7 +296,7 @@ in {
       dawnTime = "6:00-7:45";
       duskTime = "20:00-21:00";
       temperature.day = 6500;
-      temperature.night = 4500;
+      temperature.night = 4000;
     };
 
     services.screen-locker = {
@@ -308,8 +308,8 @@ in {
     services.picom = {
       enable = true;
       fade = true;
-      fadeDelta = 3;
-      inactiveDim = "0.1";
+      fadeDelta = 6;
+      inactiveDim = "0.15";
     };
 
     programs.rofi = {
