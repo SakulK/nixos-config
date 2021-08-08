@@ -19,6 +19,7 @@ in {
           "${modifier}+p" =
             "exec rofi -show power-menu -modi power-menu:rofi-power-menu";
           "${modifier}+r" = "exec rofi -show run";
+          "${modifier}+a" = "exec rofi-audio-sink";
           "${modifier}+l" = "exec i3lock-fancy-rapid 10 3";
           "Print" = "exec --no-startup-id maim \"/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%T').png\"";
           "Shift+Print" = "exec --no-startup-id maim --select \"/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%T').png\"";

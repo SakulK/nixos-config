@@ -6,6 +6,16 @@ let
     rev = "0423a7b40cd29aec0bb02fa30f61ffe60f5dfc19";
     ref = "master";
   };
+
+  rofi-audio-sink = pkgs.writeScriptBin "rofi-audio-sink" ''
+    #!${pkgs.stdenv.shell}
+    sink=$(${pkgs.ponymix}/bin/ponymix -t sink list|awk '/^sink/ {s=$1" "$2;getline;gsub(/^ +/,"",$0);print s" "$0}'|rofi -dmenu -p 'pulseaudio sink:'|grep -Po '[0-9]+(?=:)') &&
+    ${pkgs.ponymix}/bin/ponymix set-default -d $sink &&
+    for input in $(${pkgs.ponymix}/bin/ponymix list -t sink-input|grep -Po '[0-9]+(?=:)');do
+      echo "$input -> $sink"
+      ${pkgs.ponymix}/bin/ponymix -t sink-input -d $input move $sink
+    done
+  '';
 in {
   imports = [ (import "${home-manager}/nixos") ];
 
@@ -236,33 +246,31 @@ in {
       enable = true;
       settings = {
         global = {
-          geometry = "300x50-15+49";
+          font = "JetBrainsMono Nerd Font";
+          geometry = "600x5-25+50";
           follow = "keyboard";
-          transparency = 5;
-          padding = 5;
+          alignment = "center";
+          transparency = 25;
+          padding = 10;
           browser = "${pkgs.firefox}/bin/firefox -new-tab";
-          frame_width = 3;
-          frame_color = "#8EC07C";
+          frame_width = 0;
         };
         urgency_low = {
-          frame_color = "#3B7C87";
-          foreground = "#3B7C87";
-          background = "#191311";
-          timeout = 4;
+          foreground = "#282828";
+          background = "#a89984";
+          timeout = 5;
         };
 
         urgency_normal = {
-          frame_color = "#5B8234";
-          foreground = "#5B8234";
-          background = "#191311";
-          timeout = 6;
+          foreground = "#282828";
+          background = "#a89984";
+          timeout = 10;
         };
 
         urgency_critical = {
-          frame_color = "#B7472A";
-          foreground = "#B7472A";
-          background = "#191311";
-          timeout = 8;
+          foreground = "#9d0006";
+          background = "#a89984";
+          timeout = 0;
         };
       };
     };
@@ -363,6 +371,7 @@ in {
     rofi-power-menu
     htop
     maim
+    rofi-audio-sink
 
     # benchmarking
     geekbench
