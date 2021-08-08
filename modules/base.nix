@@ -39,8 +39,23 @@ in {
     enable = true;
     extraModules = [ pkgs.pulseaudio-modules-bt ];
     package = pkgs.pulseaudioFull;
+    extraConfig = ''
+      load-module module-switch-on-connect
+      load-module module-switch-on-port-available
+      load-module module-bluetooth-discover
+      load-module module-bluetooth-policy
+      load-module module-bluez5-discover
+      #load-module module-bluez5-device
+    '';
   };
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
+  };
 
   users.users.sakulk = {
     isNormalUser = true;
