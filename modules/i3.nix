@@ -97,7 +97,7 @@ in {
             "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
           fonts = {
             names = [ "JetBrainsMono Nerd Font" ];
-            size = 12.0;
+            size = 11.0;
           };
           trayOutput = "primary";
           colors = {

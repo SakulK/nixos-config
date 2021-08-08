@@ -5,6 +5,7 @@
     /etc/nixos/hardware-configuration.nix
     ../modules/base.nix
     ../modules/gnome.nix
+    ../modules/i3.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

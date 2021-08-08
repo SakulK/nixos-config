@@ -230,7 +230,7 @@ in {
             family = "JetBrainsMono Nerd Font";
             style = "Medium";
           };
-          size = 10;
+          size = 9;
         };
         selection.save_to_clipboard = true;
         window = {
