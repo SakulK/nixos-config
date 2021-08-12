@@ -14,7 +14,7 @@ in {
       config = {
         menu = "rofi -show drun";
         modifier = modifier;
-        terminal = "alacritty";
+        terminal = "--no-startup-id alacritty";
         keybindings = lib.mkOptionDefault {
           "${modifier}+p" =
             "exec rofi -show power-menu -modi power-menu:rofi-power-menu";
@@ -54,9 +54,8 @@ in {
           }
         ];
         window = {
-          border = 0;
+          border = 2;
           titlebar = false;
-          hideEdgeBorders = "smart";
         };
         gaps = {
           smartBorders = "on";
@@ -67,17 +66,17 @@ in {
         colors = {
           focused = {
             background = "#1d2021";
-            border = "#504945";
-            childBorder = "#504945";
-            indicator = "#504945";
+            border = "#a89984";
+            childBorder = "#a89984";
+            indicator = "#a89984";
             text = "#ebdbb2";
           };
           focusedInactive = {
             background = "#1d2021";
-            border = "#333333";
-            childBorder = "#5f676a";
-            indicator = "#484e50";
-            text = "#ebdbb2";
+            border = "#2f343a";
+            childBorder = "#2f343a";
+            indicator = "#2f343a";
+            text = "#a89984";
           };
           unfocused = {
             background = "#1d2021";

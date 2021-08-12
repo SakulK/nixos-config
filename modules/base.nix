@@ -127,6 +127,7 @@ in {
         scala-lang.scala
         tamasfe.even-better-toml
         naumovs.color-highlight
+        eamodio.gitlens
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "gruvbox";
@@ -305,12 +306,20 @@ in {
       inactiveInterval = 15;
     };
 
-    services.picom = {
-      enable = true;
-      fade = true;
-      fadeDelta = 6;
-      inactiveDim = "0.15";
-    };
+    # services.picom = {
+    #   enable = true;
+    #   fade = true;
+    #   shadow = true;
+    #   shadowExclude = ["focused = 0" "class_g = 'jetbrains-idea-ce'"];
+    #   fadeDelta = 6;
+    #   inactiveDim = "0.15";
+    #   fadeExclude = ["class_g = 'jetbrains-idea-ce'"];
+    #   extraOptions = ''
+    #     unredir-if-possible = true;
+    #     dbe = true;
+    #     focus-exclude = ["class_g = 'jetbrains-idea-ce'"];
+    #   '';
+    # };
 
     programs.rofi = {
       enable = true;
