@@ -41,6 +41,7 @@ in {
           {
             command = "autorandr -c";
             notification = false;
+            always = true;
           }
           {
             command = "${pkgs.i3-auto-layout}/bin/i3-auto-layout";

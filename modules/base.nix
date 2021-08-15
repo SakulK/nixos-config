@@ -63,11 +63,13 @@ in {
       "wheel" # Enable ‘sudo’ for the user.
       "docker"
       "vboxusers"
+      "networkmanager"
     ];
     shell = pkgs.zsh;
   };
 
   services.xserver.enable = true;
+  services.xserver.dpi = 96;
   services.xserver.layout = "pl";
   services.xserver.displayManager.lightdm = {
     enable = true;
@@ -345,6 +347,7 @@ in {
               rate = "144.00";
               position = "1920x0";
               crtc = 1;
+              dpi = 96;
             };
             HDMI-0 = {
               enable = true;
@@ -353,6 +356,7 @@ in {
               rate = "60.00";
               position = "0x0";
               crtc = 0;
+              dpi = 96;
             };
           };
         };
