@@ -8,7 +8,7 @@ in {
   };
 
   home-manager.users.sakulk = {
-    home.file.".wallpaper".source = ./wallpaper.jpg;
+    home.file.".wallpaper".source = ./wallpaper.png;
     xsession.windowManager.i3 = {
       enable = true;
       config = {

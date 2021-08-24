@@ -45,7 +45,7 @@ in {
       load-module module-bluetooth-discover
       load-module module-bluetooth-policy
       load-module module-bluez5-discover
-      #load-module module-bluez5-device
+      load-module module-bluez5-device
     '';
   };
   hardware.bluetooth = {
@@ -73,7 +73,7 @@ in {
   services.xserver.layout = "pl";
   services.xserver.displayManager.lightdm = {
     enable = true;
-    background = ./wallpaper.jpg;
+    background = ./wallpaper.png;
     greeters.gtk = {
       theme = {
         package = pkgs.gruvbox-dark-gtk;
