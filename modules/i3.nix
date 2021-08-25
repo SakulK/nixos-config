@@ -21,6 +21,7 @@ in {
           "${modifier}+r" = "exec rofi -show run";
           "${modifier}+a" = "exec rofi-audio-sink";
           "${modifier}+l" = "exec i3lock-fancy-rapid 10 3";
+          "${modifier}+m" = "move workspace to output left";
           "Print" = ''
             exec --no-startup-id maim "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%T').png"'';
           "Shift+Print" = ''
