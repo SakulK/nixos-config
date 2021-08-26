@@ -120,6 +120,13 @@ in {
       enableAliases = true;
     };
 
+    programs.bat = {
+      enable = true;
+      config = {
+        theme = "gruvbox-dark";
+      };
+    };
+
     programs.vscode = {
       enable = true;
       extensions = (with pkgs.vscode-extensions; [
@@ -166,6 +173,9 @@ in {
         name = "fast-syntax-highlighting";
         src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
       }];
+      shellAliases = {
+        cat = "bat -p";
+      };
     };
 
     programs.starship = {
@@ -304,6 +314,7 @@ in {
 
     services.screen-locker = {
       enable = true;
+      enableDetectSleep = false;
       lockCmd = "i3lock-fancy-rapid 10 3";
       inactiveInterval = 15;
     };
@@ -392,7 +403,6 @@ in {
     fd
     sd
     dua
-    bat
     hyperfine
     i3lock-fancy-rapid
     blueberry
