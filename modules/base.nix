@@ -137,6 +137,7 @@ in {
         tamasfe.even-better-toml
         naumovs.color-highlight
         eamodio.gitlens
+        usernamehw.errorlens
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "gruvbox";
