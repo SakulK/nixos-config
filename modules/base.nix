@@ -206,7 +206,6 @@ in {
     programs.alacritty = {
       enable = true;
       settings = {
-        background_opacity = 0.8;
         colors = {
           primary = {
             background = "#282828";
