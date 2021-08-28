@@ -372,15 +372,24 @@ in {
       vimAlias = true;
       plugins = with pkgs.vimPlugins; [
         vim-nix
-        vim-git
         lush-nvim
         gruvbox-nvim
+        nvim-colorizer-lua
+        nvim-tree-lua
+        vim-startify
+        vim-airline
+        vim-airline-themes
+        vim-git
+        vim-gitgutter
+        nvim-scrollview
       ];
       extraConfig = ''
         set number
         set termguicolors
         set background=dark
         colorscheme gruvbox
+        let g:airline_theme='base16_gruvbox_dark_hard'
+        lua require'colorizer'.setup()
       '';
     };
   };
