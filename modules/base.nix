@@ -3,7 +3,7 @@
 let
   home-manager = builtins.fetchGit {
     url = "https://github.com/nix-community/home-manager.git";
-    rev = "0423a7b40cd29aec0bb02fa30f61ffe60f5dfc19";
+    rev = "33db7cc6a66d1c1cb77c23ae8e18cefd0425a0c8";
     ref = "master";
   };
 
@@ -50,11 +50,7 @@ in {
   };
   hardware.bluetooth = {
     enable = true;
-    settings = {
-      General = {
-        Enable = "Source,Sink,Media,Socket";
-      };
-    };
+    settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
   };
 
   users.users.sakulk = {
@@ -122,9 +118,7 @@ in {
 
     programs.bat = {
       enable = true;
-      config = {
-        theme = "gruvbox-dark";
-      };
+      config = { theme = "gruvbox-dark"; };
     };
 
     programs.vscode = {
@@ -174,9 +168,7 @@ in {
         name = "fast-syntax-highlighting";
         src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
       }];
-      shellAliases = {
-        cat = "bat -p";
-      };
+      shellAliases = { cat = "bat -p"; };
     };
 
     programs.starship = {
@@ -374,17 +366,28 @@ in {
         };
       };
     };
+
+    programs.neovim = {
+      enable = true;
+      vimAlias = true;
+      plugins = with pkgs.vimPlugins; [
+        vim-nix
+        vim-git
+        lush-nvim
+        gruvbox-nvim
+      ];
+      extraConfig = ''
+        set number
+        set termguicolors
+        set background=dark
+        colorscheme gruvbox
+      '';
+    };
   };
 
   programs.java = {
     enable = true;
     package = pkgs.graalvm11-ce;
-  };
-
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-    defaultEditor = true;
   };
 
   virtualisation.docker.enable = true;
