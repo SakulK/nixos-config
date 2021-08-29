@@ -180,6 +180,7 @@ in {
         directory = {
           truncate_to_repo = false;
           truncation_length = 5;
+          style = "bold #d79921";
         };
         character = {
           success_symbol = "[](blue)";
@@ -191,12 +192,13 @@ in {
           style = "bold green";
         };
         git_status = {
-          ahead = "[$count](green)";
-          behind = "$count";
-          modified = "[🔶$count](yellow)";
+          ahead = "[ﰵ$count](green)";
+          behind = "ﰬ$count";
+          modified = "[$count](yellow)";
+          diverged = "";
           untracked = "⛔$count";
-          staged = "[✅$count](green)";
-          stashed = "📦";
+          staged = "[$count](green)";
+          stashed = "[📦](yellow)";
         };
         format =
           "$directory$git_branch$git_commit$git_state$git_status$cmd_duration$character";
