@@ -381,9 +381,13 @@ in {
         vim-git
         vim-gitgutter
         nvim-scrollview
+        fzf-vim
       ];
       extraConfig = ''
+        set hidden
+        set nowrap
         set number
+        set mouse=a
         set termguicolors
         set background=dark
         colorscheme gruvbox
