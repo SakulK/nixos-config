@@ -67,23 +67,30 @@ in {
         };
         colors = {
           focused = {
-            background = "#1d2021";
-            border = "#a89984";
-            childBorder = "#a89984";
-            indicator = "#a89984";
+            background = "#282828";
+            border = "#7c6f64";
+            childBorder = "#7c6f64";
+            indicator = "#7c6f64";
             text = "#ebdbb2";
           };
           focusedInactive = {
-            background = "#1d2021";
-            border = "#2f343a";
-            childBorder = "#2f343a";
-            indicator = "#2f343a";
+            background = "#282828";
+            border = "#1d2021";
+            childBorder = "#1d2021";
+            indicator = "#1d2021";
             text = "#a89984";
           };
           unfocused = {
-            background = "#1d2021";
-            border = "#2f343a";
-            childBorder = "#2f343a";
+            background = "#282828";
+            border = "#1d2021";
+            childBorder = "#1d2021";
+            indicator = "#1d2021";
+            text = "#504945";
+          };
+          placeholder = {
+            background = "#282828";
+            border = "#1d2021";
+            childBorder = "#1d2021";
             indicator = "#1d2021";
             text = "#504945";
           };
@@ -106,11 +113,11 @@ in {
             workspace_min_width 40
           '';
           colors = {
-            background = "#1d2021";
-            statusline = "#ffffff";
-            separator = "#666666";
+            background = "#282828";
+            statusline = "#ebdbb2";
+            separator = "#504945";
             focusedWorkspace = {
-              border = "#fabd2f";
+              border = "#d79921";
               background = "#d79921";
               text = "#282828";
             };
@@ -122,15 +129,15 @@ in {
             inactiveWorkspace = {
               border = "#504945";
               background = "#504945";
-              text = "#1d2021";
+              text = "#282828";
             };
             urgentWorkspace = {
-              border = "#2f343a";
+              border = "#9d0006";
               background = "#9d0006";
               text = "#ebdbb2";
             };
             bindingMode = {
-              border = "#2f343a";
+              border = "#9d0006";
               background = "#9d0006";
               text = "#ebdbb2";
             };
