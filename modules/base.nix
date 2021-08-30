@@ -171,6 +171,11 @@ in {
       shellAliases = { cat = "bat -p"; };
     };
 
+    programs.fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     programs.starship = {
       enable = true;
       enableZshIntegration = true;
@@ -421,6 +426,7 @@ in {
     fd
     sd
     dua
+    ripgrep
     hyperfine
     i3lock-fancy-rapid
     blueberry
@@ -444,6 +450,7 @@ in {
 
     # kubernetes
     kubectl
+    kubectx
 
     docker-compose
 
