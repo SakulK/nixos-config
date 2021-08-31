@@ -16,11 +16,19 @@ in {
         modifier = modifier;
         terminal = "--no-startup-id alacritty";
         keybindings = lib.mkOptionDefault {
+          "${modifier}+h" = "focus left";
+          "${modifier}+l" = "focus right";
+          "${modifier}+j" = "focus down";
+          "${modifier}+k" = "focus up";
+          "${modifier}+Shift+h" = "move left";
+          "${modifier}+Shift+l" = "move right";
+          "${modifier}+Shift+j" = "move down";
+          "${modifier}+Shift+k" = "move up";
           "${modifier}+p" =
             "exec rofi -show power-menu -modi power-menu:rofi-power-menu";
           "${modifier}+r" = "exec rofi -show run";
           "${modifier}+a" = "exec rofi-audio-sink";
-          "${modifier}+l" = "exec i3lock-fancy-rapid 10 3";
+          "${modifier}+Shift+x" = "exec i3lock-fancy-rapid 10 3";
           "${modifier}+m" = "move workspace to output left";
           "Print" = ''
             exec --no-startup-id maim "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%T').png"'';
