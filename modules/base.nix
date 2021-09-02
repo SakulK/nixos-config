@@ -198,8 +198,8 @@ in {
           style = "bold #d79921";
         };
         character = {
-          success_symbol = "[](blue)";
-          error_symbol = "[](red)";
+          success_symbol = "[λ](bold blue)";
+          error_symbol = "[λ](bold red)";
         };
         git_branch = {
           format = "[$symbol $branch ]($style)";
@@ -209,8 +209,8 @@ in {
         git_status = {
           ahead = "[ﰵ$count](green)";
           behind = "ﰬ$count";
-          modified = "[$count](yellow)";
-          diverged = "";
+          modified = "[$count](yellow)";
+          diverged = "ﰵﰬ";
           untracked = "⛔$count";
           staged = "[$count](green)";
           stashed = "[📦](yellow)";
@@ -264,8 +264,20 @@ in {
         };
         font = {
           normal = {
-            family = "JetBrainsMono Nerd Font";
+            family = "JetBrainsMono Nerd Font Mono";
             style = "Medium";
+          };
+          bold = {
+            family = "JetBrainsMono Nerd Font Mono";
+            style = "Bold";
+          };
+          italic = {
+            family = "JetBrainsMono Nerd Font Mono";
+            style = "Italic";
+          };
+          bold_italic = {
+            family = "JetBrainsMono Nerd Font Mono";
+            style = "Bold Italic";
           };
           size = 9;
         };
