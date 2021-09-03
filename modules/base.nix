@@ -92,10 +92,7 @@ in {
     home.file.".embedmongo/extracted/Linux-B64--4.0.2/extractmongod".source =
       "${pkgs.mongodb-4_0}/bin/mongod";
 
-    home.sessionVariables = {
-      EDITOR = "nvim";
-      WINIT_X11_SCALE_FACTOR = "1";
-    };
+    home.sessionVariables = { EDITOR = "nvim"; };
 
     dconf.settings = import ./dconf.nix;
 
@@ -439,6 +436,7 @@ in {
   fonts.fonts = [ pkgs.nerdfonts ];
 
   environment.shells = with pkgs; [ bashInteractive zsh ];
+  environment.variables = { WINIT_X11_SCALE_FACTOR = "1"; };
   environment.systemPackages = with pkgs; [
     wget
     git
