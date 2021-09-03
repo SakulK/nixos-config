@@ -19,6 +19,7 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.gfxpayloadBios = "keep";
+  boot.loader.grub.gfxmodeBios = "1920x1080";
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModprobeConfig =
     "options hid_apple fnmode=2"; # enable F keys for Keychron K2
