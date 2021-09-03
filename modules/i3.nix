@@ -38,8 +38,8 @@ in {
           "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
           "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
           "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
-          # "XF86MonBrightnessUp" = "exec xbacklight -inc 20";
-          # "XF86MonBrightnessDown" = "exec xbacklight -dec 20";
+          "XF86MonBrightnessUp" = "exec light -A 30";
+          "XF86MonBrightnessDown" = "exec light -U 30";
           "XF86AudioRaiseVolume" =
             "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
           "XF86AudioLowerVolume" =

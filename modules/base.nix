@@ -78,6 +78,7 @@ in {
       "docker"
       "vboxusers"
       "networkmanager"
+      "video"
     ];
     shell = pkgs.zsh;
   };
@@ -104,6 +105,8 @@ in {
     accelProfile = "flat";
     accelSpeed = "0";
   };
+
+  programs.light.enable = true;
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
