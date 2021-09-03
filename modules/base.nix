@@ -92,7 +92,10 @@ in {
     home.file.".embedmongo/extracted/Linux-B64--4.0.2/extractmongod".source =
       "${pkgs.mongodb-4_0}/bin/mongod";
 
-    home.sessionVariables = { EDITOR = "nvim"; };
+    home.sessionVariables = {
+      EDITOR = "nvim";
+      WINIT_X11_SCALE_FACTOR = "1";
+    };
 
     dconf.settings = import ./dconf.nix;
 
@@ -279,7 +282,7 @@ in {
             family = "JetBrainsMono Nerd Font Mono";
             style = "Bold Italic";
           };
-          size = 9;
+          size = 10;
         };
         selection.save_to_clipboard = true;
         window = {
