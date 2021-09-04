@@ -33,7 +33,7 @@ in {
     font = "lat2-16";
     keyMap = "pl";
     colors = [
-      "282828"
+      "1d2021"
       "cc241d"
       "98971a"
       "d79921"
@@ -436,7 +436,7 @@ in {
       extraConfig = ''
         set hidden
         set nowrap
-        set number
+        set number relativenumber
         set mouse=a
         set termguicolors
         set background=dark
