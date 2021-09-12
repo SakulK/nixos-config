@@ -479,6 +479,7 @@ in {
     htop
     maim
     rofi-audio-sink
+    gitui
 
     # benchmarking
     geekbench
