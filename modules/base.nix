@@ -134,6 +134,8 @@ in {
       nix-direnv.enable = true;
     };
 
+    services.lorri.enable = true;
+
     programs.exa = {
       enable = true;
       enableAliases = true;
@@ -155,6 +157,8 @@ in {
         naumovs.color-highlight
         eamodio.gitlens
         usernamehw.errorlens
+        matklad.rust-analyzer
+        serayuzgur.crates
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "gruvbox";
@@ -493,6 +497,11 @@ in {
     # scala
     (sbt.override { jre = graalvm11-ce; })
     jetbrains.idea-community
+
+    #rust
+    cargo
+    rustc
+    gcc
 
     # kubernetes
     kubectl
