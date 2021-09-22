@@ -321,29 +321,34 @@ in {
       settings = {
         global = {
           font = "JetBrainsMono Nerd Font";
-          geometry = "600x5-25+50";
+          geometry = "0x0-25+50";
           follow = "keyboard";
           alignment = "center";
-          transparency = 25;
-          padding = 10;
+          padding = 8;
+          horizontal_padding = 8;
           browser = "${pkgs.firefox}/bin/firefox -new-tab";
-          frame_width = 0;
+          frame_width = 3;
+          frame_color = "#928374";
+          word_wrap = true;
+          format = "<b>%s</b>\n%b";
+          show_indicators = "yes";
+          max_icon_size = 64;
         };
         urgency_low = {
-          foreground = "#282828";
-          background = "#a89984";
+          background = "#282828";
+          foreground = "#a89984";
           timeout = 5;
         };
 
         urgency_normal = {
-          foreground = "#282828";
-          background = "#a89984";
+          background = "#282828";
+          foreground = "#a89984";
           timeout = 10;
         };
 
         urgency_critical = {
           foreground = "#9d0006";
-          background = "#a89984";
+          background = "#282828";
           timeout = 0;
         };
       };
