@@ -1,12 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, home-manager, ... }:
 
 let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/nix-community/home-manager.git";
-    rev = "33db7cc6a66d1c1cb77c23ae8e18cefd0425a0c8";
-    ref = "master";
-  };
-
   rofi-audio-sink = pkgs.writeScriptBin "rofi-audio-sink" ''
     #!${pkgs.stdenv.shell}
     sink=$(${pkgs.ponymix}/bin/ponymix -t sink list|awk '/^sink/ {s=$1" "$2;getline;gsub(/^ +/,"",$0);print s" "$0}'|rofi -dmenu -p 'pulseaudio sink:'|grep -Po '[0-9]+(?=:)') &&
@@ -17,15 +11,7 @@ let
     done
   '';
 in {
-  imports = [ (import "${home-manager}/nixos") ];
-
   nixpkgs.config.allowUnfree = true;
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
 
   time.timeZone = "Europe/Warsaw";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -330,7 +316,9 @@ in {
           frame_width = 3;
           frame_color = "#928374";
           word_wrap = true;
-          format = "<b>%s</b>\n%b";
+          format = ''
+            <b>%s</b>
+            %b'';
           show_indicators = "yes";
           max_icon_size = 64;
         };

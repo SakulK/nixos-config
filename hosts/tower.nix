@@ -2,7 +2,6 @@
 
 {
   imports = [
-    /etc/nixos/hardware-configuration.nix
     ../modules/base.nix
     ../modules/gnome.nix
     ../modules/printer.nix
@@ -11,6 +10,12 @@
 
   powerManagement.cpuFreqGovernor = "ondemand";
   # Use the GRUB 2 boot loader.
+  boot.initrd.availableKernelModules =
+    [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
+
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   # boot.loader.grub.efiSupport = true;
@@ -23,6 +28,15 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModprobeConfig =
     "options hid_apple fnmode=2"; # enable F keys for Keychron K2
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/14879698-0feb-4bc2-a986-68401d2efeb1";
+    fsType = "ext4";
+    options = [ "noatime" "nodiratime" "discard" ];
+  };
+
+  swapDevices = [{ device = "/dev/nvme0n1p2"; }];
+  hardware.enableRedistributableFirmware = true;
 
   networking.hostName = "saku-nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
