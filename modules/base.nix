@@ -419,7 +419,7 @@ in {
       plugins = with pkgs.vimPlugins; [
         vim-nix
         lush-nvim
-        gruvbox-nvim
+        gruvbox-community
         nvim-colorizer-lua
         nvim-tree-lua
         vim-startify
@@ -437,6 +437,8 @@ in {
         set number relativenumber
         set mouse=a
         set termguicolors
+        set nohlsearch
+        set scrolloff=8
         set background=dark
         colorscheme gruvbox
         let g:airline_theme='base16_gruvbox_dark_hard'
