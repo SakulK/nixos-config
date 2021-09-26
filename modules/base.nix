@@ -429,6 +429,7 @@ in {
         vim-gitgutter
         nvim-scrollview
         fzf-vim
+        vim-rooter
       ];
       extraConfig = ''
         set hidden
@@ -440,6 +441,7 @@ in {
         colorscheme gruvbox
         let g:airline_theme='base16_gruvbox_dark_hard'
         lua require'colorizer'.setup()
+        nnoremap <silent> <C-p> :Files<CR>
       '';
     };
   };
@@ -477,6 +479,7 @@ in {
     maim
     rofi-audio-sink
     gitui
+    jq
 
     # benchmarking
     geekbench
