@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-21.05";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -17,6 +18,13 @@
         modules = [
           inputs.home-manager.nixosModules.home-manager
           "${inputs.nixpkgs}/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix"
+
+          ({ pkgs, ... }:
+            let
+              overlay-stable = final: prev: {
+                stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
+              };
+            in { nixpkgs.overlays = [ overlay-stable ]; })
 
           ({ pkgs, ... }: {
             nix.extraOptions = "experimental-features = nix-command flakes";
