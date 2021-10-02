@@ -430,6 +430,7 @@ in {
         nvim-scrollview
         fzf-vim
         vim-rooter
+        which-key-nvim
       ];
       extraConfig = ''
         set hidden
@@ -444,6 +445,7 @@ in {
         let g:airline_theme='base16_gruvbox_dark_hard'
         lua require'colorizer'.setup()
         nnoremap <silent> <C-p> :Files<CR>
+        lua require("which-key").setup()
       '';
     };
   };
