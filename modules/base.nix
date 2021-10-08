@@ -55,6 +55,7 @@ in {
   hardware.bluetooth = {
     enable = true;
     settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
+    disabledPlugins = [ "sap" ];
   };
 
   users.users.sakulk = {
@@ -353,7 +354,7 @@ in {
 
     services.screen-locker = {
       enable = true;
-      enableDetectSleep = false;
+      xautolock.detectSleep = false;
       lockCmd = "i3lock-fancy-rapid 10 3";
       inactiveInterval = 15;
     };
