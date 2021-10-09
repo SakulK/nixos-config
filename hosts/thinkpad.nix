@@ -1,16 +1,42 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  imports = [
-    /etc/nixos/hardware-configuration.nix
-    ../modules/base.nix
-    ../modules/gnome.nix
-    ../modules/i3.nix
-  ];
+  imports = [ ../modules/base.nix ../modules/gnome.nix ../modules/i3.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.kernelModules = [ "kvm-intel" "iwlwifi" ];
+  boot.extraModulePackages = [ ];
+
+  boot.initrd.luks.devices = {
+    root = {
+      device = "/dev/disk/by-uuid/25603dee-1358-453d-a2ca-ddd45b434f69";
+      preLVM = true;
+      allowDiscards = true;
+    };
+  };
+  hardware.enableAllFirmware = true;
+  hardware.enableRedistributableFirmware = true;
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/682b0eda-cb24-4e49-bc6b-752d5343300d";
+    fsType = "ext4";
+    options = [ "noatime" "nodiratime" "discard" ];
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/71CB-2C49";
+    fsType = "vfat";
+  };
+
+  swapDevices =
+    [{ device = "/dev/disk/by-uuid/22bed2ce-ae58-4316-a3eb-11be58196c52"; }];
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   networking.hostName = "saku-thinkpad";
 
