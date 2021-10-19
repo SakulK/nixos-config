@@ -419,19 +419,19 @@ in {
       vimAlias = true;
       plugins = with pkgs.vimPlugins; [
         vim-nix
-        lush-nvim
         gruvbox-community
         nvim-colorizer-lua
         nvim-tree-lua
         vim-startify
-        vim-airline
-        vim-airline-themes
         vim-git
         vim-gitgutter
         nvim-scrollview
-        fzf-vim
+        telescope-nvim
+        plenary-nvim
         vim-rooter
         which-key-nvim
+        nvim-web-devicons
+        lualine-nvim
       ];
       extraConfig = ''
         set hidden
@@ -443,10 +443,17 @@ in {
         set scrolloff=8
         set background=dark
         colorscheme gruvbox
-        let g:airline_theme='base16_gruvbox_dark_hard'
+
         lua require'colorizer'.setup()
-        nnoremap <silent> <C-p> :Files<CR>
-        lua require("which-key").setup()
+        lua require'which-key'.setup()
+        lua require'lualine'.setup()
+        lua require'nvim-tree'.setup()
+
+        let mapleader = " "
+        nnoremap <leader>ff <cmd>Telescope find_files<cr>
+        nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+        nnoremap <leader>fb <cmd>Telescope buffers<cr>
+        nnoremap <leader>fh <cmd>Telescope help_tags<cr>
       '';
     };
   };
