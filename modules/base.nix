@@ -423,8 +423,6 @@ in {
         nvim-colorizer-lua
         nvim-tree-lua
         vim-startify
-        vim-git
-        vim-gitgutter
         nvim-scrollview
         telescope-nvim
         plenary-nvim
@@ -432,6 +430,7 @@ in {
         which-key-nvim
         nvim-web-devicons
         lualine-nvim
+        gitsigns-nvim
       ];
       extraConfig = ''
         set hidden
@@ -444,10 +443,18 @@ in {
         set background=dark
         colorscheme gruvbox
 
-        lua require'colorizer'.setup()
-        lua require'which-key'.setup()
-        lua require'lualine'.setup()
-        lua require'nvim-tree'.setup()
+        lua << EOF
+        require'colorizer'.setup()
+        require'which-key'.setup()
+        require'lualine'.setup {
+          options = {theme = 'gruvbox_material'}
+        }
+        require'nvim-tree'.setup()
+        require'gitsigns'.setup {
+          current_line_blame = true,
+          numhl = true
+        }
+        EOF
 
         let mapleader = " "
         nnoremap <leader>ff <cmd>Telescope find_files<cr>
