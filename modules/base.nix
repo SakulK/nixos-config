@@ -499,6 +499,7 @@ in {
     rofi-audio-sink
     gitui
     jq
+    killall
 
     # benchmarking
     geekbench
