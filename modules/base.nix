@@ -100,7 +100,10 @@ in {
     home.file.".embedmongo/extracted/Linux-B64--4.0.2/extractmongod".source =
       "${pkgs.mongodb-4_0}/bin/mongod";
 
-    home.sessionVariables = { EDITOR = "nvim"; };
+    home.sessionVariables = {
+      EDITOR = "nvim";
+      SBT_NATIVE_CLIENT = "true";
+    };
 
     dconf.settings = import ./dconf.nix;
 
