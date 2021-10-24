@@ -434,6 +434,13 @@ in {
         nvim-web-devicons
         lualine-nvim
         gitsigns-nvim
+        (nvim-treesitter.withPlugins (
+          plugins: with plugins; [
+            tree-sitter-scala
+            tree-sitter-nix
+            tree-sitter-rust
+          ]
+        ))
       ];
       extraConfig = ''
         set hidden
@@ -456,6 +463,13 @@ in {
         require'gitsigns'.setup {
           current_line_blame = true,
           numhl = true
+        }
+
+        require'nvim-treesitter.configs'.setup {
+          highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false,
+          },
         }
         EOF
 
