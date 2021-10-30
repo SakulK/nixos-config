@@ -442,12 +442,13 @@ in {
         set scrolloff=8
         set background=dark
         colorscheme gruvbox
+        set guifont=JetBrainsMono\ Nerd\ Font:h10
 
         lua << EOF
         require'colorizer'.setup()
         require'which-key'.setup()
         require'lualine'.setup {
-          options = {theme = 'gruvbox_material'}
+          options = {theme = 'gruvbox-material'}
         }
         require'nvim-tree'.setup()
         require'gitsigns'.setup {
@@ -507,6 +508,7 @@ in {
     gitui
     jq
     killall
+    neovide
 
     # benchmarking
     geekbench
