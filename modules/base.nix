@@ -139,12 +139,9 @@ in {
     programs.vscode = {
       enable = true;
       extensions = (with pkgs.vscode-extensions; [
-        bbenoist.nix
         justusadam.language-haskell
         haskell.haskell
-        scala-lang.scala
         tamasfe.even-better-toml
-        naumovs.color-highlight
         eamodio.gitlens
         usernamehw.errorlens
         matklad.rust-analyzer
@@ -155,12 +152,6 @@ in {
           publisher = "jdinhlife";
           version = "1.5.0";
           sha256 = "sha256-b0BeAYtbZa0n3l55g0e6+74eoj8KWNxZVrteylcKtZE=";
-        }
-        {
-          name = "metals";
-          publisher = "scalameta";
-          version = "1.10.8";
-          sha256 = "sha256-tr/942FRrJMA/0UAIpfMXERUeQ91l8Fjsqaua1VECVc=";
         }
       ];
       keybindings = [{
@@ -421,7 +412,6 @@ in {
       enable = true;
       vimAlias = true;
       plugins = with pkgs.vimPlugins; [
-        vim-nix
         gruvbox-community
         nvim-colorizer-lua
         nvim-tree-lua
