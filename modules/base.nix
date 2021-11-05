@@ -144,7 +144,7 @@ in {
         tamasfe.even-better-toml
         eamodio.gitlens
         usernamehw.errorlens
-        matklad.rust-analyzer
+        # matklad.rust-analyzer
         serayuzgur.crates
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
