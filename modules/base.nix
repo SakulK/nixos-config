@@ -412,7 +412,7 @@ in {
       enable = true;
       vimAlias = true;
       plugins = with pkgs.vimPlugins; [
-        gruvbox-community
+        gruvbox-flat-nvim
         nvim-colorizer-lua
         nvim-tree-lua
         vim-startify
@@ -441,14 +441,15 @@ in {
         set nohlsearch
         set scrolloff=8
         set background=dark
-        colorscheme gruvbox
         set guifont=JetBrainsMono\ Nerd\ Font:h10
 
         lua << EOF
+        vim.g.gruvbox_flat_style = "dark"
+        vim.cmd[[colorscheme gruvbox-flat]]
         require'colorizer'.setup()
         require'which-key'.setup()
         require'lualine'.setup {
-          options = {theme = 'gruvbox-material'}
+          options = {theme = 'gruvbox-flat'}
         }
         require'nvim-tree'.setup()
         require'gitsigns'.setup {
