@@ -478,6 +478,12 @@ in {
       shortcut = "a";
       baseIndex = 1;
       newSession = true;
+      plugins = with pkgs.tmuxPlugins; [{
+        plugin = gruvbox;
+        extraConfig = ''
+          set -g @tmux-gruvbox 'dark'
+        '';
+      }];
     };
   };
 
