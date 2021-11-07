@@ -146,14 +146,12 @@ in {
         usernamehw.errorlens
         # matklad.rust-analyzer
         serayuzgur.crates
-      ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "gruvbox";
-          publisher = "jdinhlife";
-          version = "1.5.0";
-          sha256 = "sha256-b0BeAYtbZa0n3l55g0e6+74eoj8KWNxZVrteylcKtZE=";
-        }
-      ];
+      ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+        name = "gruvbox";
+        publisher = "jdinhlife";
+        version = "1.5.0";
+        sha256 = "sha256-b0BeAYtbZa0n3l55g0e6+74eoj8KWNxZVrteylcKtZE=";
+      }];
       keybindings = [{
         key = "ctrl+d";
         command = "editor.action.copyLinesDownAction";
@@ -170,7 +168,7 @@ in {
       '';
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "kubectl" ];
+        plugins = [ "git" "kubectl" "tmux" ];
       };
       plugins = [{
         name = "fast-syntax-highlighting";
@@ -424,13 +422,13 @@ in {
         nvim-web-devicons
         lualine-nvim
         gitsigns-nvim
-        (nvim-treesitter.withPlugins (
-          plugins: with plugins; [
+        indent-blankline-nvim-lua
+        (nvim-treesitter.withPlugins (plugins:
+          with plugins; [
             tree-sitter-scala
             tree-sitter-nix
             tree-sitter-rust
-          ]
-        ))
+          ]))
       ];
       extraConfig = ''
         set hidden
@@ -463,6 +461,7 @@ in {
             additional_vim_regex_highlighting = false,
           },
         }
+        require'indent_blankline'.setup()
         EOF
 
         let mapleader = " "
@@ -471,6 +470,14 @@ in {
         nnoremap <leader>fb <cmd>Telescope buffers<cr>
         nnoremap <leader>fh <cmd>Telescope help_tags<cr>
       '';
+    };
+
+    programs.tmux = {
+      enable = true;
+      keyMode = "vi";
+      shortcut = "a";
+      baseIndex = 1;
+      newSession = true;
     };
   };
 
