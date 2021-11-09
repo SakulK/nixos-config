@@ -530,12 +530,21 @@ in {
       shortcut = "a";
       baseIndex = 1;
       newSession = true;
-      plugins = with pkgs.tmuxPlugins; [{
-        plugin = gruvbox;
-        extraConfig = ''
-          set -g @tmux-gruvbox 'dark'
-        '';
-      }];
+      plugins = with pkgs.tmuxPlugins; [
+        {
+          plugin = gruvbox;
+          extraConfig = ''
+            set -g @tmux-gruvbox 'dark'
+          '';
+        }
+        resurrect
+        {
+          plugin = continuum;
+          extraConfig = ''
+            set -g @continuum-restore 'on'
+          '';
+        }
+      ];
     };
   };
 
