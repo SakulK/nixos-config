@@ -530,6 +530,10 @@ in {
       shortcut = "a";
       baseIndex = 1;
       newSession = true;
+      historyLimit = 10000;
+      extraConfig = ''
+        set -g mouse on
+      '';
       plugins = with pkgs.tmuxPlugins; [
         {
           plugin = gruvbox;
