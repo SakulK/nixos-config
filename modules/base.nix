@@ -531,6 +531,7 @@ in {
       baseIndex = 1;
       newSession = true;
       historyLimit = 10000;
+      terminal = "screen-256color";
       extraConfig = ''
         set -g mouse on
       '';
