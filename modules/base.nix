@@ -534,6 +534,7 @@ in {
       terminal = "screen-256color";
       extraConfig = ''
         set -g mouse on
+        set-option -g renumber-windows on
       '';
       plugins = with pkgs.tmuxPlugins; [
         {
