@@ -602,7 +602,7 @@ in {
 
     # scala
     (sbt.override { jre = graalvm11-ce; })
-    stable.jetbrains.idea-community
+    jetbrains.idea-community
 
     #rust
     cargo
