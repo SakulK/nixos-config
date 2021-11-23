@@ -590,6 +590,7 @@ in {
     jq
     killall
     neovide
+    xclip
 
     # benchmarking
     geekbench
