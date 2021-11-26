@@ -568,7 +568,7 @@ in {
   environment.systemPackages = with pkgs; [
     wget
     git
-    stable.firefox
+    firefox
     google-chrome
     spotify
     vlc
