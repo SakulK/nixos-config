@@ -144,8 +144,10 @@ in {
         tamasfe.even-better-toml
         eamodio.gitlens
         usernamehw.errorlens
-        # matklad.rust-analyzer
+        matklad.rust-analyzer
         serayuzgur.crates
+        scalameta.metals
+        scala-lang.scala
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
         name = "gruvbox";
         publisher = "jdinhlife";
@@ -591,6 +593,7 @@ in {
     killall
     neovide
     xclip
+    graphviz
 
     # benchmarking
     geekbench
@@ -604,6 +607,7 @@ in {
     # scala
     (sbt.override { jre = graalvm11-ce; })
     jetbrains.idea-community
+    (ammonite.override { jre = graalvm11-ce; })
 
     #rust
     cargo
