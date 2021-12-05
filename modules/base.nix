@@ -611,7 +611,6 @@ in {
     neovide
     xclip
     graphviz
-    ranger
 
     # benchmarking
     geekbench
