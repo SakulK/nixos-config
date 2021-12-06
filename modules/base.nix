@@ -413,7 +413,7 @@ in {
           config = {
             HDMI-0 = {
               enable = true;
-              primary = false;
+              primary = true;
               mode = "2560x1440";
               rate = "60.00";
               position = "0x0";
