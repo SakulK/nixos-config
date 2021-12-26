@@ -140,8 +140,6 @@ in {
     programs.vscode = {
       enable = true;
       extensions = (with pkgs.vscode-extensions; [
-        justusadam.language-haskell
-        haskell.haskell
         tamasfe.even-better-toml
         eamodio.gitlens
         usernamehw.errorlens
@@ -448,6 +446,7 @@ in {
             tree-sitter-scala
             tree-sitter-nix
             tree-sitter-rust
+            tree-sitter-haskell
           ]))
         nvim-lspconfig
         lspsaga-nvim
@@ -510,13 +509,15 @@ in {
           buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
           buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
           buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-          buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+          buf_set_keymap('n', '<space>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+          buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+          buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
         end
 
         -- Use a loop to conveniently call 'setup' on multiple servers and
         -- map buffer local keybindings when the language server attaches
-        local servers = { 'rust_analyzer' }
+        local servers = { 'rust_analyzer', 'hls' }
         for _, lsp in ipairs(servers) do
           nvim_lsp[lsp].setup {
             on_attach = on_attach,
@@ -537,8 +538,6 @@ in {
 
         nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
         nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-        nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-        nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
         vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
         nnoremap <silent>gr <cmd>lua require('lspsaga.rename').rename()<CR>
       '';
@@ -632,6 +631,8 @@ in {
     # haskell
     cabal-install
     stack
+    haskell-language-server
+    ormolu
 
     # scala
     (sbt.override { jre = graalvm11-ce; })
