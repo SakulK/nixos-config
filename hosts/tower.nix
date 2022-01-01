@@ -16,26 +16,33 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.gfxpayloadBios = "keep";
-  boot.loader.grub.gfxmodeBios = "1920x1080";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModprobeConfig =
     "options hid_apple fnmode=2"; # enable F keys for Keychron K2
 
+  boot.initrd.luks.devices = {
+    root = {
+      device = "/dev/nvme0n1p2";
+      preLVM = true;
+      allowDiscards = true;
+    };
+  };
+
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/14879698-0feb-4bc2-a986-68401d2efeb1";
+    device = "/dev/disk/by-label/root";
     fsType = "ext4";
     options = [ "noatime" "nodiratime" "discard" ];
   };
 
-  swapDevices = [{ device = "/dev/nvme0n1p2"; }];
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/boot";
+    fsType = "vfat";
+  };
+
+  swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
+  hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
 
   networking.hostName = "saku-nixos"; # Define your hostname.
@@ -80,6 +87,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
+  system.stateVersion = "21.11"; # Did you read the comment?
 
 }

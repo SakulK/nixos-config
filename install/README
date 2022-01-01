@@ -1,0 +1,7 @@
+sudo su
+lsblk
+export ROOT_DISK=/dev/???
+./partition.sh
+
+nix-shell -p nixFlakes
+sudo nixos-install --root /mnt --flake .#??? --impure

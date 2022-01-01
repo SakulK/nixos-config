@@ -68,6 +68,7 @@ in {
       "video"
     ];
     shell = pkgs.zsh;
+    initialPassword = "password";
   };
 
   services.xserver.enable = true;
@@ -629,6 +630,7 @@ in {
     stress
 
     # haskell
+    ghc
     cabal-install
     stack
     haskell-language-server
