@@ -100,6 +100,7 @@ in {
   home-manager.users.sakulk = {
     home.file.".embedmongo/extracted/Linux-B64--4.0.2/extractmongod".source =
       "${pkgs.mongodb-4_0}/bin/mongod";
+    home.file.".icons/default".source = "${pkgs.numix-cursor-theme}/share/icons/Numix-Cursor-Light";
 
     home.sessionVariables = {
       EDITOR = "nvim";
