@@ -24,7 +24,7 @@
 
   boot.initrd.luks.devices = {
     root = {
-      device = "/dev/nvme0n1p2";
+      device = "/dev/disk/by-partlabel/root";
       preLVM = true;
       allowDiscards = true;
     };
