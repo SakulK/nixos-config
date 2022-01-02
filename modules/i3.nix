@@ -66,6 +66,10 @@ in {
         window = {
           border = 2;
           titlebar = false;
+          commands = [{
+            command = "border pixel 2";
+            criteria = { class = ".*"; };
+          }];
         };
         gaps = {
           smartBorders = "on";

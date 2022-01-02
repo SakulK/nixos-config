@@ -74,33 +74,44 @@ in {
   services.xserver.enable = true;
   services.xserver.dpi = 96;
   services.xserver.layout = "pl";
+  services.xserver.displayManager.defaultSession = "none+i3";
   services.xserver.displayManager.lightdm = {
     enable = true;
     background = ./wallpaper.png;
-    greeters.gtk = {
-      theme = {
-        package = pkgs.gruvbox-dark-gtk;
-        name = "gruvbox-dark";
-      };
-      iconTheme = {
-        package = pkgs.gruvbox-dark-icons-gtk;
-        name = "gruvbox-dark";
-      };
+    greeters.mini = {
+      enable = true;
+      user = "sakulk";
+      extraConfig = ''
+        [greeter]
+        show-password-label = false
+        [greeter-theme]
+        error-color = "#ebdbb2"
+        window-color = "#1d2021"
+        border-color = "#1d2021"
+        password-color = "#1d2021"
+        password-background-color = "#d79921"
+        password-border-color = "#1d2021"
+      '';
     };
   };
 
-  services.xserver.libinput.mouse = {
-    accelProfile = "flat";
-    accelSpeed = "0";
+  services.xserver.libinput = {
+    enable = true;
+    mouse = {
+      accelProfile = "flat";
+      accelSpeed = "0";
+    };
   };
 
   programs.light.enable = true;
+  programs.dconf.enable = true;
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
     home.file.".embedmongo/extracted/Linux-B64--4.0.2/extractmongod".source =
       "${pkgs.mongodb-4_0}/bin/mongod";
-    home.file.".icons/default".source = "${pkgs.numix-cursor-theme}/share/icons/Numix-Cursor-Light";
+    home.file.".icons/default".source =
+      "${pkgs.numix-cursor-theme}/share/icons/Numix-Cursor-Light";
 
     home.sessionVariables = {
       EDITOR = "nvim";
@@ -624,6 +635,11 @@ in {
     neovide
     xclip
     graphviz
+    gnome.baobab
+    gnome.eog
+    gnome.nautilus
+    gnome.simple-scan
+    gnome.gnome-control-center
 
     # benchmarking
     geekbench

@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ../modules/base.nix ../modules/gnome.nix ../modules/i3.nix ];
+  imports = [ ../modules/base.nix ../modules/i3.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

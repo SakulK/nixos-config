@@ -1,12 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ../modules/base.nix
-    ../modules/gnome.nix
-    ../modules/printer.nix
-    ../modules/i3.nix
-  ];
+  imports = [ ../modules/base.nix ../modules/printer.nix ../modules/i3.nix ];
 
   powerManagement.cpuFreqGovernor = "ondemand";
   # Use the GRUB 2 boot loader.
