@@ -40,6 +40,7 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   networking.hostName = "saku-thinkpad";
+  networking.networkmanager.enable = true;
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
