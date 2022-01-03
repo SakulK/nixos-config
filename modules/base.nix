@@ -640,6 +640,7 @@ in {
     gnome.nautilus
     gnome.simple-scan
     gnome.gnome-control-center
+    gnome.gnome-disk-utility
 
     # benchmarking
     geekbench
