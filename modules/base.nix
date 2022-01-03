@@ -463,6 +463,7 @@ in {
           ]))
         nvim-lspconfig
         lspsaga-nvim
+        nvim-autopairs
       ];
       extraConfig = ''
         set hidden
@@ -496,6 +497,7 @@ in {
           },
         }
         require'indent_blankline'.setup()
+        require'nvim-autopairs'.setup()
 
         local nvim_lsp = require('lspconfig')
 
