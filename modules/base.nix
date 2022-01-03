@@ -465,6 +465,7 @@ in {
         lspsaga-nvim
         nvim-autopairs
         bufferline-nvim
+        comment-nvim
       ];
       extraConfig = ''
         set hidden
@@ -503,6 +504,7 @@ in {
           default = true;
         }
         require'bufferline'.setup()
+        require'Comment'.setup()
 
         local nvim_lsp = require('lspconfig')
 
