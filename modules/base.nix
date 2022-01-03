@@ -464,6 +464,7 @@ in {
         nvim-lspconfig
         lspsaga-nvim
         nvim-autopairs
+        bufferline-nvim
       ];
       extraConfig = ''
         set hidden
@@ -498,6 +499,10 @@ in {
         }
         require'indent_blankline'.setup()
         require'nvim-autopairs'.setup()
+        require'nvim-web-devicons'.setup {
+          default = true;
+        }
+        require'bufferline'.setup()
 
         local nvim_lsp = require('lspconfig')
 
