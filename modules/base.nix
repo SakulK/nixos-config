@@ -650,6 +650,7 @@ in {
     gnome.simple-scan
     gnome.gnome-control-center
     gnome.gnome-disk-utility
+    evince
 
     # benchmarking
     geekbench
