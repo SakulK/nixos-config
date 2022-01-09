@@ -462,7 +462,6 @@ in {
             tree-sitter-haskell
           ]))
         nvim-lspconfig
-        lspsaga-nvim
         nvim-autopairs
         bufferline-nvim
         comment-nvim
@@ -575,7 +574,10 @@ in {
           local opts = { noremap=true, silent=true }
 
           -- See `:help vim.lsp.*` for documentation on any of the below functions
+          buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+          buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
           buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+          buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
           buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
           buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
           buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
@@ -586,7 +588,8 @@ in {
           buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
           buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
           buf_set_keymap('n', '<space>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-          buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+          buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+          buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
           buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
         end
@@ -603,8 +606,6 @@ in {
             capabilities = capabilities
           }
         end
-
-        require'lspsaga'.init_lsp_saga()
         EOF
 
         let mapleader = " "
@@ -612,11 +613,6 @@ in {
         nnoremap <leader>fg <cmd>Telescope live_grep<cr>
         nnoremap <leader>fb <cmd>Telescope buffers<cr>
         nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-        nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
-        nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-        vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
-        nnoremap <silent>gr <cmd>lua require('lspsaga.rename').rename()<CR>
       '';
     };
 
