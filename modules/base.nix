@@ -575,9 +575,9 @@ in {
 
           -- See `:help vim.lsp.*` for documentation on any of the below functions
           buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-          buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-          buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-          buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+          buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
+          buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
+          buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
           buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
           buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
           buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
