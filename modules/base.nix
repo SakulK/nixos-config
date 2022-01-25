@@ -257,6 +257,9 @@ in
     programs.alacritty = {
       enable = true;
       settings = {
+        env = {
+          TERM = "xterm-256color";
+        };
         colors = {
           primary = {
             background = "#282828";
@@ -639,10 +642,11 @@ in
       baseIndex = 1;
       newSession = true;
       historyLimit = 10000;
-      terminal = "screen-256color";
+      terminal = "tmux-256color";
       extraConfig = ''
         set -g mouse on
         set-option -g renumber-windows on
+        set -as terminal-features ",xterm-256color:RGB"
       '';
       plugins = with pkgs.tmuxPlugins; [
         {
