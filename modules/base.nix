@@ -10,7 +10,8 @@ let
       ${pkgs.ponymix}/bin/ponymix -t sink-input -d $input move $sink
     done
   '';
-in {
+in
+{
   nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "Europe/Warsaw";
@@ -130,6 +131,21 @@ in {
       theme = {
         package = pkgs.gruvbox-dark-icons-gtk;
         name = "gruvbox-dark";
+      };
+    };
+
+    programs.git = {
+      enable = true;
+      userName = "Łukasz Krenski";
+      userEmail = "sakuk@gmail.com";
+      delta = {
+        enable = true;
+        options = {
+          syntax-theme = "gruvbox-dark";
+          line-numbers = true;
+          minus-style = "syntax #613c3e";
+          plus-style = "syntax #293f2a";
+        };
       };
     };
 
