@@ -120,8 +120,6 @@ in
       SBT_NATIVE_CLIENT = "true";
     };
 
-    dconf.settings = import ./dconf.nix;
-
     gtk = {
       enable = true;
       iconTheme = {
@@ -137,7 +135,7 @@ in
     programs.git = {
       enable = true;
       userName = "Łukasz Krenski";
-      userEmail = "sakuk@gmail.com";
+      userEmail = "sakulk@gmail.com";
       delta = {
         enable = true;
         options = {
