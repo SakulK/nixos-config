@@ -28,6 +28,7 @@ in {
             "exec rofi -show power-menu -modi power-menu:rofi-power-menu";
           "${modifier}+r" = "exec rofi -show run";
           "${modifier}+a" = "exec rofi-audio-sink";
+          "${modifier}+Shift+a" = "exec rofi-audio-source";
           "${modifier}+Shift+x" = "exec i3lock-fancy-rapid 10 3";
           "${modifier}+m" = "move workspace to output left";
           "Print" = ''

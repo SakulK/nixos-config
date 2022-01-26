@@ -10,6 +10,15 @@ let
       ${pkgs.ponymix}/bin/ponymix -t sink-input -d $input move $sink
     done
   '';
+  rofi-audio-source = pkgs.writeScriptBin "rofi-audio-source" ''
+    #!${pkgs.stdenv.shell}
+    source=$(${pkgs.ponymix}/bin/ponymix -t source list|awk '/^source/ {s=$1" "$2;getline;gsub(/^ +/,"",$0);print s" "$0}'|rofi -dmenu -p 'pulseaudio source:'|grep -Po '[0-9]+(?=:)') &&
+    ${pkgs.ponymix}/bin/ponymix set-default -d $source -t source &&
+    for output in $(${pkgs.ponymix}/bin/ponymix list -t source-output|grep -Po '[0-9]+(?=:)');do
+      echo "$output -> $source"
+      ${pkgs.ponymix}/bin/ponymix -t source-output -d $output move $source
+    done
+  '';
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -708,6 +717,7 @@ in
     htop
     maim
     rofi-audio-sink
+    rofi-audio-source
     gitui
     jq
     killall
