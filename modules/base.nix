@@ -487,6 +487,7 @@ in
             tree-sitter-nix
             tree-sitter-rust
             tree-sitter-haskell
+            tree-sitter-lua
           ]))
         nvim-lspconfig
         nvim-autopairs
