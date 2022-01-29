@@ -731,6 +731,7 @@ in
     gnome.gnome-control-center
     gnome.gnome-disk-utility
     evince
+    dig
 
     # benchmarking
     geekbench
