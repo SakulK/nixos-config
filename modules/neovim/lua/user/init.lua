@@ -1,3 +1,4 @@
+vim.opt.cursorline = true;
 vim.g.gruvbox_material_palette = "original"
 vim.cmd[[colorscheme gruvbox-material]]
 require'colorizer'.setup()
@@ -24,6 +25,7 @@ require'nvim-web-devicons'.setup {
 }
 require'bufferline'.setup()
 require'Comment'.setup()
+require'neoscroll'.setup()
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
