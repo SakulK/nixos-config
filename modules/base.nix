@@ -118,7 +118,7 @@ in
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
-    home.file.".embedmongo/extracted/Linux-B65--unknown---4.4.9/extractmongod".source =
+    home.file.".embedmongo/extracted/Linux-B64--unknown---4.4.9/extractmongod".source =
       "${pkgs.mongodb-4_2}/bin/mongod";
     home.file.".icons/default".source =
       "${pkgs.numix-cursor-theme}/share/icons/Numix-Cursor-Light";
