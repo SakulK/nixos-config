@@ -613,6 +613,7 @@ in
     gnome.simple-scan
     gnome.gnome-control-center
     gnome.gnome-disk-utility
+    gnome.file-roller
     evince
     dig
 
