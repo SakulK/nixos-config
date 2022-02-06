@@ -256,8 +256,12 @@ in
           staged = "[$count](green)";
           stashed = "[📦](yellow)";
         };
+        kubernetes = {
+          disabled = false;
+          format = "[$symbol$namespace ]($style)";
+        };
         format =
-          "$directory$git_branch$git_commit$git_state$git_status$cmd_duration$character";
+          "$directory$git_branch$git_commit$git_state$git_status$kubernetes$cmd_duration$character";
       };
     };
 
