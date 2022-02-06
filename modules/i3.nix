@@ -1,7 +1,8 @@
 { pkgs, lib, ... }:
 
 let modifier = "Mod4";
-in {
+in
+{
   services.xserver.windowManager.i3 = {
     enable = true;
     package = pkgs.i3-gaps;
@@ -177,6 +178,10 @@ in {
               player = "spotify";
               buttons = [ "play" "next" ];
               on_collapsed_click = "spotify";
+            }
+            {
+              block = "disk_space";
+              format = "{icon} {available}";
             }
             {
               block = "memory";
