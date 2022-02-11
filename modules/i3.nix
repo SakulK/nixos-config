@@ -55,11 +55,6 @@ in
             always = true;
           }
           {
-            command = "${pkgs.i3-auto-layout}/bin/i3-auto-layout";
-            notification = false;
-            always = true;
-          }
-          {
             command = "${pkgs.feh}/bin/feh --bg-scale ~/.wallpaper";
             notification = false;
             always = true;
@@ -116,7 +111,7 @@ in
           workspaceButtons = true;
           workspaceNumbers = true;
           statusCommand =
-            "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+            "${pkgs.stable.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
           fonts = {
             names = [ "JetBrainsMono Nerd Font" ];
             size = 11.0;
@@ -162,6 +157,7 @@ in
 
     programs.i3status-rust = {
       enable = true;
+      package = pkgs.stable.i3status-rust;
       bars = {
         default = {
           icons = "material-nf";

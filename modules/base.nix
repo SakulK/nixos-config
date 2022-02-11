@@ -395,21 +395,6 @@ in
       inactiveInterval = 15;
     };
 
-    # services.picom = {
-    #   enable = true;
-    #   fade = true;
-    #   shadow = true;
-    #   shadowExclude = ["focused = 0" "class_g = 'jetbrains-idea-ce'"];
-    #   fadeDelta = 6;
-    #   inactiveDim = "0.15";
-    #   fadeExclude = ["class_g = 'jetbrains-idea-ce'"];
-    #   extraOptions = ''
-    #     unredir-if-possible = true;
-    #     dbe = true;
-    #     focus-exclude = ["class_g = 'jetbrains-idea-ce'"];
-    #   '';
-    # };
-
     programs.rofi = {
       enable = true;
       theme = "gruvbox-dark-hard";
@@ -599,10 +584,9 @@ in
     bottom
     hyperfine
     i3lock-fancy-rapid
-    blueberry
     rofi-power-menu
     htop
-    maim
+    maim # screenshots
     rofi-audio-sink
     rofi-audio-source
     gitui
@@ -611,14 +595,14 @@ in
     neovide
     xclip
     graphviz
-    gnome.baobab
-    gnome.eog
+    gnome.baobab # disk usage analyzer
+    gnome.eog # image viewer
     gnome.nautilus
     gnome.simple-scan
     gnome.gnome-control-center
     gnome.gnome-disk-utility
     gnome.file-roller
-    evince
+    evince # document viewer
     dig
 
     # benchmarking
