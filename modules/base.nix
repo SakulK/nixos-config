@@ -489,6 +489,7 @@ in
         luasnip
         cmp_luasnip
         neoscroll-nvim
+        fidget-nvim
       ];
       extraConfig = ''
         set hidden
