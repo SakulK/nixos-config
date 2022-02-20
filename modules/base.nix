@@ -497,7 +497,6 @@ in
         set number relativenumber
         set mouse=a
         set termguicolors
-        set nohlsearch
         set scrolloff=8
         set background=dark
         set guifont=JetBrainsMono\ Nerd\ Font:h10
