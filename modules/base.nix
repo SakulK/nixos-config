@@ -583,6 +583,7 @@ in
     dua
     ripgrep
     bottom
+    procs
     hyperfine
     i3lock-fancy-rapid
     rofi-power-menu
