@@ -111,7 +111,7 @@ in
           workspaceButtons = true;
           workspaceNumbers = true;
           statusCommand =
-            "${pkgs.stable.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+            "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
           fonts = {
             names = [ "JetBrainsMono Nerd Font" ];
             size = 11.0;
@@ -157,7 +157,7 @@ in
 
     programs.i3status-rust = {
       enable = true;
-      package = pkgs.stable.i3status-rust;
+      package = pkgs.i3status-rust;
       bars = {
         default = {
           icons = "material-nf";
