@@ -491,6 +491,7 @@ in
         cmp_luasnip
         neoscroll-nvim
         fidget-nvim
+        nvim-metals
       ];
       extraConfig = ''
         set hidden
@@ -623,6 +624,7 @@ in
     (sbt.override { jre = graalvm11-ce; })
     jetbrains.idea-community
     (ammonite.override { jre = graalvm11-ce; })
+    coursier
 
     #rust
     cargo
