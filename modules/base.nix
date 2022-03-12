@@ -492,6 +492,8 @@ in
         neoscroll-nvim
         fidget-nvim
         nvim-metals
+        vim-startuptime
+        impatient-nvim
       ];
       extraConfig = ''
         set hidden

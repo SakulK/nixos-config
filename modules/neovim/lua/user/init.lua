@@ -1,3 +1,4 @@
+require'impatient'
 vim.opt.cursorline = true;
 vim.g.gruvbox_material_palette = "original"
 vim.cmd[[colorscheme gruvbox-material]]
