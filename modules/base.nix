@@ -623,7 +623,6 @@ in
     # scala
     (sbt.override { jre = graalvm11-ce; })
     jetbrains.idea-community
-    (ammonite.override { jre = graalvm11-ce; })
     coursier
 
     #rust
