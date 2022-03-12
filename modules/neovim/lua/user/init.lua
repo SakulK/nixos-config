@@ -91,8 +91,8 @@ local on_attach = function(client, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua require"telescope.builtin".lsp_definitions({initial_mode="normal"})<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua require"telescope.builtin".lsp_implementations({initial_mode="normal"})<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua require"telescope.builtin".lsp_references({initial_mode="normal"})<CR>', opts)
   buf_set_keymap('n', 'gws', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', opts)
   buf_set_keymap('n', 'gds', '<cmd>Telescope lsp_document_symbols<CR>', opts)
