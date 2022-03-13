@@ -1,6 +1,6 @@
 require'impatient'
 vim.opt.cursorline = true;
-vim.g.gruvbox_material_palette = "original"
+vim.g.gruvbox_material_palette = "mix"
 vim.cmd[[colorscheme gruvbox-material]]
 require'colorizer'.setup()
 require'which-key'.setup()
