@@ -26,7 +26,6 @@ require'nvim-web-devicons'.setup {
 }
 require'bufferline'.setup()
 require'Comment'.setup()
-require'neoscroll'.setup()
 require'fidget'.setup()
 
 -- Setup nvim-cmp.
