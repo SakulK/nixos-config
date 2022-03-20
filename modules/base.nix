@@ -493,16 +493,6 @@ in
         impatient-nvim
       ];
       extraConfig = ''
-        set hidden
-        set nowrap
-        set number relativenumber
-        set mouse=a
-        set termguicolors
-        set scrolloff=8
-        set background=dark
-        set guifont=JetBrainsMono\ Nerd\ Font:h10
-        set completeopt=menu,menuone,noselect
-
         lua << EOF
         require "user.init"
         EOF

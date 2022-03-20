@@ -1,4 +1,15 @@
 require'impatient'
+vim.opt.hidden = true
+vim.opt.wrap = false
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.mouse = 'a'
+vim.opt.termguicolors = true
+vim.opt.scrolloff = 8
+vim.opt.background = 'dark'
+vim.opt.guifont = 'JetBrainsMono Nerd Font:h10'
+vim.opt.completeopt = 'menu,menuone,noselect'
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true;
 vim.g.gruvbox_material_palette = "mix"
 vim.cmd[[colorscheme gruvbox-material]]
