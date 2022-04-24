@@ -66,7 +66,7 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  environment.systemPackages = with pkgs; [ qbittorrent kdenlive ];
+  environment.systemPackages = with pkgs; [ qbittorrent kdenlive pitivi ];
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
