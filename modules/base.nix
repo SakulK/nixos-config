@@ -178,8 +178,8 @@ in
         usernamehw.errorlens
         matklad.rust-analyzer
         serayuzgur.crates
-        scalameta.metals
-        scala-lang.scala
+        dhall.dhall-lang
+        dhall.vscode-dhall-lsp-server
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
         name = "gruvbox";
         publisher = "jdinhlife";
@@ -490,6 +490,7 @@ in
         nvim-metals
         vim-startuptime
         impatient-nvim
+        dhall-vim
       ];
       extraConfig = ''
         lua << EOF
@@ -623,6 +624,9 @@ in
     # kubernetes
     kubectl
     kubectx
+    dhall
+    dhall-json
+    dhall-lsp-server
 
     docker-compose
 
