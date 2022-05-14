@@ -68,8 +68,8 @@
 
   environment.systemPackages = with pkgs; [ qbittorrent kdenlive pitivi ];
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
 
   networking.firewall.allowedTCPPorts = [
     8200 # minidlna
