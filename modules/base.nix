@@ -253,7 +253,12 @@ in
         };
         kubernetes = {
           disabled = false;
-          format = "[$symbol$namespace ]($style)";
+          format = "[$symbol$context \\($namespace\\) ]($style)";
+          context_aliases = {
+            ".*-ci.*" = "ci";
+            ".*-stage.*" = "stage";
+            ".*-prod.*" = "prod";
+          };
         };
         format =
           "$directory$git_branch$git_commit$git_state$git_status$kubernetes$cmd_duration$character";
