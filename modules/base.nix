@@ -206,7 +206,10 @@ in
         name = "fast-syntax-highlighting";
         src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
       }];
-      shellAliases = { cat = "bat -p"; };
+      shellAliases = {
+        cat = "bat -p";
+        kcx = "kubectx";
+      };
     };
 
     programs.fzf = {
