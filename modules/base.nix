@@ -495,7 +495,6 @@ in
         fidget-nvim
         nvim-metals
         vim-startuptime
-        impatient-nvim
       ];
       extraConfig = ''
         lua << EOF
@@ -592,7 +591,6 @@ in
     killall
     neovide
     xclip
-    graphviz
     gnome.baobab # disk usage analyzer
     gnome.eog # image viewer
     gnome.nautilus

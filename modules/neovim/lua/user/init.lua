@@ -1,4 +1,3 @@
-require'impatient'
 vim.opt.hidden = true
 vim.opt.wrap = false
 vim.opt.number = true
@@ -126,7 +125,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'rust_analyzer', 'hls', 'rnix', 'dhall_lsp_server' }
+local servers = { 'rust_analyzer', 'hls', 'rnix' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -149,7 +148,8 @@ vim.cmd([[augroup end]])
 metals_config = require("metals").bare_config()
 metals_config.on_attach = on_attach
 metals_config.settings = {
-  showImplicitArguments = true
+  showImplicitArguments = true,
+  useGlobalExecutable = true
 }
 
 metals_config.capabilities = capabilities
