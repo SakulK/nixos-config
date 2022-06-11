@@ -617,6 +617,7 @@ in
     (sbt.override { jre = graalvm11-ce; })
     jetbrains.idea-community
     coursier
+    metals
 
     #rust
     cargo
