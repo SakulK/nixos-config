@@ -495,6 +495,7 @@ in
         fidget-nvim
         nvim-metals
         vim-startuptime
+        Shade-nvim
       ];
       extraConfig = ''
         lua << EOF

@@ -37,6 +37,9 @@ require'nvim-web-devicons'.setup {
 require'bufferline'.setup()
 require'Comment'.setup()
 require'fidget'.setup()
+require'shade'.setup({
+  overlay_opacity = 60
+})
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
