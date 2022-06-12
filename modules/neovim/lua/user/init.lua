@@ -11,6 +11,8 @@ vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true;
 vim.g.gruvbox_material_palette = "mix"
+vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
+vim.g.gruvbox_material_diagnostic_text_highlight = true
 vim.cmd[[colorscheme gruvbox-material]]
 require'colorizer'.setup()
 require'which-key'.setup()
