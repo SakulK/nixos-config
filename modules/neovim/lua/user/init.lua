@@ -42,6 +42,7 @@ require'fidget'.setup()
 require'shade'.setup({
   overlay_opacity = 60
 })
+require'scrollbar'.setup()
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'

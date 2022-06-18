@@ -19,6 +19,15 @@ let
       ${pkgs.ponymix}/bin/ponymix -t source-output -d $output move $source
     done
   '';
+  nvim-scrollbar = pkgs.vimUtils.buildVimPlugin {
+    name = "nvim-scrollbar";
+    src = pkgs.fetchFromGitHub {
+      owner = "petertriho";
+      repo = "nvim-scrollbar";
+      rev = "3ef33825db78e663ef6284f4056ce7aaa6cfe1c9";
+      sha256 = "sha256-1RADFi4CRadFn9Q+E9pOhiPnZGDKs4WQycbXZB47I4I=";
+    };
+  };
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -464,7 +473,7 @@ in
         nvim-colorizer-lua
         nvim-tree-lua
         vim-startify
-        nvim-scrollview
+        nvim-scrollbar
         telescope-nvim
         plenary-nvim
         vim-rooter
