@@ -400,13 +400,6 @@ in
       temperature.night = 4000;
     };
 
-    services.screen-locker = {
-      enable = true;
-      xautolock.detectSleep = false;
-      lockCmd = "i3lock-fancy-rapid 10 3";
-      inactiveInterval = 15;
-    };
-
     programs.rofi = {
       enable = true;
       theme = "gruvbox-dark-hard";
