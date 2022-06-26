@@ -126,6 +126,7 @@ in
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
+    home.stateVersion = "22.11";
     home.file.".icons/default".source =
       "${pkgs.numix-cursor-theme}/share/icons/Numix-Cursor-Light";
 
