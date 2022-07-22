@@ -58,8 +58,10 @@
 
   services.minidlna = {
     enable = true;
-    mediaDirs = [ "/dlna" ];
-    announceInterval = 60;
+    settings = {
+      media_dir = [ "/dlna" ];
+      notify_interval = 60;
+    };
   };
   programs.steam.enable = true;
   services.flatpak.enable = true;
