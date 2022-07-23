@@ -471,7 +471,6 @@ in
         gruvbox-material
         nvim-colorizer-lua
         nvim-tree-lua
-        vim-startify
         nvim-scrollbar
         telescope-nvim
         plenary-nvim
@@ -504,6 +503,7 @@ in
         nvim-metals
         vim-startuptime
         Shade-nvim
+        alpha-nvim
       ];
       extraConfig = ''
         lua << EOF
