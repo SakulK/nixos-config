@@ -161,6 +161,11 @@ in
           plus-style = "syntax #293f2a";
         };
       };
+      extraConfig = {
+        merge = {
+          conflictstyle = "diff3";
+        };
+      };
     };
 
     programs.direnv = {
