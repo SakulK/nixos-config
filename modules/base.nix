@@ -611,6 +611,7 @@ in
     gnome.file-roller
     evince # document viewer
     dig
+    csview
 
     # benchmarking
     geekbench
