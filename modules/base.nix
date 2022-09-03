@@ -583,7 +583,7 @@ in
     vlc
     nixfmt
     rnix-lsp
-    (callPackage ../modules/lcat.nix { })
+    lcat
     fd
     sd
     dua

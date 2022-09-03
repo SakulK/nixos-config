@@ -7,61 +7,62 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lcat = {
+      url = "github:SakulK/lcat/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: {
 
-    nixosConfigurations = {
-      saku-nixos = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          inputs.home-manager.nixosModules.home-manager
-          "${inputs.nixpkgs}/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix"
+    nixosConfigurations =
 
-          ({ pkgs, ... }:
-            let
-              overlay-stable = final: prev: {
-                stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
-              };
-            in { nixpkgs.overlays = [ overlay-stable ]; })
+      let
+        custom-overlay = final: prev: {
+          stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
+          lcat = inputs.lcat.packages.x86_64-linux.default;
+        };
+      in
+      {
+        saku-nixos = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            inputs.home-manager.nixosModules.home-manager
+            "${inputs.nixpkgs}/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix"
 
-          ({ pkgs, ... }: {
-            nix.extraOptions = "experimental-features = nix-command flakes";
-            nix.package = pkgs.nixFlakes;
-            nix.registry.nixpkgs.flake = inputs.nixpkgs;
+            ({ pkgs, ... }: {
+              nix.extraOptions = "experimental-features = nix-command flakes";
+              nix.package = pkgs.nixFlakes;
+              nix.registry.nixpkgs.flake = inputs.nixpkgs;
+              nixpkgs.overlays = [ custom-overlay ];
 
-            home-manager.useGlobalPkgs = true;
-          })
+              home-manager.useGlobalPkgs = true;
+            })
 
-          ./hosts/tower.nix
-        ];
+            ./hosts/tower.nix
+          ];
+        };
+        saku-thinkpad = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            inputs.home-manager.nixosModules.home-manager
+            "${inputs.nixpkgs}/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix"
+
+            ({ pkgs, ... }: {
+              nix.extraOptions = "experimental-features = nix-command flakes";
+              nix.package = pkgs.nixFlakes;
+              nix.registry.nixpkgs.flake = inputs.nixpkgs;
+              nixpkgs.overlays = [ custom-overlay ];
+
+              home-manager.useGlobalPkgs = true;
+            })
+
+            ./hosts/thinkpad.nix
+          ];
+        };
       };
-      saku-thinkpad = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          inputs.home-manager.nixosModules.home-manager
-          "${inputs.nixpkgs}/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix"
-
-          ({ pkgs, ... }:
-            let
-              overlay-stable = final: prev: {
-                stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
-              };
-            in { nixpkgs.overlays = [ overlay-stable ]; })
-
-          ({ pkgs, ... }: {
-            nix.extraOptions = "experimental-features = nix-command flakes";
-            nix.package = pkgs.nixFlakes;
-            nix.registry.nixpkgs.flake = inputs.nixpkgs;
-
-            home-manager.useGlobalPkgs = true;
-          })
-
-          ./hosts/thinkpad.nix
-        ];
-      };
-    };
   };
 }
