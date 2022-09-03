@@ -631,12 +631,6 @@ in
     coursier
     metals
 
-    #rust
-    cargo
-    rustc
-    gcc
-    rust-analyzer
-
     # kubernetes
     kubectl
     kubectx
