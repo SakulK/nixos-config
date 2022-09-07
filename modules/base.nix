@@ -504,6 +504,7 @@ in
         vim-startuptime
         Shade-nvim
         alpha-nvim
+        crates-nvim
       ];
       extraConfig = ''
         lua << EOF

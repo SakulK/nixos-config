@@ -47,6 +47,7 @@ require'shade'.setup({
   overlay_opacity = 60
 })
 require'scrollbar'.setup()
+require'crates'.setup()
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
