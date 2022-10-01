@@ -22,6 +22,7 @@
         custom-overlay = final: prev: {
           stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
           lcat = inputs.lcat.packages.x86_64-linux.default;
+          networkmanager-openvpn = inputs.nixpkgs-stable.legacyPackages.${prev.system}.networkmanager-openvpn;
         };
       in
       {
@@ -34,7 +35,6 @@
 
             ({ pkgs, ... }: {
               nix.extraOptions = "experimental-features = nix-command flakes";
-              nix.package = pkgs.nixFlakes;
               nix.registry.nixpkgs.flake = inputs.nixpkgs;
               nixpkgs.overlays = [ custom-overlay ];
 
@@ -53,7 +53,6 @@
 
             ({ pkgs, ... }: {
               nix.extraOptions = "experimental-features = nix-command flakes";
-              nix.package = pkgs.nixFlakes;
               nix.registry.nixpkgs.flake = inputs.nixpkgs;
               nixpkgs.overlays = [ custom-overlay ];
 

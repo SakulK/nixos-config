@@ -638,7 +638,7 @@ in
 
     docker-compose
 
-    slack-dark
+    slack
     keepassxc
     streamlink
   ];
