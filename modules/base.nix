@@ -121,6 +121,8 @@ in
     };
   };
 
+  services.udev.packages = [ pkgs.chrysalis ];
+
   programs.light.enable = true;
   programs.dconf.enable = true;
 
@@ -613,6 +615,7 @@ in
     evince # document viewer
     dig
     csview
+    chrysalis
 
     # benchmarking
     geekbench
