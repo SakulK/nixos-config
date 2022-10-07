@@ -148,8 +148,6 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Metals
-vim.opt_global.shortmess:remove("F"):append("c")
-
 vim.cmd([[augroup lsp]])
 vim.cmd([[autocmd!]])
 vim.cmd([[autocmd FileType scala setlocal omnifunc=v:lua.vim.lsp.omnifunc]])
