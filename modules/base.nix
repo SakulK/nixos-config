@@ -616,6 +616,7 @@ in
     dig
     csview
     chrysalis
+    nvd
 
     # benchmarking
     geekbench
