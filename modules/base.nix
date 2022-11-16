@@ -632,7 +632,7 @@ in
 
     # scala
     (sbt.override { jre = graalvm11-ce; })
-    (scala-cli.override { jre = graalvm11-ce; })
+    scala-cli
     jetbrains.idea-community
     coursier
     metals
