@@ -507,6 +507,7 @@ in
         Shade-nvim
         alpha-nvim
         crates-nvim
+        vim-unison
       ];
       extraConfig = ''
         lua << EOF
@@ -617,6 +618,7 @@ in
     csview
     chrysalis
     nvd
+    unison-ucm
 
     # benchmarking
     geekbench
