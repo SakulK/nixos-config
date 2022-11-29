@@ -499,6 +499,7 @@ in
         cmp-buffer
         cmp-path
         cmp-cmdline
+        cmp-nvim-lsp-signature-help
         luasnip
         cmp_luasnip
         fidget-nvim
