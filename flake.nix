@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.11";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -26,7 +26,7 @@
         custom-overlay = final: prev: {
           stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
           lcat = inputs.lcat.packages.x86_64-linux.default;
-          networkmanager-openvpn = inputs.nixpkgs-stable.legacyPackages.${prev.system}.networkmanager-openvpn;
+          openvpn = final.openvpn_24;
         };
       in
       {
