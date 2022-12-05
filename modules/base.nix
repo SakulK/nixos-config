@@ -545,6 +545,8 @@ in
           plugin = gruvbox;
           extraConfig = ''
             set -g @tmux-gruvbox 'dark'
+            set -g window-style 'bg=color236'
+            set -g window-active-style 'bg=black'
           '';
         }
         resurrect
