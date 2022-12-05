@@ -276,6 +276,7 @@ in
           format = "[$symbol$context \\($namespace\\) ]($style)";
           context_aliases = {
             ".*-ci.*" = "ci";
+            ".*-dev.*" = "dev";
             ".*-stage.*" = "stage";
             ".*-prod.*" = "prod";
           };
