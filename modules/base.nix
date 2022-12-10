@@ -579,7 +579,7 @@ in
 
   virtualisation.docker.enable = true;
 
-  fonts.fonts = [ pkgs.nerdfonts ];
+  fonts.fonts = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   environment.shells = with pkgs; [ bashInteractive zsh ];
   environment.variables = { WINIT_X11_SCALE_FACTOR = "1"; };
