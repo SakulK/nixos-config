@@ -493,7 +493,6 @@ in
           ]))
         nvim-lspconfig
         nvim-autopairs
-        bufferline-nvim
         comment-nvim
         nvim-cmp
         cmp-nvim-lsp

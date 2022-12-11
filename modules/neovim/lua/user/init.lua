@@ -40,7 +40,6 @@ require'nvim-autopairs'.setup()
 require'nvim-web-devicons'.setup {
   default = true;
 }
-require'bufferline'.setup()
 require'Comment'.setup()
 require'fidget'.setup()
 require'shade'.setup({
