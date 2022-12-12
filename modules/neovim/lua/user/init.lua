@@ -136,7 +136,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'rust_analyzer', 'hls', 'rnix', 'unison' }
+local servers = { 'rust_analyzer', 'hls', 'unison' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -146,6 +146,21 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
   }
 end
+
+nvim_lsp.nil_ls.setup {
+  flags = {
+    debounce_text_changes = 150,
+  },
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    ['nil'] = {
+      formatting = {
+        command = { "nixfmt" }
+      }
+    }
+  }
+}
 
 -- Metals
 vim.cmd([[augroup lsp]])

@@ -28,8 +28,7 @@ let
       sha256 = "sha256-1RADFi4CRadFn9Q+E9pOhiPnZGDKs4WQycbXZB47I4I=";
     };
   };
-in
-{
+in {
   nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "Europe/Warsaw";
@@ -163,11 +162,7 @@ in
           plus-style = "syntax #293f2a";
         };
       };
-      extraConfig = {
-        merge = {
-          conflictstyle = "diff3";
-        };
-      };
+      extraConfig = { merge = { conflictstyle = "diff3"; }; };
     };
 
     programs.direnv = {
@@ -289,9 +284,7 @@ in
     programs.alacritty = {
       enable = true;
       settings = {
-        env = {
-          TERM = "xterm-256color";
-        };
+        env = { TERM = "xterm-256color"; };
         colors = {
           primary = {
             background = "#282828";
@@ -589,7 +582,7 @@ in
     spotify
     vlc
     nixfmt
-    rnix-lsp
+    nil
     lcat
     fd
     sd
