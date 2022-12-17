@@ -1,55 +1,48 @@
-vim.opt.hidden = true
-vim.opt.wrap = false
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.mouse = 'a'
-vim.opt.termguicolors = true
-vim.opt.scrolloff = 8
-vim.opt.background = 'dark'
-vim.opt.guifont = 'JetBrainsMono Nerd Font:h10'
-vim.opt.completeopt = 'menu,menuone,noselect'
-vim.opt.clipboard = 'unnamedplus'
-vim.opt.cursorline = true;
-vim.opt.undofile = true;
-vim.opt.smartcase = true;
-vim.opt.ignorecase = true;
-vim.g.gruvbox_material_palette = "mix"
-vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-vim.g.gruvbox_material_diagnostic_text_highlight = true
-vim.cmd[[colorscheme gruvbox-material]]
-require'alpha'.setup(require'alpha.themes.startify'.config)
-require'colorizer'.setup()
-require'which-key'.setup()
-require'lualine'.setup {
+require('user/set')
+require('user/remap')
+require('alpha').setup(require'alpha.themes.startify'.config)
+require('colorizer').setup()
+require('which-key').setup()
+require('lualine').setup {
   options = {theme = 'gruvbox-material'}
 }
-require'nvim-tree'.setup()
-require'gitsigns'.setup {
+
+local nvimTree = require('nvim-tree')
+nvimTree.setup {
+  view = {
+    adaptive_size = true
+  },
+  renderer = {
+    group_empty = true,
+  }
+}
+
+require('gitsigns').setup {
   current_line_blame = true,
   numhl = true
 }
 
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
 }
-require'indent_blankline'.setup()
-require'nvim-autopairs'.setup()
-require'nvim-web-devicons'.setup {
+require('indent_blankline').setup()
+require('nvim-autopairs').setup()
+require('nvim-web-devicons').setup {
   default = true;
 }
-require'Comment'.setup()
-require'fidget'.setup()
-require'shade'.setup({
+require('Comment').setup()
+require('fidget').setup()
+require('shade').setup({
   overlay_opacity = 60
 })
-require'scrollbar'.setup()
-require'crates'.setup()
+require('scrollbar').setup()
+require('crates').setup()
 
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local cmp = require('cmp')
 
 cmp.setup({
   snippet = {
