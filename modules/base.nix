@@ -518,10 +518,15 @@ in {
       newSession = true;
       historyLimit = 10000;
       terminal = "tmux-256color";
+      escapeTime = 0;
       extraConfig = ''
         set -g mouse on
         set-option -g renumber-windows on
         set -as terminal-features ",xterm-256color:RGB"
+        bind h select-pane -L
+        bind j select-pane -D
+        bind k select-pane -U
+        bind l select-pane -R
       '';
       plugins = with pkgs.tmuxPlugins; [
         {
