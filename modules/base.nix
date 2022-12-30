@@ -122,6 +122,8 @@ in {
 
   services.udev.packages = [ pkgs.chrysalis ];
 
+  services.fstrim.enable = true;
+
   programs.light.enable = true;
   programs.dconf.enable = true;
 
