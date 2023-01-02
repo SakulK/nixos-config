@@ -504,6 +504,7 @@ in {
         alpha-nvim
         crates-nvim
         vim-unison
+        vim-illuminate
       ];
       extraConfig = ''
         lua << EOF
