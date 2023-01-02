@@ -499,7 +499,6 @@ in {
         cmp_luasnip
         fidget-nvim
         nvim-metals
-        vim-startuptime
         Shade-nvim
         alpha-nvim
         crates-nvim
