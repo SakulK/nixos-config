@@ -613,6 +613,7 @@ in {
     chrysalis
     nvd
     unison-ucm
+    cachix
 
     # benchmarking
     geekbench
