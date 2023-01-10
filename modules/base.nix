@@ -29,6 +29,7 @@ let
     };
   };
 in {
+  nix.settings.trusted-users = [ "root" "sakulk" ];
   nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "Europe/Warsaw";
@@ -613,6 +614,7 @@ in {
     chrysalis
     nvd
     unison-ucm
+    cachix
 
     # benchmarking
     geekbench
