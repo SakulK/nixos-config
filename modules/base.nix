@@ -124,6 +124,7 @@ in {
   services.udev.packages = [ pkgs.chrysalis ];
 
   services.fstrim.enable = true;
+  services.udisks2.enable = true;
 
   programs.light.enable = true;
   programs.dconf.enable = true;
@@ -174,6 +175,7 @@ in {
     };
 
     services.lorri.enable = true;
+    services.udiskie.enable = true;
 
     programs.exa = {
       enable = true;
