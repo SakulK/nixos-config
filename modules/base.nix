@@ -603,9 +603,8 @@ in {
     killall
     neovide
     xclip
-    gnome.baobab # disk usage analyzer
-    gnome.eog # image viewer
-    gnome.nautilus
+    mate.eom # image viewer
+    cinnamon.nemo-with-extensions # file manager
     gnome.simple-scan
     gnome.gnome-control-center
     gnome.gnome-disk-utility
@@ -645,6 +644,5 @@ in {
 
     slack
     keepassxc
-    streamlink
   ];
 }
