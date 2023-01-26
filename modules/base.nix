@@ -238,27 +238,6 @@ in {
       config = { theme = "gruvbox-dark"; };
     };
 
-    programs.vscode = {
-      enable = true;
-      extensions = (with pkgs.vscode-extensions; [
-        tamasfe.even-better-toml
-        eamodio.gitlens
-        usernamehw.errorlens
-        matklad.rust-analyzer
-        serayuzgur.crates
-      ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-        name = "gruvbox";
-        publisher = "jdinhlife";
-        version = "1.5.0";
-        sha256 = "sha256-b0BeAYtbZa0n3l55g0e6+74eoj8KWNxZVrteylcKtZE=";
-      }];
-      keybindings = [{
-        key = "ctrl+d";
-        command = "editor.action.copyLinesDownAction";
-        when = "editorTextFocus && !editorReadonly";
-      }];
-    };
-
     programs.zsh = {
       enable = true;
       enableAutosuggestions = true;
