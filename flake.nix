@@ -26,7 +26,6 @@
         custom-overlay = final: prev: {
           stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
           lcat = inputs.lcat.packages.x86_64-linux.default;
-          openvpn = final.openvpn_24;
         };
       in
       {
