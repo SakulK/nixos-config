@@ -13,9 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    unison = {
-      url = "github:ceedubs/unison-nix";
-    };
+    unison = { url = "github:ceedubs/unison-nix"; };
   };
 
   outputs = inputs: {
@@ -26,9 +24,10 @@
         custom-overlay = final: prev: {
           stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
           lcat = inputs.lcat.packages.x86_64-linux.default;
+          openvpn =
+            inputs.nixpkgs-stable.legacyPackages.${prev.system}.openvpn_24;
         };
-      in
-      {
+      in {
         saku-nixos = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
