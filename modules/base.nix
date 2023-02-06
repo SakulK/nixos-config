@@ -225,7 +225,6 @@ in {
       nix-direnv.enable = true;
     };
 
-    services.lorri.enable = true;
     services.udiskie.enable = true;
 
     programs.exa = {
