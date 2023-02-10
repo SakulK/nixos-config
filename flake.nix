@@ -25,6 +25,13 @@
           stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
           lcat = inputs.lcat.packages.x86_64-linux.default;
         };
+
+        nix-config = ({ pkgs, ... }: {
+          nix.extraOptions = "experimental-features = nix-command flakes";
+          nix.registry.nixpkgs.flake = inputs.nixpkgs;
+          nixpkgs.overlays = [ custom-overlay inputs.unison.overlay ];
+        });
+
       in {
         saku-nixos = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -33,14 +40,7 @@
             inputs.home-manager.nixosModules.home-manager
             "${inputs.nixpkgs}/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix"
 
-            ({ pkgs, ... }: {
-              nix.extraOptions = "experimental-features = nix-command flakes";
-              nix.registry.nixpkgs.flake = inputs.nixpkgs;
-              nixpkgs.overlays = [ custom-overlay inputs.unison.overlay ];
-
-              home-manager.useGlobalPkgs = true;
-            })
-
+            nix-config
             ./hosts/tower.nix
           ];
         };
@@ -51,14 +51,7 @@
             inputs.home-manager.nixosModules.home-manager
             "${inputs.nixpkgs}/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix"
 
-            ({ pkgs, ... }: {
-              nix.extraOptions = "experimental-features = nix-command flakes";
-              nix.registry.nixpkgs.flake = inputs.nixpkgs;
-              nixpkgs.overlays = [ custom-overlay inputs.unison.overlay ];
-
-              home-manager.useGlobalPkgs = true;
-            })
-
+            nix-config
             ./hosts/thinkpad.nix
           ];
         };
