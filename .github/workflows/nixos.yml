@@ -8,6 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Remove unnecessary packages
+      run: |
+        echo "=== Before pruning ==="
+        df -h
+        sudo rm -rf /usr/share /usr/local /opt || true
+        echo "=== After pruning ==="
+        df -h
     - uses: actions/checkout@v3
     - uses: cachix/install-nix-action@v20
       with:
