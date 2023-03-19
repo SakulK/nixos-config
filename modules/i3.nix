@@ -1,11 +1,8 @@
 { pkgs, lib, ... }:
 
 let modifier = "Mod4";
-in
-{
-  services.xserver.windowManager.i3 = {
-    enable = true;
-  };
+in {
+  services.xserver.windowManager.i3 = { enable = true; };
 
   home-manager.users.sakulk = {
     home.file.".wallpaper".source = ./wallpaper.png;
@@ -161,53 +158,50 @@ in
         default = {
           icons = "material-nf";
           theme = "gruvbox-dark";
-          settings = {
-            icons = {
-              name = "material-nf";
-              overrides = { bat_not_available = ""; };
-            };
-          };
           blocks = [
             {
               block = "music";
+              format = " $icon {$title.str(max_w:20,rot_interval:0.5) $play $next |}";
               player = "spotify";
-              buttons = [ "play" "next" ];
-              on_collapsed_click = "spotify";
             }
             {
               block = "disk_space";
-              format = "{icon} {available}";
+              format = " $icon $available";
             }
             {
               block = "memory";
-              display_type = "memory";
-              format_mem = "{mem_used;G}";
-              format_swap = "{swap_used;G}";
+              format = " $icon $mem_used.eng(p:Mi) ";
+              format_alt = " $icon_swap $swap_used.eng(p:Mi) ";
             }
             {
               block = "cpu";
               interval = 1;
-              format = "{barchart} {utilization}";
+              format = " $icon $barchart $utilization";
             }
             {
-              block = "networkmanager";
-              on_click = "alacritty -e nmtui";
-              interface_name_exclude = [ "br\\-[0-9a-f]{12}" "docker\\d+" ];
-              interface_name_include = [ ];
-              ap_format = "{ssid^10}";
-              device_format = "{icon}{ap}";
+              block = "net";
+	      device = "^tun.*";
+              format = " $icon VPN ";
+	      missing_format = "";
+            }
+            {
+              block = "net";
+              format = " $icon {$ssid $frequency|} ";
+              click = [{
+                button = "left";
+                cmd = "alacritty -e nmtui";
+              }];
             }
             { block = "sound"; }
             {
               block = "battery";
-              allow_missing = true;
-              hide_missing = true;
+              missing_format = "";
               interval = 60;
             }
             {
               block = "time";
               interval = 60;
-              format = "%a %d/%m %R";
+              format = " $timestamp.datetime(f:'%a %d/%m %R') ";
             }
           ];
         };
