@@ -38,7 +38,12 @@ require('fidget').setup()
 require('shade').setup({
   overlay_opacity = 60
 })
-require('scrollbar').setup()
+require('scrollbar').setup {
+  handlers = {
+    cursor = false
+  }
+}
+require("scrollbar.handlers.gitsigns").setup()
 require('crates').setup()
 
 -- Setup nvim-cmp.
