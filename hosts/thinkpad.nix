@@ -25,6 +25,7 @@
   hardware.bumblebee.connectDisplay = true;
   hardware.cpu.intel.updateMicrocode = true;
   services.throttled.enable = true;
+  services.xserver.xkbOptions = "caps:escape";
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/682b0eda-cb24-4e49-bc6b-752d5343300d";
