@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [ ../modules/base.nix ../modules/i3.nix ];
@@ -22,6 +22,9 @@
   };
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
+  hardware.bumblebee.connectDisplay = true;
+  hardware.cpu.intel.updateMicrocode = true;
+  services.throttled.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/682b0eda-cb24-4e49-bc6b-752d5343300d";
@@ -49,7 +52,7 @@
   networking.interfaces.enp0s31f6.useDHCP = true;
   networking.interfaces.wlp0s20f3.useDHCP = true;
 
-  #services.xserver.videoDrivers = [ "nvidia" ];
+  # services.xserver.videoDrivers = [ "nvidia" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

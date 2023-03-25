@@ -161,7 +161,8 @@ in {
           blocks = [
             {
               block = "music";
-              format = " $icon {$title.str(max_w:20,rot_interval:0.5) $play $next |}";
+              format =
+                " $icon {$title.str(max_w:20,rot_interval:0.5) $play $next |}";
               player = "spotify";
             }
             {
@@ -180,9 +181,9 @@ in {
             }
             {
               block = "net";
-	      device = "^tun.*";
+              device = "^tun.*";
               format = " $icon VPN ";
-	      missing_format = "";
+              missing_format = "";
             }
             {
               block = "net";
@@ -195,6 +196,7 @@ in {
             { block = "sound"; }
             {
               block = "battery";
+              device = "BAT0";
               missing_format = "";
               interval = 60;
             }
