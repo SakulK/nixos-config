@@ -40,6 +40,8 @@ in {
     ];
   };
 
+  systemd.services.NetworkManager-wait-online.enable = false;
+  networking.dhcpcd.wait = "background";
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
@@ -531,7 +533,10 @@ in {
     package = pkgs.graalvm11-ce;
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
 
   fonts.fonts = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
