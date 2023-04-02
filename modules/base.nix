@@ -164,6 +164,7 @@ in {
 
   programs.light.enable = true;
   programs.dconf.enable = true;
+  programs.zsh.enable = true;
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
