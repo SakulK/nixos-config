@@ -39,6 +39,7 @@
   swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
+  hardware.cpu.amd.updateMicrocode = true;
 
   networking.hostName = "saku-nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
