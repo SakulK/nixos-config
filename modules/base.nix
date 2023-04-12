@@ -241,6 +241,7 @@ in {
       shellAliases = {
         cat = "bat -p";
         kcx = "kubectx";
+        gcof = "git checkout $(git branch | fzf)";
       };
     };
 
