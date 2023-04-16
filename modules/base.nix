@@ -590,13 +590,6 @@ in {
     s-tui
     stress
 
-    # haskell
-    ghc
-    cabal-install
-    stack
-    haskell-language-server
-    ormolu
-
     # scala
     (sbt.override { jre = graalvm11-ce; })
     scala-cli
