@@ -532,7 +532,7 @@ in {
 
   programs.java = {
     enable = true;
-    package = pkgs.graalvm11-ce;
+    package = pkgs.graalvm17-ce;
   };
 
   virtualisation.docker = {
@@ -569,7 +569,6 @@ in {
     gitui
     jq
     killall
-    neovide
     xclip
     mate.eom # image viewer
     cinnamon.nemo-with-extensions # file manager
@@ -591,7 +590,7 @@ in {
     stress
 
     # scala
-    (sbt.override { jre = graalvm11-ce; })
+    (sbt.override { jre = graalvm17-ce; })
     scala-cli
     jetbrains.idea-community
     coursier
