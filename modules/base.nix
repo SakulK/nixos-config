@@ -586,7 +586,7 @@ in {
     cachix
 
     # benchmarking
-    geekbench
+    # geekbench
     s-tui
     stress
 
