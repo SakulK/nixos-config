@@ -167,7 +167,7 @@ in {
             }
             {
               block = "disk_space";
-              format = " $icon $available";
+              format = " $icon $available ";
             }
             {
               block = "memory";
@@ -177,7 +177,7 @@ in {
             {
               block = "cpu";
               interval = 1;
-              format = " $icon $barchart $utilization";
+              format = " $icon $barchart $utilization ";
             }
             {
               block = "net";
