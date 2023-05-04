@@ -497,6 +497,7 @@ in {
         bind j select-pane -D
         bind k select-pane -U
         bind l select-pane -R
+        bind-key -Tcopy-mode-vi MouseDragEnd1Pane send -X copy-selection
       '';
       plugins = with pkgs.tmuxPlugins; [
         {
