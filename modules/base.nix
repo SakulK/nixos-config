@@ -279,13 +279,13 @@ in {
           style = "bold green";
         };
         git_status = {
-          ahead = "[ﰵ$count](green)";
-          behind = "ﰬ$count";
-          modified = "[$count](yellow)";
-          diverged = "ﰵﰬ";
+          ahead = "[󰜷$count](green)";
+          behind = "󰜮$count";
+          modified = "[!$count](yellow)";
+          diverged = "󰜷󰜮";
           untracked = "⛔$count";
-          staged = "[$count](green)";
-          stashed = "[📦](yellow)";
+          staged = "[$count](green)";
+          stashed = "[󰏗](yellow)";
         };
         kubernetes = {
           disabled = false;
