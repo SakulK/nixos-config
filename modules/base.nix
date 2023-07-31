@@ -173,7 +173,6 @@ in {
       "${pkgs.numix-cursor-theme}/share/icons/Numix-Cursor-Light";
 
     home.sessionVariables = {
-      EDITOR = "nvim";
       TERMINAL = "alacritty";
       SBT_NATIVE_CLIENT = "true";
     };
@@ -433,6 +432,7 @@ in {
     programs.neovim = {
       enable = true;
       vimAlias = true;
+      defaultEditor = true;
       plugins = with pkgs.vimPlugins; [
         gruvbox-material
         nvim-colorizer-lua
@@ -473,11 +473,7 @@ in {
         vim-unison
         vim-illuminate
       ];
-      extraConfig = ''
-        lua << EOF
-        require "user.init"
-        EOF
-      '';
+      extraLuaConfig = ''require "user.init"'';
     };
 
     programs.tmux = {
