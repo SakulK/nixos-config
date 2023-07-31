@@ -81,21 +81,36 @@ in {
   services.xserver.displayManager.lightdm = {
     enable = true;
     background = ./wallpaper.png;
-    greeters.mini = {
+    greeters.gtk = {
       enable = true;
-      user = "sakulk";
-      extraConfig = ''
-        [greeter]
-        show-password-label = false
-        [greeter-theme]
-        error-color = "#ebdbb2"
-        window-color = "#1d2021"
-        border-color = "#1d2021"
-        password-color = "#1d2021"
-        password-background-color = "#d79921"
-        password-border-color = "#1d2021"
-      '';
+      iconTheme = {
+        package = pkgs.gruvbox-dark-gtk;
+        name = "gruvbox-dark";
+      };
+      theme = {
+        package = pkgs.gruvbox-dark-icons-gtk;
+        name = "gruvbox-dark";
+      };
+      cursorTheme = {
+        package = pkgs.numix-cursor-theme;
+        name = "Numix-Cursor-Light";
+      };
     };
+    # greeters.mini = {
+    #   enable = true;
+    #   user = "sakulk";
+    #   extraConfig = ''
+    #     [greeter]
+    #     show-password-label = false
+    #     [greeter-theme]
+    #     error-color = "#ebdbb2"
+    #     window-color = "#1d2021"
+    #     border-color = "#1d2021"
+    #     password-color = "#1d2021"
+    #     password-background-color = "#d79921"
+    #     password-border-color = "#1d2021"
+    #   '';
+    # };
   };
 
   services.xserver.libinput = {
@@ -537,7 +552,8 @@ in {
     enableOnBoot = false;
   };
 
-  fonts.packages = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+  fonts.packages =
+    [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   environment.shells = with pkgs; [ bashInteractive zsh ];
   environment.variables = { WINIT_X11_SCALE_FACTOR = "1"; };
