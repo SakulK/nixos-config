@@ -122,6 +122,7 @@ in {
   };
 
   services.udev.packages = [ pkgs.chrysalis ];
+  services.fwupd.enable = true;
 
   services.autorandr = {
     enable = true;
