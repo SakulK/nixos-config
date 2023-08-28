@@ -181,6 +181,7 @@ in {
   programs.light.enable = true;
   programs.dconf.enable = true;
   programs.zsh.enable = true;
+  programs.kdeconnect.enable = true;
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
@@ -227,6 +228,11 @@ in {
     };
 
     services.udiskie.enable = true;
+
+    services.kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
 
     programs.exa = {
       enable = true;
