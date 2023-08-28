@@ -201,6 +201,10 @@ in {
               interval = 60;
             }
             {
+              block = "kdeconnect";
+              bat_good = 101;
+            }
+            {
               block = "time";
               interval = 60;
               format = " $timestamp.datetime(f:'%a %d/%m %R') ";
