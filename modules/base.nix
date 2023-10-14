@@ -551,7 +551,7 @@ in {
 
   programs.java = {
     enable = true;
-    package = pkgs.graalvm17-ce;
+    package = pkgs.graalvm-ce;
   };
 
   virtualisation.docker = {
@@ -610,7 +610,7 @@ in {
     stress
 
     # scala
-    (sbt.override { jre = graalvm17-ce; })
+    (sbt.override { jre = graalvm-ce; })
     scala-cli
     jetbrains.idea-community
     coursier
