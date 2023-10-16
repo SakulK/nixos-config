@@ -28,7 +28,7 @@ require('nvim-treesitter.configs').setup {
     additional_vim_regex_highlighting = false,
   },
 }
-require('indent_blankline').setup()
+require('ibl').setup()
 require('nvim-autopairs').setup()
 require('nvim-web-devicons').setup {
   default = true;
