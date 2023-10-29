@@ -234,7 +234,7 @@ in {
       indicator = true;
     };
 
-    programs.exa = {
+    programs.eza = {
       enable = true;
       enableAliases = true;
     };
