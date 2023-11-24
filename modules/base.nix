@@ -121,7 +121,7 @@ in {
     };
   };
 
-  services.udev.packages = [ pkgs.chrysalis ];
+  services.udev.packages = [ pkgs.chrysalis pkgs.bazecor ];
   services.fwupd.enable = true;
 
   services.autorandr = {
@@ -600,6 +600,7 @@ in {
     dig
     csview
     chrysalis
+    bazecor
     nvd
     unison-ucm
     cachix
