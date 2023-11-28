@@ -588,12 +588,10 @@ in {
     rofi-audio-source
     gitui
     jq
-    killall
     xclip
     mate.eom # image viewer
     cinnamon.nemo-with-extensions # file manager
     gnome.simple-scan
-    gnome.gnome-control-center
     gnome.gnome-disk-utility
     gnome.file-roller
     evince # document viewer
