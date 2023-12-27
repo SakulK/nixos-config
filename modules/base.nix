@@ -183,7 +183,7 @@ in {
             primary = true;
             mode = "2560x1440";
             rate = "144.00";
-            position = "1920x0";
+            position = "0x0";
             crtc = 1;
             dpi = 96;
           };
