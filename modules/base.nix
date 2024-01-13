@@ -328,12 +328,24 @@ in {
         kubernetes = {
           disabled = false;
           format = "[$symbol$context \\($namespace\\) ]($style)";
-          context_aliases = {
-            ".*-ci.*" = "ci";
-            ".*-dev.*" = "dev";
-            ".*-stage.*" = "stage";
-            ".*-prod.*" = "prod";
-          };
+          contexts = [
+            {
+              context_pattern = ".*-ci.*";
+              context_alias = "ci";
+            }
+            {
+              context_pattern = ".*-dev.*";
+              context_alias = "dev";
+            }
+            {
+              context_pattern = ".*-stage.*";
+              context_alias = "stage";
+            }
+            {
+              context_pattern = ".*-prod.*";
+              context_alias = "prod";
+            }
+          ];
         };
         format =
           "$directory$git_branch$git_commit$git_state$git_status$kubernetes$cmd_duration$character";
