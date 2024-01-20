@@ -22,8 +22,6 @@
       url = "github:SakulK/lcat/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    unison = { url = "github:ceedubs/unison-nix"; };
   };
 
   outputs = inputs: {
@@ -39,7 +37,7 @@
         nix-config = ({ pkgs, ... }: {
           nix.extraOptions = "experimental-features = nix-command flakes";
           nix.registry.nixpkgs.flake = inputs.nixpkgs;
-          nixpkgs.overlays = [ custom-overlay inputs.unison.overlay ];
+          nixpkgs.overlays = [ custom-overlay ];
         });
 
       in {

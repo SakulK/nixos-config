@@ -521,7 +521,6 @@ in {
         Shade-nvim
         alpha-nvim
         crates-nvim
-        vim-unison
         vim-illuminate
       ];
       extraLuaConfig = ''require "user.init"'';
@@ -629,7 +628,6 @@ in {
     chrysalis
     bazecor
     nvd
-    unison-ucm
     cachix
 
     # benchmarking
