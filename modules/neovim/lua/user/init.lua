@@ -35,9 +35,6 @@ require('nvim-web-devicons').setup {
 }
 require('Comment').setup()
 require('fidget').setup()
-require('shade').setup({
-  overlay_opacity = 60
-})
 require('scrollbar').setup {
   handlers = {
     cursor = false

@@ -518,10 +518,10 @@ in {
         cmp_luasnip
         fidget-nvim
         nvim-metals
-        Shade-nvim
         alpha-nvim
         crates-nvim
         vim-illuminate
+        vim-fugitive
       ];
       extraLuaConfig = ''require "user.init"'';
     };
