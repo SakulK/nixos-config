@@ -629,6 +629,7 @@ in {
     bazecor
     nvd
     cachix
+    usbutils
 
     # benchmarking
     # geekbench
