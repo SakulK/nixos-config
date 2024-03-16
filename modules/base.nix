@@ -253,7 +253,6 @@ in {
 
     programs.eza = {
       enable = true;
-      enableAliases = true;
     };
 
     programs.bat = {
