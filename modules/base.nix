@@ -76,7 +76,7 @@ in {
 
   services.xserver.enable = true;
   services.xserver.dpi = 96;
-  services.xserver.layout = "pl";
+  services.xserver.xkb.layout = "pl";
   services.xserver.displayManager.defaultSession = "none+i3";
   services.xserver.displayManager.lightdm = {
     enable = true;
@@ -262,7 +262,7 @@ in {
 
     programs.zsh = {
       enable = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       enableCompletion = true;
       initExtra = ''
         ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
