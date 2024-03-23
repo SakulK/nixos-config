@@ -211,6 +211,8 @@ in {
       SBT_NATIVE_CLIENT = "true";
     };
 
+    xsession.enable = true;
+
     gtk = {
       enable = true;
       iconTheme = {
