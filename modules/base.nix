@@ -200,6 +200,13 @@ in {
   programs.zsh.enable = true;
   programs.kdeconnect.enable = true;
 
+  security.pam.loginLimits = [{
+    domain = "*";
+    item = "nofile";
+    type = "-";
+    value = "32768";
+  }];
+
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
     home.stateVersion = "22.11";
@@ -253,9 +260,7 @@ in {
       indicator = true;
     };
 
-    programs.eza = {
-      enable = true;
-    };
+    programs.eza = { enable = true; };
 
     programs.bat = {
       enable = true;
