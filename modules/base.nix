@@ -245,7 +245,10 @@ in {
           plus-style = "syntax #293f2a";
         };
       };
-      extraConfig = { merge = { conflictstyle = "diff3"; }; };
+      extraConfig = {
+        merge = { conflictstyle = "diff3"; };
+        rerere = { enabled = true; };
+      };
     };
 
     programs.direnv = {
