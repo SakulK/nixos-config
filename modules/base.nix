@@ -288,7 +288,7 @@ in {
       shellAliases = {
         cat = "bat -p";
         kcx = "kubectx";
-        gcof = "git checkout $(git branch | fzf)";
+        gcof = "git checkout $(git branch --sort=-committerdate | fzf)";
       };
     };
 
