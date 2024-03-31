@@ -246,8 +246,9 @@ in {
         };
       };
       extraConfig = {
-        merge = { conflictstyle = "diff3"; };
-        rerere = { enabled = true; };
+        merge.conflictstyle = "diff3";
+        rerere.enabled = true;
+        rebase.updateRefs = true;
       };
     };
 
