@@ -77,7 +77,7 @@ in {
   services.xserver.enable = true;
   services.xserver.dpi = 96;
   services.xserver.xkb.layout = "pl";
-  services.xserver.displayManager.defaultSession = "none+i3";
+  services.displayManager.defaultSession = "none+i3";
   services.xserver.displayManager.lightdm = {
     enable = true;
     background = ./wallpaper.png;
@@ -113,7 +113,7 @@ in {
     # };
   };
 
-  services.xserver.libinput = {
+  services.libinput = {
     enable = true;
     mouse = {
       accelProfile = "flat";
