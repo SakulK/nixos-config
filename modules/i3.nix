@@ -1,8 +1,12 @@
 { pkgs, lib, ... }:
 
-let modifier = "Mod4";
-in {
-  services.xserver.windowManager.i3 = { enable = true; };
+let
+  modifier = "Mod4";
+in
+{
+  services.xserver.windowManager.i3 = {
+    enable = true;
+  };
 
   home-manager.users.sakulk = {
     home.file.".wallpaper".source = ./wallpaper.png;
@@ -21,27 +25,22 @@ in {
           "${modifier}+Shift+l" = "move right";
           "${modifier}+Shift+j" = "move down";
           "${modifier}+Shift+k" = "move up";
-          "${modifier}+p" =
-            "exec rofi -show power-menu -modi power-menu:rofi-power-menu";
+          "${modifier}+p" = "exec rofi -show power-menu -modi power-menu:rofi-power-menu";
           "${modifier}+r" = "exec rofi -show run";
           "${modifier}+a" = "exec rofi-audio-sink";
           "${modifier}+Shift+a" = "exec rofi-audio-source";
           "${modifier}+Shift+x" = "exec i3lock-fancy-rapid 10 3";
           "${modifier}+m" = "move workspace to output left";
-          "Print" = ''
-            exec --no-startup-id maim "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%H_%M_%S').png"'';
-          "Shift+Print" = ''
-            exec --no-startup-id maim --select "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%H_%M_%S').png"'';
+          "Print" = ''exec --no-startup-id maim "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%H_%M_%S').png"'';
+          "Shift+Print" = ''exec --no-startup-id maim --select "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%H_%M_%S').png"'';
           "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
           "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
           "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
           "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
           "XF86MonBrightnessUp" = "exec light -A 30";
           "XF86MonBrightnessDown" = "exec light -U 30";
-          "XF86AudioRaiseVolume" =
-            "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
-          "XF86AudioLowerVolume" =
-            "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+          "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+          "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
           "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
         };
         startup = [
@@ -59,10 +58,14 @@ in {
         window = {
           border = 2;
           titlebar = false;
-          commands = [{
-            command = "border pixel 2";
-            criteria = { class = ".*"; };
-          }];
+          commands = [
+            {
+              command = "border pixel 2";
+              criteria = {
+                class = ".*";
+              };
+            }
+          ];
         };
         gaps = {
           smartBorders = "on";
@@ -100,54 +103,55 @@ in {
             text = "#504945";
           };
         };
-        bars = [{
-          mode = "dock";
-          hiddenState = "hide";
-          position = "top";
-          workspaceButtons = true;
-          workspaceNumbers = true;
-          statusCommand =
-            "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
-          fonts = {
-            names = [ "JetBrainsMono Nerd Font" ];
-            size = 11.0;
-          };
-          trayOutput = "primary";
-          extraConfig = ''
-            tray_padding 5
-            workspace_min_width 40
-          '';
-          colors = {
-            background = "#282828";
-            statusline = "#ebdbb2";
-            separator = "#504945";
-            focusedWorkspace = {
-              border = "#d79921";
-              background = "#d79921";
-              text = "#282828";
+        bars = [
+          {
+            mode = "dock";
+            hiddenState = "hide";
+            position = "top";
+            workspaceButtons = true;
+            workspaceNumbers = true;
+            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+            fonts = {
+              names = [ "JetBrainsMono Nerd Font" ];
+              size = 11.0;
             };
-            activeWorkspace = {
-              border = "#504945";
-              background = "#504945";
-              text = "#d79921";
+            trayOutput = "primary";
+            extraConfig = ''
+              tray_padding 5
+              workspace_min_width 40
+            '';
+            colors = {
+              background = "#282828";
+              statusline = "#ebdbb2";
+              separator = "#504945";
+              focusedWorkspace = {
+                border = "#d79921";
+                background = "#d79921";
+                text = "#282828";
+              };
+              activeWorkspace = {
+                border = "#504945";
+                background = "#504945";
+                text = "#d79921";
+              };
+              inactiveWorkspace = {
+                border = "#504945";
+                background = "#504945";
+                text = "#282828";
+              };
+              urgentWorkspace = {
+                border = "#9d0006";
+                background = "#9d0006";
+                text = "#ebdbb2";
+              };
+              bindingMode = {
+                border = "#9d0006";
+                background = "#9d0006";
+                text = "#ebdbb2";
+              };
             };
-            inactiveWorkspace = {
-              border = "#504945";
-              background = "#504945";
-              text = "#282828";
-            };
-            urgentWorkspace = {
-              border = "#9d0006";
-              background = "#9d0006";
-              text = "#ebdbb2";
-            };
-            bindingMode = {
-              border = "#9d0006";
-              background = "#9d0006";
-              text = "#ebdbb2";
-            };
-          };
-        }];
+          }
+        ];
       };
     };
 
@@ -161,8 +165,7 @@ in {
           blocks = [
             {
               block = "music";
-              format =
-                " $icon {$title.str(max_w:20,rot_interval:0.5) $play $next |}";
+              format = " $icon {$title.str(max_w:20,rot_interval:0.5) $play $next |}";
               player = "spotify";
             }
             {
@@ -188,10 +191,12 @@ in {
             {
               block = "net";
               format = " $icon {$ssid $frequency|} ";
-              click = [{
-                button = "left";
-                cmd = "alacritty -e nmtui";
-              }];
+              click = [
+                {
+                  button = "left";
+                  cmd = "alacritty -e nmtui";
+                }
+              ];
             }
             { block = "sound"; }
             {
@@ -214,5 +219,4 @@ in {
       };
     };
   };
-
 }

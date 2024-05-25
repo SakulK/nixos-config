@@ -3,16 +3,26 @@
 let
   rofi-audio-sink = pkgs.writeShellApplication {
     name = "rofi-audio-sink";
-    runtimeInputs = [ pkgs.ponymix pkgs.rofi ];
+    runtimeInputs = [
+      pkgs.ponymix
+      pkgs.rofi
+    ];
     text = builtins.readFile ./scripts/rofi-audio-sink.sh;
   };
   rofi-audio-source = pkgs.writeShellApplication {
     name = "rofi-audio-source";
-    runtimeInputs = [ pkgs.ponymix pkgs.rofi ];
+    runtimeInputs = [
+      pkgs.ponymix
+      pkgs.rofi
+    ];
     text = builtins.readFile ./scripts/rofi-audio-source.sh;
   };
-in {
-  nix.settings.trusted-users = [ "root" "sakulk" ];
+in
+{
+  nix.settings.trusted-users = [
+    "root"
+    "sakulk"
+  ];
   nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "Europe/Warsaw";
@@ -57,7 +67,11 @@ in {
   };
   hardware.bluetooth = {
     enable = true;
-    settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
     disabledPlugins = [ "sap" ];
   };
 
@@ -121,7 +135,10 @@ in {
     };
   };
 
-  services.udev.packages = [ pkgs.chrysalis pkgs.bazecor ];
+  services.udev.packages = [
+    pkgs.chrysalis
+    pkgs.bazecor
+  ];
   services.fwupd.enable = true;
 
   services.autorandr = {
@@ -129,10 +146,8 @@ in {
     profiles = {
       "desktop" = {
         fingerprint = {
-          DP-0 =
-            "00ffffffffffff000469ec272d1a0000091d0104a53c227806ee91a3544c99260f505421080001010101010101010101010101010101565e00a0a0a029503020350056502100001a000000ff002341534f6e796b793363454864000000fd001e9022de3b010a202020202020000000fc00524f47205047323739510a202001d2020312412309070183010000654b040001015a8700a0a0a03b503020350056502100001a5aa000a0a0a046503020350056502100001a6fc200a0a0a055503020350056502100001a22e50050a0a0675008203a0056502100001e1c2500a0a0a011503020350056502100001a0000000000000000000000000000000000000019";
-          HDMI-0 =
-            "00ffffffffffff0015c35624010101012c17010380351e78ea219da35a52a026144b54a54b003168317c4568457c6168617c8180d1c0023a801871382d40582c45000a262100001e000000ff0032373230353130330a20202020000000fd00177a0f640f000a202020202020000000fc004647323432310a202020202020019c020326f14f901f05140413031202110716061520230907078301000066030c00100080e2007b011d8018711c1620582c25000a262100009e011d80d0721c1620102c25800a262100009e8c0ad08a20e02d10103e96000a26210000188c0ad090204031200c4055000a26210000180000000000000000000000000000000000d8";
+          DP-0 = "00ffffffffffff000469ec272d1a0000091d0104a53c227806ee91a3544c99260f505421080001010101010101010101010101010101565e00a0a0a029503020350056502100001a000000ff002341534f6e796b793363454864000000fd001e9022de3b010a202020202020000000fc00524f47205047323739510a202001d2020312412309070183010000654b040001015a8700a0a0a03b503020350056502100001a5aa000a0a0a046503020350056502100001a6fc200a0a0a055503020350056502100001a22e50050a0a0675008203a0056502100001e1c2500a0a0a011503020350056502100001a0000000000000000000000000000000000000019";
+          HDMI-0 = "00ffffffffffff0015c35624010101012c17010380351e78ea219da35a52a026144b54a54b003168317c4568457c6168617c8180d1c0023a801871382d40582c45000a262100001e000000ff0032373230353130330a20202020000000fd00177a0f640f000a202020202020000000fc004647323432310a202020202020019c020326f14f901f05140413031202110716061520230907078301000066030c00100080e2007b011d8018711c1620582c25000a262100009e011d80d0721c1620102c25800a262100009e8c0ad08a20e02d10103e96000a26210000188c0ad090204031200c4055000a26210000180000000000000000000000000000000000d8";
         };
         config = {
           DP-0 = {
@@ -157,8 +172,7 @@ in {
       };
       "desktop-single-hdmi" = {
         fingerprint = {
-          HDMI-0 =
-            "00ffffffffffff000469ec2701010101091d0103803c22780eee91a3544c99260f505421080001010101010101010101010101010101565e00a0a0a029503020350056502100001a000000ff004b334c4d51533030363730310a000000fd00183c1e8c1e010a202020202020000000fc00524f47205047323739510a2020016502031ac147901f0413031201230907018301000065030c0010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c1";
+          HDMI-0 = "00ffffffffffff000469ec2701010101091d0103803c22780eee91a3544c99260f505421080001010101010101010101010101010101565e00a0a0a029503020350056502100001a000000ff004b334c4d51533030363730310a000000fd00183c1e8c1e010a202020202020000000fc00524f47205047323739510a2020016502031ac147901f0413031201230907018301000065030c0010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c1";
         };
         config = {
           HDMI-0 = {
@@ -174,8 +188,7 @@ in {
       };
       "desktop-single-dp" = {
         fingerprint = {
-          DP-0 =
-            "00ffffffffffff000469ec272d1a0000091d0104a53c227806ee91a3544c99260f505421080001010101010101010101010101010101565e00a0a0a029503020350056502100001a000000ff002341534f6e796b793363454864000000fd001e9022de3b010a202020202020000000fc00524f47205047323739510a202001d2020312412309070183010000654b040001015a8700a0a0a03b503020350056502100001a5aa000a0a0a046503020350056502100001a6fc200a0a0a055503020350056502100001a22e50050a0a0675008203a0056502100001e1c2500a0a0a011503020350056502100001a0000000000000000000000000000000000000019";
+          DP-0 = "00ffffffffffff000469ec272d1a0000091d0104a53c227806ee91a3544c99260f505421080001010101010101010101010101010101565e00a0a0a029503020350056502100001a000000ff002341534f6e796b793363454864000000fd001e9022de3b010a202020202020000000fc00524f47205047323739510a202001d2020312412309070183010000654b040001015a8700a0a0a03b503020350056502100001a5aa000a0a0a046503020350056502100001a6fc200a0a0a055503020350056502100001a22e50050a0a0675008203a0056502100001e1c2500a0a0a011503020350056502100001a0000000000000000000000000000000000000019";
         };
         config = {
           DP-0 = {
@@ -200,18 +213,19 @@ in {
   programs.zsh.enable = true;
   programs.kdeconnect.enable = true;
 
-  security.pam.loginLimits = [{
-    domain = "*";
-    item = "nofile";
-    type = "-";
-    value = "32768";
-  }];
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      item = "nofile";
+      type = "-";
+      value = "32768";
+    }
+  ];
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
     home.stateVersion = "22.11";
-    home.file.".icons/default".source =
-      "${pkgs.numix-cursor-theme}/share/icons/Numix-Cursor-Light";
+    home.file.".icons/default".source = "${pkgs.numix-cursor-theme}/share/icons/Numix-Cursor-Light";
 
     home.sessionVariables = {
       TERMINAL = "alacritty";
@@ -264,11 +278,15 @@ in {
       indicator = true;
     };
 
-    programs.eza = { enable = true; };
+    programs.eza = {
+      enable = true;
+    };
 
     programs.bat = {
       enable = true;
-      config = { theme = "gruvbox-dark"; };
+      config = {
+        theme = "gruvbox-dark";
+      };
     };
 
     programs.zsh = {
@@ -280,12 +298,18 @@ in {
       '';
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "kubectl" "tmux" ];
+        plugins = [
+          "git"
+          "kubectl"
+          "tmux"
+        ];
       };
-      plugins = [{
-        name = "fast-syntax-highlighting";
-        src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
-      }];
+      plugins = [
+        {
+          name = "fast-syntax-highlighting";
+          src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
+        }
+      ];
       shellAliases = {
         cat = "bat -p";
         kcx = "kubectx";
@@ -357,15 +381,16 @@ in {
             }
           ];
         };
-        format =
-          "$directory$git_branch$git_commit$git_state$git_status$kubernetes$cmd_duration$character";
+        format = "$directory$git_branch$git_commit$git_state$git_status$kubernetes$cmd_duration$character";
       };
     };
 
     programs.alacritty = {
       enable = true;
       settings = {
-        env = { TERM = "xterm-256color"; };
+        env = {
+          TERM = "xterm-256color";
+        };
         colors = {
           primary = {
             background = "#282828";
@@ -382,7 +407,6 @@ in {
             magenta = "#d3869b";
             cyan = "#8ec07c";
             white = "#ebdbb2";
-
           };
           normal = {
             black = "#282828";
@@ -507,14 +531,15 @@ in {
         lualine-nvim
         gitsigns-nvim
         indent-blankline-nvim-lua
-        (nvim-treesitter.withPlugins (plugins:
-          with plugins; [
+        (nvim-treesitter.withPlugins (
+          plugins: with plugins; [
             tree-sitter-scala
             tree-sitter-nix
             tree-sitter-rust
             tree-sitter-haskell
             tree-sitter-lua
-          ]))
+          ]
+        ))
         nvim-lspconfig
         nvim-autopairs
         comment-nvim
@@ -597,18 +622,22 @@ in {
     enableOnBoot = false;
   };
 
-  fonts.packages =
-    [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+  fonts.packages = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
-  environment.shells = with pkgs; [ bashInteractive zsh ];
-  environment.variables = { WINIT_X11_SCALE_FACTOR = "1"; };
+  environment.shells = with pkgs; [
+    bashInteractive
+    zsh
+  ];
+  environment.variables = {
+    WINIT_X11_SCALE_FACTOR = "1";
+  };
   environment.systemPackages = with pkgs; [
     wget
     git
     firefox
     spotify
     vlc
-    nixfmt
+    nixfmt-rfc-style
     nil
     lcat
     fd

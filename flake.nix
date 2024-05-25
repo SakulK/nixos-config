@@ -1,7 +1,9 @@
 {
   nixConfig = {
-    substituters =
-      [ "https://cache.nixos.org" "https://sakulk-nixos.cachix.org" ];
+    substituters = [
+      "https://cache.nixos.org"
+      "https://sakulk-nixos.cachix.org"
+    ];
 
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -34,16 +36,21 @@
           lcat = inputs.lcat.packages.x86_64-linux.default;
         };
 
-        nix-config = ({ pkgs, ... }: {
-          nix.extraOptions = "experimental-features = nix-command flakes";
-          nix.registry.nixpkgs.flake = inputs.nixpkgs;
-          nixpkgs.overlays = [ custom-overlay ];
-        });
-
-      in {
+        nix-config = (
+          { pkgs, ... }:
+          {
+            nix.extraOptions = "experimental-features = nix-command flakes";
+            nix.registry.nixpkgs.flake = inputs.nixpkgs;
+            nixpkgs.overlays = [ custom-overlay ];
+          }
+        );
+      in
+      {
         saku-nixos = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             inputs.home-manager.nixosModules.home-manager
             "${inputs.nixpkgs}/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix"
@@ -54,7 +61,9 @@
         };
         saku-thinkpad = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             inputs.home-manager.nixosModules.home-manager
             "${inputs.nixpkgs}/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix"

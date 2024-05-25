@@ -1,12 +1,22 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ../modules/base.nix ../modules/printer.nix ../modules/i3.nix ];
+  imports = [
+    ../modules/base.nix
+    ../modules/printer.nix
+    ../modules/i3.nix
+  ];
 
   powerManagement.cpuFreqGovernor = "ondemand";
   # Use the GRUB 2 boot loader.
-  boot.initrd.availableKernelModules =
-    [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "ahci"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -14,8 +24,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.extraModprobeConfig =
-    "options hid_apple fnmode=2"; # enable F keys for Keychron K2
+  boot.extraModprobeConfig = "options hid_apple fnmode=2"; # enable F keys for Keychron K2
 
   boot.initrd.luks.devices = {
     root = {
@@ -28,7 +37,11 @@
   fileSystems."/" = {
     device = "/dev/disk/by-label/root";
     fsType = "ext4";
-    options = [ "noatime" "nodiratime" "discard" ];
+    options = [
+      "noatime"
+      "nodiratime"
+      "discard"
+    ];
   };
 
   fileSystems."/boot" = {
@@ -36,7 +49,7 @@
     fsType = "vfat";
   };
 
-  swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
+  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
   hardware.cpu.amd.updateMicrocode = true;
@@ -72,7 +85,11 @@
     configPackages = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  environment.systemPackages = with pkgs; [ qbittorrent kdenlive pitivi ];
+  environment.systemPackages = with pkgs; [
+    qbittorrent
+    kdenlive
+    pitivi
+  ];
 
   # virtualisation.virtualbox.host.enable = true;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
@@ -92,5 +109,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }
