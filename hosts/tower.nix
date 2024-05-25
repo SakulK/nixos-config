@@ -66,8 +66,11 @@
   };
   programs.steam.enable = true;
   services.flatpak.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    configPackages = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   environment.systemPackages = with pkgs; [ qbittorrent kdenlive pitivi ];
 
