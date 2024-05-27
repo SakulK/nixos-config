@@ -302,6 +302,7 @@ in
           "git"
           "kubectl"
           "tmux"
+          "bazel"
         ];
       };
       plugins = [
