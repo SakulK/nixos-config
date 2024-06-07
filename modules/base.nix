@@ -97,13 +97,9 @@ in
     background = ./wallpaper.png;
     greeters.gtk = {
       enable = true;
-      iconTheme = {
-        package = pkgs.gruvbox-dark-gtk;
-        name = "gruvbox-dark";
-      };
       theme = {
-        package = pkgs.gruvbox-dark-icons-gtk;
-        name = "gruvbox-dark";
+        package = pkgs.gruvbox-gtk-theme;
+        name = "Gruvbox-Dark-BL-LB";
       };
       cursorTheme = {
         package = pkgs.numix-cursor-theme;
@@ -236,13 +232,9 @@ in
 
     gtk = {
       enable = true;
-      iconTheme = {
-        package = pkgs.gruvbox-dark-gtk;
-        name = "gruvbox-dark";
-      };
       theme = {
-        package = pkgs.gruvbox-dark-icons-gtk;
-        name = "gruvbox-dark";
+        package = pkgs.gruvbox-gtk-theme;
+        name = "Gruvbox-Dark-BL-LB";
       };
     };
 
