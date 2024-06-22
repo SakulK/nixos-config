@@ -98,7 +98,7 @@ in
     greeters.gtk = {
       enable = true;
       theme = {
-        package = pkgs.gruvbox-gtk-theme;
+        package = pkgs.stable.gruvbox-gtk-theme;
         name = "Gruvbox-Dark-BL-LB";
       };
       cursorTheme = {
@@ -237,7 +237,7 @@ in
     gtk = {
       enable = true;
       theme = {
-        package = pkgs.gruvbox-gtk-theme;
+        package = pkgs.stable.gruvbox-gtk-theme;
         name = "Gruvbox-Dark-BL-LB";
       };
     };
