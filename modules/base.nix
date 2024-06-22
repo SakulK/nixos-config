@@ -208,6 +208,10 @@ in
   programs.dconf.enable = true;
   programs.zsh.enable = true;
   programs.kdeconnect.enable = true;
+  programs.ssh = {
+    startAgent = true;
+    agentTimeout = "4h";
+  };
 
   security.pam.loginLimits = [
     {
