@@ -655,9 +655,9 @@ in
     xclip
     mate.eom # image viewer
     cinnamon.nemo-with-extensions # file manager
-    simple-scan
-    gnome-disk-utility
-    file-roller
+    gnome.simple-scan
+    gnome.gnome-disk-utility
+    gnome.file-roller
     evince # document viewer
     dig
     csview
