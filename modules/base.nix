@@ -262,6 +262,11 @@ in
       };
     };
 
+    programs.ssh = {
+      enable = true;
+      addKeysToAgent = "yes";
+    };
+
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
