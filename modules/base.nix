@@ -210,7 +210,7 @@ in
   programs.kdeconnect.enable = true;
   programs.ssh = {
     startAgent = true;
-    agentTimeout = "4h";
+    agentTimeout = "8h";
   };
 
   security.pam.loginLimits = [
