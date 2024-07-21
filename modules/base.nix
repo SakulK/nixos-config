@@ -52,7 +52,6 @@ in
 
   systemd.services.NetworkManager-wait-online.enable = false;
   networking.dhcpcd.wait = "background";
-  sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
