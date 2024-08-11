@@ -658,10 +658,10 @@ in
     jq
     xclip
     mate.eom # image viewer
-    cinnamon.nemo-with-extensions # file manager
-    gnome.simple-scan
-    gnome.gnome-disk-utility
-    gnome.file-roller
+    nemo-with-extensions # file manager
+    simple-scan
+    gnome-disk-utility
+    file-roller
     evince # document viewer
     dig
     csview
