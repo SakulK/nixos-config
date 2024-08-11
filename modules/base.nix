@@ -52,7 +52,6 @@ in
 
   systemd.services.NetworkManager-wait-online.enable = false;
   networking.dhcpcd.wait = "background";
-  sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
@@ -98,8 +97,8 @@ in
     greeters.gtk = {
       enable = true;
       theme = {
-        package = pkgs.stable.gruvbox-gtk-theme;
-        name = "Gruvbox-Dark-BL-LB";
+        package = pkgs.gruvbox-gtk-theme;
+        name = "Gruvbox-Dark";
       };
       cursorTheme = {
         package = pkgs.numix-cursor-theme;
@@ -237,8 +236,8 @@ in
     gtk = {
       enable = true;
       theme = {
-        package = pkgs.stable.gruvbox-gtk-theme;
-        name = "Gruvbox-Dark-BL-LB";
+        package = pkgs.gruvbox-gtk-theme;
+        name = "Gruvbox-Dark";
       };
     };
 
@@ -659,10 +658,10 @@ in
     jq
     xclip
     mate.eom # image viewer
-    cinnamon.nemo-with-extensions # file manager
-    gnome.simple-scan
-    gnome.gnome-disk-utility
-    gnome.file-roller
+    nemo-with-extensions # file manager
+    simple-scan
+    gnome-disk-utility
+    file-roller
     evince # document viewer
     dig
     csview
