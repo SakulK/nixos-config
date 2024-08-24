@@ -85,12 +85,6 @@
     configPackages = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  environment.systemPackages = with pkgs; [
-    qbittorrent
-    kdenlive
-    pitivi
-  ];
-
   # virtualisation.virtualbox.host.enable = true;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
 
