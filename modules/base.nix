@@ -17,6 +17,13 @@ let
     ];
     text = builtins.readFile ./scripts/rofi-audio-source.sh;
   };
+  gruvbox-gtk-theme = pkgs.gruvbox-gtk-theme.override {
+    colorVariants = [ "dark" ];
+    themeVariants = [ "orange" ];
+    iconVariants = [ "Dark" ];
+  };
+  gruvbox-gtk-theme-name = "Gruvbox-Orange-Dark";
+  gruvbox-gtk-icon-theme-name = "Gruvbox-Dark";
 in
 {
   nix.settings.trusted-users = [
@@ -97,8 +104,12 @@ in
     greeters.gtk = {
       enable = true;
       theme = {
-        package = pkgs.gruvbox-gtk-theme;
-        name = "Gruvbox-Dark";
+        package = gruvbox-gtk-theme;
+        name = gruvbox-gtk-theme-name;
+      };
+      iconTheme = {
+        package = gruvbox-gtk-theme;
+        name = gruvbox-gtk-icon-theme-name;
       };
       cursorTheme = {
         package = pkgs.numix-cursor-theme;
@@ -236,8 +247,12 @@ in
     gtk = {
       enable = true;
       theme = {
-        package = pkgs.gruvbox-gtk-theme;
-        name = "Gruvbox-Dark";
+        package = gruvbox-gtk-theme;
+        name = gruvbox-gtk-theme-name;
+      };
+      iconTheme = {
+        package = gruvbox-gtk-theme;
+        name = gruvbox-gtk-icon-theme-name;
       };
     };
 
