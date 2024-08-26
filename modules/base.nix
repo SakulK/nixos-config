@@ -24,6 +24,7 @@ let
   };
   gruvbox-gtk-theme-name = "Gruvbox-Yellow-Dark";
   gruvbox-gtk-icon-theme-name = "Gruvbox-Dark";
+  colors = import ./colors;
 in
 {
   nix.settings.trusted-users = [
@@ -123,12 +124,12 @@ in
     #     [greeter]
     #     show-password-label = false
     #     [greeter-theme]
-    #     error-color = "#ebdbb2"
-    #     window-color = "#1d2021"
-    #     border-color = "#1d2021"
-    #     password-color = "#1d2021"
-    #     password-background-color = "#d79921"
-    #     password-border-color = "#1d2021"
+    #     error-color = "${colors.fg}"
+    #     window-color = "${colors.bg0_h}"
+    #     border-color = "${colors.bg0_h}"
+    #     password-color = "${colors.bg0_h}"
+    #     password-background-color = "${colors.yellow}"
+    #     password-border-color = "${colors.bg0_h}"
     #   '';
     # };
   };
@@ -339,8 +340,8 @@ in
       defaultCommand = "fd --type f";
       defaultOptions = [
         "--reverse"
-        "--color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f"
-        "--color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54"
+        "--color fg:${colors.fg},bg:${colors.bg0},hl:${colors.light_yellow},fg+:${colors.fg},bg+:${colors.bg1},hl+:${colors.light_yellow}"
+        "--color info:${colors.light_blue},prompt:${colors.fg3},spinner:${colors.light_yellow},pointer:${colors.light_blue},marker:${colors.orange},header:${colors.bg3}"
       ];
       fileWidgetCommand = "fd --type f";
       fileWidgetOptions = [ "--preview='bat {} --color=always'" ];
@@ -355,7 +356,7 @@ in
         directory = {
           truncate_to_repo = false;
           truncation_length = 5;
-          style = "bold #d79921";
+          style = "bold ${colors.yellow}";
         };
         character = {
           success_symbol = "[λ](bold blue)";
@@ -409,40 +410,40 @@ in
         };
         colors = {
           primary = {
-            background = "#282828";
-            foreground = "#ebdbb2";
-            bright_foreground = "#fbf1c7";
-            dim_foreground = "#a89984";
+            background = colors.bg0;
+            foreground = colors.fg;
+            bright_foreground = colors.fg0;
+            dim_foreground = colors.fg4;
           };
           bright = {
-            black = "#928374";
-            red = "#fb4934";
-            green = "#b8bb26";
-            yellow = "#fabd2f";
-            blue = "#83a598";
-            magenta = "#d3869b";
-            cyan = "#8ec07c";
-            white = "#ebdbb2";
+            black = colors.gray;
+            red = colors.light_red;
+            green = colors.light_green;
+            yellow = colors.light_yellow;
+            blue = colors.light_blue;
+            magenta = colors.light_purple;
+            cyan = colors.light_aqua;
+            white = colors.fg;
           };
           normal = {
-            black = "#282828";
-            red = "#cc241d";
-            green = "#98971a";
-            yellow = "#d79921";
-            blue = "#458588";
-            magenta = "#b16286";
-            cyan = "#689d6a";
-            white = "#a89984";
+            black = colors.bg0;
+            red = colors.red;
+            green = colors.green;
+            yellow = colors.yellow;
+            blue = colors.blue;
+            magenta = colors.purple;
+            cyan = colors.aqua;
+            white = colors.fg4;
           };
           dim = {
-            black = "#32302f";
-            red = "#9d0006";
-            green = "#79740e";
-            yellow = "#b57614";
-            blue = "#076678";
-            magenta = "#8f3f71";
-            cyan = "#427b58";
-            white = "#928374";
+            black = colors.bg0_s;
+            red = colors.dark_red;
+            green = colors.dark_green;
+            yellow = colors.dark_yellow;
+            blue = colors.dark_blue;
+            magenta = colors.dark_purple;
+            cyan = colors.dark_aqua;
+            white = colors.gray;
           };
         };
         font = {
@@ -486,7 +487,7 @@ in
           horizontal_padding = 8;
           browser = "${pkgs.firefox}/bin/firefox -new-tab";
           frame_width = 3;
-          frame_color = "#928374";
+          frame_color = colors.gray;
           word_wrap = true;
           format = ''
             <b>%s</b>
@@ -495,20 +496,20 @@ in
           max_icon_size = 64;
         };
         urgency_low = {
-          background = "#282828";
-          foreground = "#a89984";
+          background = colors.bg0;
+          foreground = colors.fg4;
           timeout = 5;
         };
 
         urgency_normal = {
-          background = "#282828";
-          foreground = "#a89984";
+          background = colors.bg0;
+          foreground = colors.fg4;
           timeout = 10;
         };
 
         urgency_critical = {
-          foreground = "#9d0006";
-          background = "#282828";
+          foreground = colors.dark_red;
+          background = colors.bg0;
           timeout = 0;
         };
       };

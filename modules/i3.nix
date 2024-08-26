@@ -2,6 +2,7 @@
 
 let
   modifier = "Mod4";
+  colors = import ./colors;
 in
 {
   services.xserver.windowManager.i3 = {
@@ -75,32 +76,32 @@ in
         };
         colors = {
           focused = {
-            background = "#282828";
-            border = "#7c6f64";
-            childBorder = "#7c6f64";
-            indicator = "#7c6f64";
-            text = "#ebdbb2";
+            background = colors.bg0;
+            border = colors.bg4;
+            childBorder = colors.bg4;
+            indicator = colors.bg4;
+            text = colors.fg;
           };
           focusedInactive = {
-            background = "#282828";
-            border = "#1d2021";
-            childBorder = "#1d2021";
-            indicator = "#1d2021";
-            text = "#a89984";
+            background = colors.bg0;
+            border = colors.bg0_h;
+            childBorder = colors.bg0_h;
+            indicator = colors.bg0_h;
+            text = colors.fg4;
           };
           unfocused = {
-            background = "#282828";
-            border = "#1d2021";
-            childBorder = "#1d2021";
-            indicator = "#1d2021";
-            text = "#504945";
+            background = colors.bg0;
+            border = colors.bg0_h;
+            childBorder = colors.bg0_h;
+            indicator = colors.bg0_h;
+            text = colors.bg2;
           };
           placeholder = {
-            background = "#282828";
-            border = "#1d2021";
-            childBorder = "#1d2021";
-            indicator = "#1d2021";
-            text = "#504945";
+            background = colors.bg0;
+            border = colors.bg0_h;
+            childBorder = colors.bg0_h;
+            indicator = colors.bg0_h;
+            text = colors.bg2;
           };
         };
         bars = [
@@ -121,33 +122,33 @@ in
               workspace_min_width 40
             '';
             colors = {
-              background = "#282828";
-              statusline = "#ebdbb2";
-              separator = "#504945";
+              background = colors.bg0;
+              statusline = colors.fg;
+              separator = colors.bg2;
               focusedWorkspace = {
-                border = "#d79921";
-                background = "#d79921";
-                text = "#282828";
+                border = colors.yellow;
+                background = colors.yellow;
+                text = colors.bg0;
               };
               activeWorkspace = {
-                border = "#504945";
-                background = "#504945";
-                text = "#d79921";
+                border = colors.bg2;
+                background = colors.bg2;
+                text = colors.yellow;
               };
               inactiveWorkspace = {
-                border = "#504945";
-                background = "#504945";
-                text = "#282828";
+                border = colors.bg2;
+                background = colors.bg2;
+                text = colors.bg0;
               };
               urgentWorkspace = {
-                border = "#9d0006";
-                background = "#9d0006";
-                text = "#ebdbb2";
+                border = colors.dark_red;
+                background = colors.dark_red;
+                text = colors.fg;
               };
               bindingMode = {
-                border = "#9d0006";
-                background = "#9d0006";
-                text = "#ebdbb2";
+                border = colors.dark_red;
+                background = colors.dark_red;
+                text = colors.fg;
               };
             };
           }
