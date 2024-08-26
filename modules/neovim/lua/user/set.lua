@@ -14,7 +14,8 @@ vim.opt.cursorline = true;
 vim.opt.undofile = true;
 vim.opt.smartcase = true;
 vim.opt.ignorecase = true;
-vim.g.gruvbox_material_palette = "mix"
+vim.g.gruvbox_material_palette = "material"
 vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 vim.g.gruvbox_material_diagnostic_text_highlight = true
+vim.g.gruvbox_material_dim_inactive_windows = true
 vim.cmd[[colorscheme gruvbox-material]]
