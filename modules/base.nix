@@ -19,10 +19,10 @@ let
   };
   gruvbox-gtk-theme = pkgs.gruvbox-gtk-theme.override {
     colorVariants = [ "dark" ];
-    themeVariants = [ "orange" ];
+    themeVariants = [ "yellow" ];
     iconVariants = [ "Dark" ];
   };
-  gruvbox-gtk-theme-name = "Gruvbox-Orange-Dark";
+  gruvbox-gtk-theme-name = "Gruvbox-Yellow-Dark";
   gruvbox-gtk-icon-theme-name = "Gruvbox-Dark";
 in
 {
