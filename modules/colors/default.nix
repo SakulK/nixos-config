@@ -1,1 +1,1 @@
-import ./gruvbox.nix
+import ./gruvbox-material.nix
