@@ -574,6 +574,7 @@ in
         crates-nvim
         vim-illuminate
         vim-fugitive
+        pkgs.vim-unison
       ];
       extraLuaConfig = ''require "user.init"'';
     };
@@ -686,6 +687,7 @@ in
     nvd
     cachix
     usbutils
+    unison-ucm
 
     # benchmarking
     # geekbench
