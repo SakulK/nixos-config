@@ -65,6 +65,7 @@
   networking.interfaces.enp4s0.useDHCP = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = true;
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
