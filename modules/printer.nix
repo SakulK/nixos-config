@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  printerIp = "192.168.100.15";
+  printerIp = "192.168.68.56";
 in
 {
   services.printing.enable = true;
