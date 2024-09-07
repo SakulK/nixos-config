@@ -526,8 +526,11 @@ in
 
     programs.rofi = {
       enable = true;
-      theme = "gruvbox-dark-hard";
+      theme = "gruvbox-dark";
       plugins = [ pkgs.rofi-power-menu ];
+      extraConfig = {
+        font = "JetBrainsMono Nerd Font 14";
+      };
     };
 
     home.file.".config/nvim/lua".source = ./neovim/lua;

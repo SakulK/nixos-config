@@ -14,7 +14,7 @@ in
     xsession.windowManager.i3 = {
       enable = true;
       config = {
-        menu = "rofi -show drun";
+        menu = "rofi -show drun -show-icons";
         modifier = modifier;
         terminal = "--no-startup-id alacritty";
         keybindings = lib.mkOptionDefault {
