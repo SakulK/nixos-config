@@ -700,7 +700,7 @@ in
     # scala
     (sbt.override { jre = graalvm-ce; })
     scala-cli
-    stable.jetbrains.idea-community
+    jetbrains.idea-community
     coursier
     metals
 
