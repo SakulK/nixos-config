@@ -127,6 +127,12 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
+  if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+    vim.keymap.set('n', '<leader>th', function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end, { buffer = bufnr, desc = 'Toggle Inlay Hints' })
+  end
+
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -167,8 +173,12 @@ vim.cmd([[augroup end]])
 metals_config = require("metals").bare_config()
 metals_config.on_attach = on_attach
 metals_config.settings = {
-  showImplicitArguments = true,
-  useGlobalExecutable = true
+  useGlobalExecutable = true,
+  inlayHints = {
+    hintsInPatternMatch = { enable = true },
+    implicitArguments = { enable = true },
+    inferredTypes = { enable = true },
+  }
 }
 
 metals_config.capabilities = capabilities
