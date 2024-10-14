@@ -302,7 +302,7 @@ in
       autosuggestion.enable = true;
       enableCompletion = true;
       initExtra = ''
-        ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
+        ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
       '';
       oh-my-zsh = {
         enable = true;
@@ -390,7 +390,12 @@ in
             }
           ];
         };
-        format = "$directory$git_branch$git_commit$git_state$git_status$kubernetes$cmd_duration$character";
+        nix_shell = {
+          symbol = "";
+          format = "[$symbol $name]($style) ";
+          disabled = false;
+        };
+        format = "$directory$nix_shell$git_branch$git_commit$git_state$git_status$kubernetes$cmd_duration$character";
       };
     };
 
@@ -683,6 +688,7 @@ in
     cachix
     usbutils
     unison-ucm
+    zoom-us
 
     # benchmarking
     # geekbench
