@@ -665,6 +665,7 @@ in
     bottom
     procs
     hyperfine
+    poop
     i3lock-fancy-rapid
     rofi-power-menu
     htop
