@@ -371,7 +371,7 @@ in
           stashed = "[󰏗](yellow)";
         };
         kubernetes = {
-          disabled = false;
+          disabled = true;
           format = "[$symbol$context \\($namespace\\) ]($style)";
           contexts = [
             {
