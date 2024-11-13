@@ -225,6 +225,8 @@ in
     }
   ];
 
+  services.tailscale.enable = true;
+
   home-manager.useGlobalPkgs = true;
   home-manager.users.sakulk = {
     home.stateVersion = "22.11";
