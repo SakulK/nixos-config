@@ -221,7 +221,7 @@ in
       domain = "*";
       item = "nofile";
       type = "-";
-      value = "32768";
+      value = "524288";
     }
   ];
 
@@ -692,6 +692,7 @@ in
     usbutils
     unison-ucm
     zoom-us
+    lutris
 
     # benchmarking
     # geekbench
