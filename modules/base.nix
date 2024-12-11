@@ -642,7 +642,7 @@ in
     enableOnBoot = false;
   };
 
-  fonts.packages = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
   environment.shells = with pkgs; [
     bashInteractive
