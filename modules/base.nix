@@ -692,7 +692,6 @@ in
     usbutils
     unison-ucm
     zoom-us
-    lutris
 
     # benchmarking
     # geekbench

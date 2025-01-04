@@ -87,6 +87,11 @@
     configPackages = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
+  environment.systemPackages = with pkgs; [
+    wowup-cf
+    lutris
+  ];
+
   # virtualisation.virtualbox.host.enable = true;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
 
