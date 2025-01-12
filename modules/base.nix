@@ -711,7 +711,6 @@ in
 
     docker-compose
 
-    slack
     keepassxc
   ];
 }
