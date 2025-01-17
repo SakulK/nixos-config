@@ -140,6 +140,11 @@ in
   ];
   services.fwupd.enable = true;
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+
   services.autorandr = {
     enable = true;
     profiles = {
@@ -712,5 +717,7 @@ in
     docker-compose
 
     keepassxc
+
+    python3
   ];
 }
