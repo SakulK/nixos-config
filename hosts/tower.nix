@@ -3,7 +3,6 @@
 {
   imports = [
     ../modules/base.nix
-    ../modules/printer.nix
     ../modules/i3.nix
   ];
 

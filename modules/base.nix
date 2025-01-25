@@ -145,6 +145,12 @@ in
     nssmdns4 = true;
   };
 
+  services.printing.enable = true;
+  hardware.sane = {
+    enable = true;
+    brscan4.enable = true;
+  };
+
   services.autorandr = {
     enable = true;
     profiles = {
