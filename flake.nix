@@ -24,11 +24,6 @@
       url = "github:SakulK/lcat/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    unison-nix = {
-      url = "github:ceedubs/unison-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs: {
@@ -39,7 +34,6 @@
         custom-overlay = final: prev: {
           stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
           lcat = inputs.lcat.packages.x86_64-linux.default;
-          vim-unison = inputs.unison-nix.packages.x86_64-linux.vim-unison;
         };
 
         nix-config = (
