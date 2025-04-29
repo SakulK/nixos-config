@@ -63,13 +63,12 @@
   networking.useDHCP = false;
   networking.interfaces.enp4s0.useDHCP = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = false;
+  # services.xserver.videoDrivers = [ "nvidia" ];
+  # hardware.nvidia.open = false;
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
   services.minidlna = {
     enable = true;
@@ -89,7 +88,10 @@
   environment.systemPackages = with pkgs; [
     wowup-cf
     lutris
+    lact
   ];
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
   # virtualisation.virtualbox.host.enable = true;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
