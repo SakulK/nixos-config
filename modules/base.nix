@@ -330,7 +330,7 @@ in
       enable = true;
       autosuggestion.enable = true;
       enableCompletion = true;
-      initExtra = ''
+      initContent = ''
         ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
       '';
       oh-my-zsh = {
