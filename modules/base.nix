@@ -545,7 +545,7 @@ in
       enable = true;
       tray = true;
       dawnTime = "6:00-7:45";
-      duskTime = "17:00-19:00";
+      duskTime = "21:00-22:00";
       temperature.day = 6500;
       temperature.night = 4000;
     };
