@@ -3,7 +3,8 @@
 {
   imports = [
     ../modules/base.nix
-    ../modules/i3.nix
+    # ../modules/i3.nix
+    ../modules/sway.nix
   ];
 
   powerManagement.cpuFreqGovernor = "ondemand";
