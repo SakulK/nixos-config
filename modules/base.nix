@@ -90,41 +90,41 @@ in
   services.xserver.enable = true;
   services.xserver.dpi = 96;
   services.xserver.xkb.layout = "pl";
-  services.displayManager.defaultSession = "none+i3";
-  services.xserver.displayManager.lightdm = {
-    enable = true;
-    background = ./wallpaper.png;
-    greeters.gtk = {
-      enable = true;
-      theme = {
-        package = gruvbox-gtk-theme;
-        name = gruvbox-gtk-theme-name;
-      };
-      iconTheme = {
-        package = gruvbox-gtk-theme;
-        name = gruvbox-gtk-icon-theme-name;
-      };
-      cursorTheme = {
-        package = pkgs.numix-cursor-theme;
-        name = "Numix-Cursor-Light";
-      };
-    };
-    # greeters.mini = {
-    #   enable = true;
-    #   user = "sakulk";
-    #   extraConfig = ''
-    #     [greeter]
-    #     show-password-label = false
-    #     [greeter-theme]
-    #     error-color = "${colors.fg}"
-    #     window-color = "${colors.bg0_h}"
-    #     border-color = "${colors.bg0_h}"
-    #     password-color = "${colors.bg0_h}"
-    #     password-background-color = "${colors.yellow}"
-    #     password-border-color = "${colors.bg0_h}"
-    #   '';
-    # };
-  };
+  # services.displayManager.defaultSession = "none+i3";
+  # services.xserver.displayManager.lightdm = {
+  #   enable = true;
+  #   background = ./wallpaper.png;
+  #   greeters.gtk = {
+  #     enable = true;
+  #     theme = {
+  #       package = gruvbox-gtk-theme;
+  #       name = gruvbox-gtk-theme-name;
+  #     };
+  #     iconTheme = {
+  #       package = gruvbox-gtk-theme;
+  #       name = gruvbox-gtk-icon-theme-name;
+  #     };
+  #     cursorTheme = {
+  #       package = pkgs.numix-cursor-theme;
+  #       name = "Numix-Cursor-Light";
+  #     };
+  #   };
+  # greeters.mini = {
+  #   enable = true;
+  #   user = "sakulk";
+  #   extraConfig = ''
+  #     [greeter]
+  #     show-password-label = false
+  #     [greeter-theme]
+  #     error-color = "${colors.fg}"
+  #     window-color = "${colors.bg0_h}"
+  #     border-color = "${colors.bg0_h}"
+  #     password-color = "${colors.bg0_h}"
+  #     password-background-color = "${colors.yellow}"
+  #     password-border-color = "${colors.bg0_h}"
+  #   '';
+  # };
+  # };
 
   services.libinput = {
     enable = true;
