@@ -21,6 +21,8 @@ in
 
   environment.systemPackages = with pkgs; [
     wl-clipboard
+    grim
+    slurp
   ];
 
   home-manager.users.sakulk = {
@@ -62,9 +64,9 @@ in
           "${modifier}+Shift+x" = "exec swaylock";
           "${modifier}+m" = "move workspace to output left";
           "Print" =
-            ''exec --no-startup-id maim "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%H_%M_%S').png"'';
+            ''exec --no-startup-id grim "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%H_%M_%S').png"'';
           "Shift+Print" =
-            ''exec --no-startup-id maim --select "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%H_%M_%S').png"'';
+            ''exec --no-startup-id grim -g "$(slurp)" "/home/$USER/Pictures/screenshot_$(date +'%Y-%m-%d_%H_%M_%S').png"'';
           "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
           "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
           "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
