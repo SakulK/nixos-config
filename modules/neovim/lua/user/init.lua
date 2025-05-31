@@ -182,3 +182,5 @@ metals_config.settings = {
 }
 
 metals_config.capabilities = capabilities
+
+vim.diagnostic.config({ virtual_text = true })
