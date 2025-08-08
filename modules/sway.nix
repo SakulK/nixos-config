@@ -125,55 +125,7 @@ in
             text = colors.bg2;
           };
         };
-        bars = [
-          {
-            mode = "dock";
-            hiddenState = "hide";
-            position = "top";
-            workspaceButtons = true;
-            workspaceNumbers = true;
-            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
-            fonts = {
-              names = [ "JetBrainsMono Nerd Font" ];
-              size = 11.0;
-            };
-            # trayOutput = "primary";
-            extraConfig = ''
-              tray_padding 5
-              workspace_min_width 40
-            '';
-            colors = {
-              background = colors.bg0;
-              statusline = colors.fg;
-              separator = colors.bg2;
-              focusedWorkspace = {
-                border = colors.yellow;
-                background = colors.yellow;
-                text = colors.bg0;
-              };
-              activeWorkspace = {
-                border = colors.bg2;
-                background = colors.bg2;
-                text = colors.yellow;
-              };
-              inactiveWorkspace = {
-                border = colors.bg2;
-                background = colors.bg2;
-                text = colors.bg0;
-              };
-              urgentWorkspace = {
-                border = colors.dark_red;
-                background = colors.dark_red;
-                text = colors.fg;
-              };
-              bindingMode = {
-                border = colors.dark_red;
-                background = colors.dark_red;
-                text = colors.fg;
-              };
-            };
-          }
-        ];
+        bars = [ ];
       };
     };
 
@@ -183,68 +135,131 @@ in
       };
     };
 
-    programs.i3status-rust = {
+    programs.waybar = {
       enable = true;
-      package = pkgs.i3status-rust;
-      bars = {
-        default = {
-          icons = "material-nf";
-          theme = "gruvbox-dark";
-          blocks = [
-            {
-              block = "music";
-              format = " $icon {$title.str(max_w:20,rot_interval:0.5) $play $next |}";
-              player = "spotify";
-            }
-            {
-              block = "disk_space";
-              format = " $icon $available ";
-            }
-            {
-              block = "memory";
-              format = " $icon $mem_used.eng(p:Mi) ";
-              format_alt = " $icon_swap $swap_used.eng(p:Mi) ";
-            }
-            {
-              block = "cpu";
-              interval = 1;
-              format = " $icon $barchart $utilization ";
-            }
-            {
-              block = "net";
-              device = "^tun.*";
-              format = " $icon VPN ";
-              missing_format = "";
-            }
-            {
-              block = "net";
-              format = " $icon {$ssid $frequency|} ";
-              click = [
-                {
-                  button = "left";
-                  cmd = "alacritty -e nmtui";
-                }
-              ];
-            }
-            { block = "sound"; }
-            {
-              block = "battery";
-              device = "BAT0";
-              missing_format = "";
-              interval = 60;
-            }
-            {
-              block = "kdeconnect";
-              bat_good = 101;
-            }
-            {
-              block = "time";
-              interval = 60;
-              format = " $timestamp.datetime(f:'%a %d/%m %R') ";
-            }
+      systemd.enable = true;
+      settings = {
+        mainBar = {
+          layer = "top";
+          position = "top";
+          height = 30;
+          modules-left = [
+            "sway/workspaces"
+            "sway/mode"
           ];
+          modules-center = [
+            "sway/window"
+          ];
+          modules-right = [
+            "disk"
+            "memory"
+            "cpu"
+            "network"
+            "pulseaudio"
+            "clock"
+            "tray"
+          ];
+          "sway/workspaces" = {
+            disable-scroll = true;
+            all-outputs = true;
+          };
+          "sway/window" = {
+            max-length = 100;
+          };
+          "disk" = {
+            format = "󰋊 {free}";
+            states = {
+              warning = 90;
+              critical = 95;
+            };
+          };
+          "memory" = {
+            format = "  {used}GiB";
+            states = {
+              warning = 60;
+              critical = 80;
+            };
+          };
+          "cpu" = {
+            interval = 2;
+            format = "  {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15} {usage}%";
+            "format-icons" = [
+              "▁"
+              "▂"
+              "▃"
+              "▄"
+              "▅"
+              "▆"
+              "▇"
+              "█"
+            ];
+            states = {
+              warning = 50;
+              critical = 80;
+            };
+          };
+          "network" = {
+            format-ethernet = "󰈀";
+            format-wifi = " {frequency} {essid}";
+            format-disabled = ''<span style="background-color: ${colors.yellow}">󰖪</span>'';
+            format-disconnected = ''<span style="background-color: ${colors.red}">󰖪</span>'';
+            tooltip-format = "{ifname} {ipaddr}";
+            on-click = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.networkmanager}/bin/nmtui";
+          };
+          "pulseaudio" = {
+            format = " {volume}%";
+            format-muted = " ";
+            on-click = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          };
+          "clock" = {
+            format = "{:%Y-%m-%d %H:%M}";
+          };
+          "tray" = {
+            spacing = 6;
+          };
         };
       };
+      style = ''
+        * {
+          border: none;
+          border-radius: 0;
+          font-family: JetBrainsMono Nerd Font;
+          font-size: 14px;
+          min-height: 0;
+        }
+        window#waybar {
+          background: ${colors.bg0};
+          color: ${colors.fg};
+        }
+        #workspaces button {
+          padding: 0 5px;
+          background-color: ${colors.bg2};
+          color: ${colors.bg0};
+        }
+        #workspaces button.focused {
+          background-color: ${colors.yellow};
+          color: ${colors.bg0};
+        }
+        #workspaces button.urgent {
+          background-color: ${colors.dark_red};
+        }
+        #pulseaudio, #network, #disk, #cpu, #memory, #backlight, #battery, #clock, #tray {
+          padding: 0 6px;
+          margin: 0 6px;
+        }
+        #pulseaudio.muted {
+          background-color: ${colors.yellow};
+        }
+        #clock {
+          background-color: ${colors.bg2};
+        }
+        .warning {
+          color: ${colors.yellow};
+        }
+        .critical {
+          color: ${colors.red};
+        }
+      '';
     };
   };
 }
