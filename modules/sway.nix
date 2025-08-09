@@ -13,7 +13,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
         user = "greeter";
       };
     };
@@ -133,6 +133,31 @@ in
       settings = {
         color = colors.bg0;
       };
+    };
+
+    services.swayidle = {
+      enable = true;
+      events = [
+        {
+          event = "before-sleep";
+          command = "${pkgs.swaylock}/bin/swaylock -fF";
+        }
+      ];
+      timeouts = [
+        {
+          timeout = 120;
+          command = ''${pkgs.sway}/bin/swaymsg "output * dpms off"'';
+          resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * dpms on"'';
+        }
+        {
+          timeout = 300;
+          command = "${pkgs.swaylock}/bin/swaylock -fF";
+        }
+        {
+          timeout = 600;
+          command = "${pkgs.systemd}/bin/systemctl suspend";
+        }
+      ];
     };
 
     programs.waybar = {
