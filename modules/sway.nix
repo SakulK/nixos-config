@@ -131,7 +131,7 @@ in
 
     programs.swaylock = {
       settings = {
-        color = colors.bg0;
+	image = "~/.wallpaper";
       };
     };
 
