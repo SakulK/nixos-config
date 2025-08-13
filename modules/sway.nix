@@ -131,7 +131,7 @@ in
 
     programs.swaylock = {
       settings = {
-	image = "~/.wallpaper";
+        image = "~/.wallpaper";
       };
     };
 
@@ -181,6 +181,7 @@ in
             "cpu"
             "network"
             "pulseaudio"
+            "idle_inhibitor"
             "clock"
             "tray"
           ];
@@ -239,6 +240,13 @@ in
           "clock" = {
             format = "{:%Y-%m-%d %H:%M}";
           };
+          "idle_inhibitor" = {
+            format = "{icon} ";
+            format-icons = {
+              activated = "";
+              deactivated = "";
+            };
+          };
           "tray" = {
             spacing = 6;
           };
@@ -268,12 +276,13 @@ in
         #workspaces button.urgent {
           background-color: ${colors.dark_red};
         }
-        #pulseaudio, #network, #disk, #cpu, #memory, #backlight, #battery, #clock, #tray {
+        #pulseaudio, #network, #disk, #cpu, #memory, #backlight, #battery, #clock, #idle_inhibitor, #tray {
           padding: 0 6px;
           margin: 0 6px;
         }
         #pulseaudio.muted {
           background-color: ${colors.yellow};
+          color: ${colors.bg0};
         }
         #clock {
           background-color: ${colors.bg2};
@@ -283,6 +292,10 @@ in
         }
         .critical {
           color: ${colors.red};
+        }
+        #idle_inhibitor.activated {
+          background-color: ${colors.yellow};
+          color: ${colors.bg0};
         }
       '';
     };
