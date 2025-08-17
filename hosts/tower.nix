@@ -72,13 +72,6 @@
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
-  services.minidlna = {
-    enable = true;
-    settings = {
-      media_dir = [ "/dlna" ];
-      notify_interval = 60;
-    };
-  };
   programs.steam.enable = true;
   services.flatpak.enable = true;
   xdg.portal = {
@@ -100,10 +93,7 @@
   # virtualisation.virtualbox.host.enable = true;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
 
-  networking.firewall.allowedTCPPorts = [
-    8200 # minidlna
-    8010 # vlc chromecast renderer
-  ];
+  networking.firewall.allowedTCPPorts = [ ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
