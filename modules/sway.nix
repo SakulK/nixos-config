@@ -154,7 +154,7 @@ in
           command = "${pkgs.swaylock}/bin/swaylock -fF";
         }
         {
-          timeout = 600;
+          timeout = 1800;
           command = "${pkgs.systemd}/bin/systemctl suspend";
         }
       ];
