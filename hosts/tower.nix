@@ -22,7 +22,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.extraModprobeConfig = "options hid_apple fnmode=2"; # enable F keys for Keychron K2
 
   boot.initrd.luks.devices = {
