@@ -238,7 +238,7 @@ in
             on-click = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
           };
           "clock" = {
-            format = "{:%Y-%m-%d %H:%M}";
+            format = "{:%a %Y-%m-%d %H:%M}";
           };
           "idle_inhibitor" = {
             format = "{icon} ";
