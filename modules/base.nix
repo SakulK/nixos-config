@@ -553,6 +553,7 @@ in
       enable = true;
       theme = "gruvbox-dark";
       plugins = [ pkgs.rofi-power-menu ];
+      terminal = "${pkgs.alacritty}/bin/alacritty";
       extraConfig = {
         font = "JetBrainsMono Nerd Font 14";
       };
