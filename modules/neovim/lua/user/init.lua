@@ -92,8 +92,6 @@ cmp.setup.cmdline(':', {
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local nvim_lsp = require('lspconfig')
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -139,16 +137,17 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = { 'rust_analyzer', 'hls', 'roc_ls' }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  vim.lsp.config(lsp, {
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     },
     capabilities = capabilities
-  }
+  })
+  vim.lsp.enable(lsp)
 end
 
-nvim_lsp.nil_ls.setup {
+vim.lsp.config("nil_ls", {
   flags = {
     debounce_text_changes = 150,
   },
@@ -161,7 +160,8 @@ nvim_lsp.nil_ls.setup {
       }
     }
   }
-}
+})
+vim.lsp.enable("nil_ls")
 
 -- Metals
 vim.cmd([[augroup lsp]])
