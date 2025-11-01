@@ -14,6 +14,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs?ref=89c49874fb15f4124bf71ca5f42a04f2ee5825fd";
+    nixpkgs-sakulk.url = "github:SakulK/nixpkgs/boxflat-unrestrict-pyyaml";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -33,6 +34,7 @@
       let
         custom-overlay = final: prev: {
           stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
+          nixpkgsSakulK = inputs.nixpkgs-sakulk.legacyPackages.${prev.system};
           lcat = inputs.lcat.packages.x86_64-linux.default;
         };
 
