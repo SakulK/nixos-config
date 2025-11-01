@@ -34,7 +34,7 @@
       let
         custom-overlay = final: prev: {
           stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
-          nixpkgsSakulK = inputs.nixpkgs-sakulk.legacyPackages.${prev.system};
+          boxflat = inputs.nixpkgs-sakulk.legacyPackages.${prev.system}.boxflat;
           lcat = inputs.lcat.packages.x86_64-linux.default;
         };
 

@@ -137,7 +137,7 @@ in
   services.udev.packages = [
     pkgs.chrysalis
     pkgs.bazecor
-    pkgs.nixpkgsSakulK.boxflat
+    pkgs.boxflat
   ];
   services.fwupd.enable = true;
 
@@ -753,6 +753,6 @@ in
     keepassxc
 
     python3
-    nixpkgsSakulK.boxflat
+    boxflat
   ];
 }
