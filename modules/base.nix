@@ -279,27 +279,41 @@ in
 
     programs.git = {
       enable = true;
-      userName = "Łukasz Krenski";
-      userEmail = "sakulk@gmail.com";
-      delta = {
-        enable = true;
-        options = {
-          syntax-theme = "gruvbox-dark";
-          line-numbers = true;
-          minus-style = "syntax #613c3e";
-          plus-style = "syntax #293f2a";
+      settings = {
+        user = {
+          name = "Łukasz Krenski";
+          email = "sakulk@gmail.com";
         };
-      };
-      extraConfig = {
         merge.conflictstyle = "diff3";
         rerere.enabled = true;
         rebase.updateRefs = true;
       };
     };
+    programs.delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        syntax-theme = "gruvbox-dark";
+        line-numbers = true;
+        minus-style = "syntax #613c3e";
+        plus-style = "syntax #293f2a";
+      };
+    };
 
     programs.ssh = {
       enable = true;
-      addKeysToAgent = "yes";
+      matchBlocks."*" = {
+        forwardAgent = false;
+        addKeysToAgent = "yes";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
+      };
     };
 
     programs.direnv = {
@@ -660,7 +674,7 @@ in
 
   programs.java = {
     enable = true;
-    package = pkgs.graalvm-ce;
+    package = pkgs.graalvmPackages.graalvm-ce;
   };
 
   virtualisation.docker = {
@@ -724,7 +738,7 @@ in
     stress
 
     # scala
-    (sbt.override { jre = graalvm-ce; })
+    (sbt.override { jre = graalvmPackages.graalvm-ce; })
     scala-cli
     jetbrains.idea-community-bin
     coursier
