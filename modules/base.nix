@@ -741,7 +741,7 @@ in
     # scala
     (sbt.override { jre = graalvmPackages.graalvm-ce; })
     scala-cli
-    jetbrains.idea-community-bin
+    # jetbrains.idea-community-bin
     coursier
     metals
 
