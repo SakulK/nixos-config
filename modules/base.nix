@@ -591,7 +591,7 @@ in
         nvim-web-devicons
         lualine-nvim
         gitsigns-nvim
-        indent-blankline-nvim-lua
+        indent-blankline-nvim
         (nvim-treesitter.withPlugins (
           plugins: with plugins; [
             tree-sitter-scala
@@ -619,7 +619,7 @@ in
         vim-illuminate
         vim-fugitive
       ];
-      extraLuaConfig = ''require "user.init"'';
+      initLua = ''require "user.init"'';
     };
 
     programs.tmux = {
@@ -698,7 +698,7 @@ in
     firefox
     spotify
     vlc
-    nixfmt-rfc-style
+    nixfmt
     nil
     lcat
     fd
