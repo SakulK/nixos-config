@@ -696,7 +696,7 @@ in
     wget
     git
     firefox
-    spotify
+    tidal-hifi
     vlc
     nixfmt
     nil
