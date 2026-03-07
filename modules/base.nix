@@ -235,7 +235,6 @@ in
   services.fstrim.enable = true;
   services.udisks2.enable = true;
 
-  programs.light.enable = true;
   programs.dconf.enable = true;
   programs.zsh.enable = true;
   programs.kdeconnect.enable = true;
