@@ -275,6 +275,10 @@ in
         name = gruvbox-gtk-icon-theme-name;
       };
     };
+    gtk.gtk4.theme = {
+      package = gruvbox-gtk-theme;
+      name = gruvbox-gtk-theme-name;
+    };
 
     programs.git = {
       enable = true;
@@ -287,6 +291,7 @@ in
         rerere.enabled = true;
         rebase.updateRefs = true;
       };
+      signing.format = null;
     };
     programs.delta = {
       enable = true;
@@ -717,7 +722,7 @@ in
     gitui
     jq
     xclip
-    mate.eom # image viewer
+    eom # image viewer
     nemo-with-extensions # file manager
     simple-scan
     gnome-disk-utility
