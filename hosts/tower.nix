@@ -84,7 +84,7 @@
 
   environment.systemPackages = with pkgs; [
     wowup-cf
-    lutris
+    # lutris
     lact
     mangohud
     gamescope
