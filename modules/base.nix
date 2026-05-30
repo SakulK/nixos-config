@@ -307,7 +307,7 @@ in
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks."*" = {
+      settings."*" = {
         forwardAgent = false;
         addKeysToAgent = "yes";
         compression = false;
@@ -583,6 +583,8 @@ in
       enable = true;
       vimAlias = true;
       defaultEditor = true;
+      withRuby = false;
+      withPython3 = false;
       plugins = with pkgs.vimPlugins; [
         gruvbox-material
         nvim-colorizer-lua
