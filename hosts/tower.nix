@@ -75,6 +75,7 @@
     enable = true;
     protontricks.enable = true;
   };
+  services.joycond.enable = true;
   services.flatpak.enable = true;
   xdg.portal = {
     enable = true;
