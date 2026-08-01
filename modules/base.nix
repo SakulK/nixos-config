@@ -17,13 +17,6 @@ let
     ];
     text = builtins.readFile ./scripts/rofi-audio-source.sh;
   };
-  gruvbox-gtk-theme = pkgs.gruvbox-gtk-theme.override {
-    colorVariants = [ "dark" ];
-    themeVariants = [ "yellow" ];
-    iconVariants = [ "Dark" ];
-  };
-  gruvbox-gtk-theme-name = "Gruvbox-Yellow-Dark";
-  gruvbox-gtk-icon-theme-name = "Gruvbox-Dark";
   colors = import ./colors;
 in
 {
@@ -90,41 +83,6 @@ in
   services.xserver.enable = true;
   services.xserver.dpi = 96;
   services.xserver.xkb.layout = "pl";
-  # services.displayManager.defaultSession = "none+i3";
-  # services.xserver.displayManager.lightdm = {
-  #   enable = true;
-  #   background = ./wallpaper.png;
-  #   greeters.gtk = {
-  #     enable = true;
-  #     theme = {
-  #       package = gruvbox-gtk-theme;
-  #       name = gruvbox-gtk-theme-name;
-  #     };
-  #     iconTheme = {
-  #       package = gruvbox-gtk-theme;
-  #       name = gruvbox-gtk-icon-theme-name;
-  #     };
-  #     cursorTheme = {
-  #       package = pkgs.numix-cursor-theme;
-  #       name = "Numix-Cursor-Light";
-  #     };
-  #   };
-  # greeters.mini = {
-  #   enable = true;
-  #   user = "sakulk";
-  #   extraConfig = ''
-  #     [greeter]
-  #     show-password-label = false
-  #     [greeter-theme]
-  #     error-color = "${colors.fg}"
-  #     window-color = "${colors.bg0_h}"
-  #     border-color = "${colors.bg0_h}"
-  #     password-color = "${colors.bg0_h}"
-  #     password-background-color = "${colors.yellow}"
-  #     password-border-color = "${colors.bg0_h}"
-  #   '';
-  # };
-  # };
 
   services.libinput = {
     enable = true;
@@ -266,18 +224,11 @@ in
 
     gtk = {
       enable = true;
-      theme = {
-        package = gruvbox-gtk-theme;
-        name = gruvbox-gtk-theme-name;
-      };
+      colorScheme = "dark";
       iconTheme = {
-        package = gruvbox-gtk-theme;
-        name = gruvbox-gtk-icon-theme-name;
+        package = pkgs.adwaita-icon-theme;
+        name = "Adwaita";
       };
-    };
-    gtk.gtk4.theme = {
-      package = gruvbox-gtk-theme;
-      name = gruvbox-gtk-theme-name;
     };
 
     programs.git = {
@@ -382,8 +333,10 @@ in
         "--color fg:${colors.fg},bg:${colors.bg0},hl:${colors.light_yellow},fg+:${colors.fg},bg+:${colors.bg1},hl+:${colors.light_yellow}"
         "--color info:${colors.light_blue},prompt:${colors.fg3},spinner:${colors.light_yellow},pointer:${colors.light_blue},marker:${colors.orange},header:${colors.bg3}"
       ];
-      fileWidgetCommand = "fd --type f";
-      fileWidgetOptions = [ "--preview='bat {} --color=always'" ];
+      fileWidget = {
+        command = "fd --type f";
+        options = [ "--preview='bat {} --color=always'" ];
+      };
     };
 
     programs.starship = {

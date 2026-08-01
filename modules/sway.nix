@@ -262,7 +262,7 @@ in
           color: ${colors.fg};
         }
         #workspaces button {
-          padding: 0 5px;
+          padding: 0 10px;
           background-color: ${colors.bg2};
           color: ${colors.bg0};
         }
