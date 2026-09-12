@@ -655,7 +655,6 @@ in
     wget
     git
     firefox
-    tidal-hifi
     vlc
     nixfmt
     nil
