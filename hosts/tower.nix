@@ -96,8 +96,20 @@
   # virtualisation.virtualbox.host.enable = true;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
 
-  networking.firewall.allowedTCPPorts = [ ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    27036
+    27037
+  ];
+  networking.firewall.allowedUDPPorts = [
+    27031
+    27032
+    27033
+    27034
+    27035
+    27036
+    10400
+    10401
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
